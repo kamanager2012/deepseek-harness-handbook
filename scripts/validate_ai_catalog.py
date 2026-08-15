@@ -22,6 +22,7 @@ def main() -> int:
 
     try:
         manifest = json.loads((ai_root / "manifest.json").read_text(encoding="utf-8"))
+        terms_data = json.loads((ai_root / "terms.json").read_text(encoding="utf-8"))
         records = []
         with (ai_root / "catalog.jsonl").open(encoding="utf-8") as handle:
             for line_number, line in enumerate(handle, start=1):
@@ -35,11 +36,26 @@ def main() -> int:
 
     expected_documents = manifest.get("stats", {}).get("documents")
     expected_records = manifest.get("stats", {}).get("records")
+    expected_terms = manifest.get("stats", {}).get("terms")
     documents = manifest.get("documents", [])
+    terms = terms_data.get("terms", [])
     if expected_documents != len(documents):
         errors.append("manifest stats.documents does not match documents")
     if expected_records != len(records):
         errors.append("manifest stats.records does not match catalog")
+    if expected_terms != len(terms):
+        errors.append("manifest stats.terms does not match terms.json")
+
+    term_names: set[str] = set()
+    for index, item in enumerate(terms, start=1):
+        if not item.get("term") or not item.get("definition") or not item.get("source"):
+            errors.append(f"terms.json:{index}: missing term, definition, or source")
+        if item.get("term") in term_names:
+            errors.append(f"terms.json:{index}: duplicate term {item.get('term')}")
+        term_names.add(item.get("term"))
+        source = item.get("source", {})
+        if source.get("path") != "content/12-reference/glossary.md":
+            errors.append(f"terms.json:{index}: unexpected source path {source.get('path')}")
 
     source_documents = {path.relative_to(root).as_posix() for path in (root / "content").rglob("*.md")}
     manifest_sources = {item.get("source") for item in documents}

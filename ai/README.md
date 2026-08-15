@@ -20,6 +20,7 @@
 | [manifest.json](manifest.json) | 包信息、来源范围、统计和文件入口 |
 | [schema.json](schema.json) | 单条检索记录的 JSON Schema |
 | [catalog.jsonl](catalog.jsonl) | 每行一条可检索的主题记录 |
+| [terms.json](terms.json) | 从术语表提取的机器可读定义 |
 | [query_ai_catalog.py](https://github.com/kamanager2012/deepseek-harness-handbook/blob/main/scripts/query_ai_catalog.py) | 本地查询示例 |
 
 ## 给 AI 工具的最小接入方式
@@ -28,6 +29,12 @@
 
 ```text
 https://raw.githubusercontent.com/kamanager2012/deepseek-harness-handbook/main/ai/catalog.jsonl
+```
+
+术语快速入口：
+
+```text
+https://raw.githubusercontent.com/kamanager2012/deepseek-harness-handbook/main/ai/terms.json
 ```
 
 读取后按 `title`、`section_title`、`summary`、`keywords` 和 `content` 建立索引；回答时必须保留 `source.url`，并以当前版本官方资料和实际 `--help` 为最终依据。

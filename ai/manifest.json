@@ -34,12 +34,14 @@
   },
   "files": {
     "catalog": "catalog.jsonl",
+    "terms": "terms.json",
     "schema": "schema.json",
     "usage": "README.md"
   },
   "stats": {
     "documents": 108,
-    "records": 638
+    "records": 638,
+    "terms": 28
   },
   "documents": [
     {

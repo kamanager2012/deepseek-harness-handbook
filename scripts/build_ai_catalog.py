@@ -254,8 +254,53 @@ def build_records() -> tuple[list[dict], list[dict]]:
     return records, documents
 
 
-def render(records: list[dict], documents: list[dict]) -> tuple[str, str]:
+def build_terms(root: Path) -> list[dict]:
+    path = root / "content/12-reference/glossary.md"
+    lines = path.read_text(encoding="utf-8").splitlines()
+    terms: list[dict] = []
+    for line_number, line in enumerate(lines, start=1):
+        if not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 2 or cells[0] in {"术语", "---"} or set(cells[0]) <= {"-", ":"}:
+            continue
+        term, definition = cells[0], cells[1]
+        terms.append(
+            {
+                "term": term,
+                "definition": definition,
+                "source": {
+                    "path": "content/12-reference/glossary.md",
+                    "line_start": line_number,
+                    "line_end": line_number,
+                    "url": (
+                        f"{REPOSITORY_URL}/blob/main/content/12-reference/glossary.md"
+                        f"#L{line_number}"
+                    ),
+                },
+            }
+        )
+    return terms
+
+
+def render(records: list[dict], documents: list[dict], terms: list[dict]) -> tuple[str, str, str]:
     catalog = "".join(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n" for record in records)
+    terms_json = json.dumps(
+        {
+            "schema_version": "1.0",
+            "name": "DeepSeek Harness 术语索引",
+            "description": "从正文术语表逐行提取的机器可读定义，不替代当前版本官方字段说明。",
+            "language": "zh-CN",
+            "source": {
+                "path": "content/12-reference/glossary.md",
+                "repository": REPOSITORY_URL,
+                "branch": "main",
+            },
+            "terms": terms,
+        },
+        ensure_ascii=False,
+        indent=2,
+    ) + "\n"
     manifest = {
         "schema_version": "1.0",
         "package": {
@@ -281,16 +326,18 @@ def render(records: list[dict], documents: list[dict]) -> tuple[str, str]:
         },
         "files": {
             "catalog": "catalog.jsonl",
+            "terms": "terms.json",
             "schema": "schema.json",
             "usage": "README.md",
         },
         "stats": {
             "documents": len(documents),
             "records": len(records),
+            "terms": len(terms),
         },
         "documents": documents,
     }
-    return catalog, json.dumps(manifest, ensure_ascii=False, indent=2) + "\n"
+    return catalog, json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", terms_json
 
 
 def main() -> int:
@@ -304,10 +351,12 @@ def main() -> int:
     AI_ROOT = root / "ai"
     CATALOG_PATH = AI_ROOT / "catalog.jsonl"
     MANIFEST_PATH = AI_ROOT / "manifest.json"
+    terms_path = AI_ROOT / "terms.json"
 
     records, documents = build_records()
-    catalog, manifest = render(records, documents)
-    expected = {CATALOG_PATH: catalog, MANIFEST_PATH: manifest}
+    terms = build_terms(root)
+    catalog, manifest, terms_json = render(records, documents, terms)
+    expected = {CATALOG_PATH: catalog, MANIFEST_PATH: manifest, terms_path: terms_json}
     mismatches: list[str] = []
     for path, content in expected.items():
         if not path.exists() or path.read_text(encoding="utf-8") != content:
@@ -318,13 +367,13 @@ def main() -> int:
             print("AI catalog is out of date: " + ", ".join(mismatches))
             print("Run: python3 scripts/build_ai_catalog.py")
             return 1
-        print(f"AI catalog is current: {len(documents)} documents, {len(records)} records")
+        print(f"AI catalog is current: {len(documents)} documents, {len(records)} records, {len(terms)} terms")
         return 0
 
     AI_ROOT.mkdir(parents=True, exist_ok=True)
     for path, content in expected.items():
         path.write_text(content, encoding="utf-8")
-    print(f"AI catalog built: {len(documents)} documents, {len(records)} records")
+    print(f"AI catalog built: {len(documents)} documents, {len(records)} records, {len(terms)} terms")
     return 0
 
 

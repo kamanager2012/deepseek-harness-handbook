@@ -4,15 +4,15 @@
 
 这是一份面向实际使用者的中文说明，重点是：启动 Harness、配置模型、选择工作区、写出可控的任务，以及检查代理交付的结果。
 
-它是上游文档的中文整理和安全补充，不替代上游项目文档。DeepSeek Harness 仍处于快速迭代阶段，使用前请核对你安装的版本和命令帮助。
+它是上游文档的中文整理和安全补充，不替代上游项目文档。搜索和上游资料负责提供最新事实；本手册负责把分散信息组织成排错顺序、工作流、风险边界和验收方法。DeepSeek Harness 仍处于快速迭代阶段，使用前请核对你安装的版本和命令帮助。
 
 书稿连续阅读入口：[BOOK.md](BOOK.md)。
 
 在线阅读站：[DeepSeek Harness 中文手册](https://kamanager2012.github.io/deepseek-harness-handbook/)（由 GitHub Pages 自动构建）。
 
-英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前先覆盖核心概念、安装、Web UI 首次任务、CLI、DeepSeek Provider、主线工作流、安全和术语，后续按同一目录扩展完整章节。
+英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前有 16 个英文 Markdown 条目（包含首页和翻译状态），优先覆盖 Provider 排错、Session 恢复、复核验收和 FAQ；后续按同一目录继续扩展，不以页数代替质量。
 
-AI 调用入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。
+机器可读入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。它是静态、可追溯的正文索引，不替代实时搜索和当前版本官方资料。
 
 ## 先走一条主线
 
@@ -44,7 +44,7 @@ AI 调用入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.
 
 ## 给 AI 工具的入口
 
-如果你希望让 AI 按问题调取本手册，不要把 20 多万字正文一次性塞进上下文。使用 [AI 知识包](ai/README.md)：它把 108 篇正文拆成带稳定 ID、关键词、原文片段、来源文件和行号的 JSONL 记录。
+如果你希望让 AI 按问题读取本手册，不要把整本正文一次性塞进上下文。使用 [AI 知识包](ai/README.md)：它把 108 篇中文正文和维护中的英文页面拆成带稳定 ID、关键词、原文片段、来源文件和行号的 JSONL 记录。
 
 知识包是从 Markdown 确定性生成的，不是另一套由模型编造的内容。更新正文后运行：
 

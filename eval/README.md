@@ -4,7 +4,7 @@ This directory contains regression fixtures for the static AI catalogs. They tes
 whether a natural-language question retrieves the right original section and source;
 they are not execution logs, model benchmarks, or claims that a dsh task succeeded.
 
-The current fixture has 40 questions: 32 Chinese and 8 English. Each case records
+The current fixture has 44 questions: 32 Chinese and 12 English. Each case records
 acceptable record IDs, acceptable source paths, and terms that should appear in the
 retrieved context.
 

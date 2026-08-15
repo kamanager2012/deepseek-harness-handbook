@@ -1,8 +1,20 @@
 # DeepSeek Harness 中文使用手册
 
-> 工程实施、验收与运维手册
+> 把 DeepSeek Harness 放进真实工程流程的使用与验收指南
 
-这不是 dsh API 的镜像，也不是把模型回复堆成长文的教程。它面向需要把 DeepSeek Harness 放进真实工程流程的人：从安装、Provider 和 workspace，到任务边界、权限控制、Session 恢复、外部验收和团队运维。
+搜索和官方文档仍然是最新事实的第一来源。本手册不试图替代它们，而是把分散的事实、风险和操作选择重新组织成中文的可执行路径：先建立边界，再运行任务，最后用外部证据验收。
+
+## 这本手册额外提供什么
+
+| 直接搜索通常给你 | 本手册补上的部分 |
+| --- | --- |
+| 一个命令、字段或错误码 | 这个信息处于哪一层，下一步先查什么 |
+| 多个分散页面 | 从安装、Provider、workspace 到交付的连续路径 |
+| “任务完成”的文字描述 | diff、测试、退出码和人工判断组成的验收方法 |
+| 某个 session 或模型的局部解释 | history、resume、fork、权限和恢复边界的关系 |
+| 能运行的示例 | 允许范围、停止条件、回滚路径和数据风险 |
+
+如果你只需要查一个最新参数，请先看当前版本的 `--help` 和上游资料；如果你需要判断“应该怎样安全地使用、排错或验收”，再从下面的任务入口开始。
 
 ## 从这里开始
 
@@ -12,6 +24,17 @@
 - [五层模型：先理解 Harness 如何工作](content/00-overview/harness-five-layers.md)
 - [主线实战：从空白 workspace 到可验收交付](content/05-workflows/from-blank-to-delivery.md)
 - [按任务查找章节](content/tasks/index.md)
+
+## 遇到问题先看这里
+
+| 现象或目标 | 直接入口 |
+| --- | --- |
+| dsh 能启动，但任务发不出去 | [FAQ：启动、workspace、Provider](content/12-reference/faq.md) |
+| Provider 报 `MISSING_CREDENTIAL`、`UNKNOWN_MODEL` 或 HTTP 错误 | [Provider 故障排查](content/04-providers/troubleshooting.md) |
+| 能看到旧消息，但不确定是否真正恢复了 Session | [Session 模型](content/07-sessions/model.md) → [恢复与清理](content/07-sessions/recovery.md) |
+| Agent 说完成了，但没有 diff 或不知道能否发布 | [复核与验收设计](content/05-workflows/review-and-acceptance.md) |
+| 任务可能改错 workspace、泄露凭据或扩大权限 | [安全使用总览](content/06-security/README.md) → [数据流](content/06-security/data-flow.md) |
+| 想把一次任务做成可重复的 CI/团队流程 | [从空白 workspace 到交付](content/05-workflows/from-blank-to-delivery.md) |
 
 ## 选择阅读路线
 
@@ -23,7 +46,7 @@
 | 接入 CLI、CI 或 Python | [CLI](content/03-cli/README.md) → [自动化](content/08-automation/README.md) → [SDK 工程实践](content/08-automation/sdk-engineering.md) |
 | 做安全评审或团队落地 | [安全](content/06-security/README.md) → [Session](content/07-sessions/README.md) → [团队规范](content/11-operations/team.md) |
 | 开发插件和扩展 | [插件模型](content/10-plugins/plugin-model.md) → [Cordis 入门](content/10-plugins/cordis-primer.md) → [调试与发布](content/10-plugins/debugging-and-release.md) |
-| 让 AI 直接检索本手册 | [AI 知识包说明](ai/README.md) → [manifest](ai/manifest.json) → [catalog.jsonl](ai/catalog.jsonl) |
+| 让脚本或 Agent 读取结构化正文 | [AI 知识包说明](ai/README.md) → [manifest](ai/manifest.json) → [catalog.jsonl](ai/catalog.jsonl) |
 
 ## 阅读原则
 
@@ -31,6 +54,7 @@
 - Agent 的最终回答不是验收结果，检查真实 diff、测试、退出码和数据流；
 - 命令、字段和模型能力以当前版本的 `--help`、上游资料和实际结果为准；
 - 示例是任务契约和验收模板，不是虚构的运行记录；
+- AI 知识包是静态、可追溯的正文索引，不保证替代实时搜索；
 - `evidence/` 和 `labs/` 是维护者附录，普通读者不需要从那里开始。
 
 本网站由仓库中的 Markdown 源稿自动构建；需要查看版本、修改历史或编辑正文时，回到 [GitHub 仓库](https://github.com/kamanager2012/deepseek-harness-handbook)。

@@ -1,6 +1,6 @@
 # DeepSeek Harness AI 知识包
 
-这里是给 AI 检索和工具调用使用的静态双语知识包，不是第二套事实来源。
+这里是给 AI 检索和工具调用使用的静态双语知识包，不是第二套事实来源，也不替代实时搜索或当前版本的官方资料。
 
 ## 它解决什么问题
 
@@ -52,7 +52,7 @@ English glossary：
 https://raw.githubusercontent.com/kamanager2012/deepseek-harness-handbook/main/ai/terms.en.json
 ```
 
-读取后按 `title`、`section_title`、`summary`、`keywords` 和 `content` 建立索引；回答时必须保留 `source.url`，并以当前版本官方资料和实际 `--help` 为最终依据。
+读取后按 `title`、`section_title`、`summary`、`keywords` 和 `content` 建立索引；回答时必须保留 `source.url`，并以当前版本官方资料和实际 `--help` 为最终依据。它的优势是把中文解释、工程路径和可追溯正文快速交给工具，不是保证静态记录永远比网上的新资料更新。
 
 ## 本地查询
 

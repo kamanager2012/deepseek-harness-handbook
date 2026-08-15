@@ -33,7 +33,7 @@ npx @deepseek-ai/dsh --profile headless --help
 
 | 部分 | 解决的问题 |
 | --- | --- |
-| [总览](.) | dsh 的对象模型和选择路径 |
+| [总览](README.md) | dsh 的对象模型和选择路径 |
 | [安装与运行时](../01-installation/README.md) | Node、npm、源码构建、Windows/WSL 和升级 |
 | [Web UI](../02-web-ui/README.md) | 浏览器使用、工作区、会话、审批和故障处理 |
 | [CLI](../03-cli/README.md) | profile、配置导出、headless 和脚本边界 |

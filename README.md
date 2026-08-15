@@ -8,6 +8,8 @@
 
 书稿连续阅读入口：[BOOK.md](BOOK.md)。
 
+在线阅读站：[DeepSeek Harness 中文手册](https://kamanager2012.github.io/deepseek-harness-handbook/)（由 GitHub Pages 自动构建）。
+
 ## 先走一条主线
 
 不要把这份手册当成必须从头读完的参数目录。先用下面三页建立整体判断，再按任务进入专题：

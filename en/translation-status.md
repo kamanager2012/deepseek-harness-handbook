@@ -1,13 +1,17 @@
 # English edition status
 
-This is the initial English edition of the [DeepSeek Harness Chinese Handbook](https://kamanager2012.github.io/deepseek-harness-handbook/).
-It currently covers the core concepts, installation, first Web UI task, CLI, DeepSeek
-Provider, main delivery workflow, security principles, and glossary.
+This is the maintained English edition of the [DeepSeek Harness Chinese Handbook](https://kamanager2012.github.io/deepseek-harness-handbook/).
+It prioritizes the chapters that contain operating judgment rather than translating every
+reference page in filename order. The current path covers core concepts, installation,
+the first Web UI task, CLI, DeepSeek Provider setup and troubleshooting, the main delivery
+workflow, review and acceptance, Session recovery, security principles, FAQ, and glossary.
 
 The Chinese Markdown under `content/` remains the primary factual source. English pages
 are maintained translations and preserve commands, configuration names, identifiers,
-version warnings, and source links. Specialist chapters will be added under the same
-directory layout instead of being silently replaced with machine-generated text.
+version warnings, and source links. The remaining specialist chapters will be added under
+the same directory layout instead of being silently replaced with machine-generated text.
+Page count is intentionally not the quality target; high-value troubleshooting and workflow
+coverage comes first.
 
 ## Translation rules
 

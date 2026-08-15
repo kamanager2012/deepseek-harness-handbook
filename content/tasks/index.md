@@ -39,3 +39,16 @@ Provider/模型：
 ~~~
 
 如果一个任务无法填出验收条件，它还没有准备好交给 Agent。
+
+## 按现象找答案
+
+| 你看到的现象 | 先排查 | 不要先做什么 |
+| --- | --- | --- |
+| dsh 能启动，但任务输入不可用 | [常见问题](../12-reference/faq.md)、workspace 选择、Provider 和模型 | 不要直接重装或切换最高权限 |
+| `MISSING_CREDENTIAL` | [Provider 排错](../04-providers/troubleshooting.md)中的凭据引用、进程环境和 `DSH_HOME` | 不要把 key 打进任务或日志 |
+| `UNKNOWN_MODEL` 或模型列表为空 | [Provider 排错](../04-providers/troubleshooting.md)中的 Provider、模型 ID、endpoint 和新 session | 不要仅凭网页能打开就判断模型可用 |
+| 页面停了，但后台是否仍在运行不清楚 | [Session 恢复与清理](../07-sessions/recovery.md) | 不要用清理命令掩盖现场 |
+| Agent 说完成了，但没有可交付结果 | [复核与验收](../05-workflows/review-and-acceptance.md) | 不要把最终回答当成验收证明 |
+| 测试通过，但仍不确定能否发布 | [复核与验收](../05-workflows/review-and-acceptance.md)、[FAQ](../12-reference/faq.md) | 不要忽略 diff、依赖、数据流和人工判断 |
+
+这些入口是组织过的排查路径，不是对当前版本命令和 Provider 行为的永久承诺；发生版本敏感问题时，回到[官方来源与阅读方法](../12-reference/sources.md)核对。

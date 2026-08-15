@@ -361,6 +361,42 @@
       "expected_record_ids": ["dsh.en.12-reference.glossary.body"],
       "expected_source_paths": ["en/12-reference/glossary.md"],
       "must_include_terms": ["model", "credentials"]
+    },
+    {
+      "id": "en-provider-troubleshooting",
+      "language": "en",
+      "category": "provider",
+      "query": "How do I troubleshoot MISSING_CREDENTIAL and UNKNOWN_MODEL in a Provider?",
+      "expected_record_ids": ["dsh.en.04-providers.troubleshooting.missing-credential", "dsh.en.04-providers.troubleshooting.unknown-model"],
+      "expected_source_paths": ["en/04-providers/troubleshooting.md"],
+      "must_include_terms": ["credential", "model ID"]
+    },
+    {
+      "id": "en-session-recovery",
+      "language": "en",
+      "category": "session",
+      "query": "What should I check before recovering a Session?",
+      "expected_record_ids": ["dsh.en.07-sessions.recovery.checkpoint-before-recovery"],
+      "expected_source_paths": ["en/07-sessions/recovery.md"],
+      "must_include_terms": ["workspace", "permissions"]
+    },
+    {
+      "id": "en-review-acceptance-types",
+      "language": "en",
+      "category": "workflow",
+      "query": "How should I distinguish machine, structural, and human acceptance?",
+      "expected_record_ids": ["dsh.en.05-workflows.review-and-acceptance.three-kinds-of-acceptance"],
+      "expected_source_paths": ["en/05-workflows/review-and-acceptance.md"],
+      "must_include_terms": ["diff", "tests"]
+    },
+    {
+      "id": "en-faq-no-diff",
+      "language": "en",
+      "category": "troubleshooting",
+      "query": "Why did an agent say it was complete without producing a diff?",
+      "expected_record_ids": ["dsh.en.12-reference.faq.why-did-the-task-say-it-was-complete-without-producing-a-diff"],
+      "expected_source_paths": ["en/12-reference/faq.md"],
+      "must_include_terms": ["read-only", "workspace"]
     }
   ]
 }

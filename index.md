@@ -7,6 +7,7 @@
 ## 从这里开始
 
 - [连续阅读书稿目录](BOOK.md)
+- [给 AI 调用的知识包](ai/README.md)
 - [五层模型：先理解 Harness 如何工作](content/00-overview/harness-five-layers.md)
 - [主线实战：从空白 workspace 到可验收交付](content/05-workflows/from-blank-to-delivery.md)
 - [按任务查找章节](content/tasks/index.md)
@@ -21,6 +22,7 @@
 | 接入 CLI、CI 或 Python | [CLI](content/03-cli/README.md) → [自动化](content/08-automation/README.md) → [SDK 工程实践](content/08-automation/sdk-engineering.md) |
 | 做安全评审或团队落地 | [安全](content/06-security/README.md) → [Session](content/07-sessions/README.md) → [团队规范](content/11-operations/team.md) |
 | 开发插件和扩展 | [插件模型](content/10-plugins/plugin-model.md) → [Cordis 入门](content/10-plugins/cordis-primer.md) → [调试与发布](content/10-plugins/debugging-and-release.md) |
+| 让 AI 直接检索本手册 | [AI 知识包说明](ai/README.md) → [manifest](ai/manifest.json) → [catalog.jsonl](ai/catalog.jsonl) |
 
 ## 阅读原则
 

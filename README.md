@@ -10,6 +10,8 @@
 
 在线阅读站：[DeepSeek Harness 中文手册](https://kamanager2012.github.io/deepseek-harness-handbook/)（由 GitHub Pages 自动构建）。
 
+AI 调用入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。
+
 ## 先走一条主线
 
 不要把这份手册当成必须从头读完的参数目录。先用下面三页建立整体判断，再按任务进入专题：
@@ -37,6 +39,17 @@
 - [插件与 Cordis：Profile、Bundle、Patch 和扩展](content/10-plugins/README.md)
 - [运维：团队、CI、日志和故障分诊](content/11-operations/README.md)
 - [参考：命令、模板、术语和官方来源](content/12-reference/README.md)
+
+## 给 AI 工具的入口
+
+如果你希望让 AI 按问题调取本手册，不要把 20 多万字正文一次性塞进上下文。使用 [AI 知识包](ai/README.md)：它把 108 篇正文拆成带稳定 ID、关键词、原文片段、来源文件和行号的 JSONL 记录。
+
+知识包是从 Markdown 确定性生成的，不是另一套由模型编造的内容。更新正文后运行：
+
+```bash
+python3 scripts/build_ai_catalog.py
+python3 scripts/validate_ai_catalog.py
+```
 
 ## 5 分钟开始
 

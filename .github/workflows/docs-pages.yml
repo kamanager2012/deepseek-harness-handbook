@@ -33,6 +33,12 @@ jobs:
       - name: Validate handbook
         run: python scripts/validate_handbook.py
 
+      - name: Validate AI catalog freshness
+        run: python scripts/build_ai_catalog.py --check
+
+      - name: Validate AI catalog source ranges
+        run: python scripts/validate_ai_catalog.py
+
       - name: Prepare reader source
         run: python scripts/build_docs_source.py
 

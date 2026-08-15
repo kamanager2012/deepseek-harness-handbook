@@ -54,6 +54,7 @@ markdown_extensions:
 
 nav:
   - 首页: index.md
+  - AI 知识包: ai/README.md
   - 书稿目录: BOOK.md
   - 正文索引: content/README.md
   - 序章：先把 dsh 想清楚:

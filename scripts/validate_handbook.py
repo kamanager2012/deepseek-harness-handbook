@@ -31,6 +31,12 @@ SENSITIVE_PATTERNS = (
     re.compile(r"-----BEGIN (?:RSA|OPENSSH|PRIVATE) KEY-----"),
 )
 
+GENERATED_DIRS = {".mkdocs-docs", ".mkdocs-site", ".venv", "__pycache__"}
+
+
+def is_generated(path: Path, root: Path) -> bool:
+    return any(part in GENERATED_DIRS for part in path.relative_to(root).parts)
+
 
 def load_yaml(path: Path) -> Any:
     try:
@@ -96,6 +102,8 @@ def check_manifest(root: Path, errors: list[str]) -> None:
 def check_markdown_links(root: Path, errors: list[str]) -> int:
     checked = 0
     for path in sorted(root.rglob("*.md")):
+        if is_generated(path, root):
+            continue
         text = path.read_text(encoding="utf-8")
         for target in re.findall(r"\]\(([^)]+)\)", text):
             if target.startswith(("http://", "https://", "mailto:", "#")):
@@ -112,6 +120,8 @@ def check_markdown_links(root: Path, errors: list[str]) -> int:
 def check_sensitive_strings(root: Path, errors: list[str]) -> int:
     matches = 0
     for path in sorted(root.rglob("*")):
+        if is_generated(path, root):
+            continue
         if not path.is_file() or path.name == "validate_handbook.py":
             continue
         try:

@@ -24,7 +24,6 @@
 | [catalog.en.jsonl](catalog.en.jsonl) | English edition 的可检索主题记录 |
 | [terms.json](terms.json) | 从术语表提取的机器可读定义 |
 | [terms.en.json](terms.en.json) | English glossary 的机器可读定义 |
-| [mcp.md](mcp.md) | 只读 MCP 服务和客户端配置 |
 | [query_ai_catalog.py](https://github.com/kamanager2012/deepseek-harness-handbook/blob/main/scripts/query_ai_catalog.py) | 本地查询示例 |
 
 ## 给 AI 工具的最小接入方式
@@ -63,7 +62,7 @@ python3 scripts/query_ai_catalog.py "Session 恢复" --limit 3 --full
 python3 scripts/query_ai_catalog.py "How do I configure the DeepSeek Provider?" --catalog ai/catalog.en.jsonl
 ```
 
-输出是 JSON，方便脚本、Agent 或后续 MCP 适配器继续处理。
+输出是 JSON，方便脚本、Agent 或其他检索工具继续处理。
 
 ## 更新规则
 
@@ -75,4 +74,4 @@ python3 scripts/validate_ai_catalog.py
 python3 scripts/build_ai_catalog.py --check
 ```
 
-当前已经提供基于静态知识包的只读 MCP 服务，入口和配置见 [mcp.md](mcp.md)。它只暴露 `query_docs` 和 `get_source`，不执行命令、不写文件、不修改状态。AI 可以整理索引，不能凭空补写运行事实。
+当前提供稳定的静态检索包；如果未来出现明确的客户端或团队集成需求，再单独评估服务接口。AI 可以整理索引，不能凭空补写运行事实。

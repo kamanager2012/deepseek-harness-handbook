@@ -19,7 +19,7 @@ MRR, top-result source accuracy, and required-term coverage. Source-level metric
 because one answer may be split into several adjacent Markdown sections. It uses the same
 deterministic keyword scorer as the local query command;
 the first goal is to establish a reproducible baseline before introducing BM25,
-embeddings, reranking, or an MCP service.
+embeddings, or reranking.
 
 The report separates an exact-section miss from a source miss. A query can rank a
 neighboring section first while still returning the correct Markdown source within the

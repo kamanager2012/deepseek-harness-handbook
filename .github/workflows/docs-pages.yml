@@ -39,6 +39,14 @@ jobs:
       - name: Validate AI catalog source ranges
         run: python scripts/validate_ai_catalog.py
 
+      - name: Run bilingual retrieval regression
+        run: >-
+          python scripts/evaluate_retrieval.py
+          --min-recall-at-5 0.80
+          --min-mrr 0.65
+          --min-source-accuracy-at-1 0.70
+          --min-term-coverage 0.90
+
       - name: Prepare reader source
         run: python scripts/build_docs_source.py
 

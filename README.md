@@ -10,6 +10,8 @@
 
 在线阅读站：[DeepSeek Harness 中文手册](https://kamanager2012.github.io/deepseek-harness-handbook/)（由 GitHub Pages 自动构建）。
 
+英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前先覆盖核心概念、安装、Web UI 首次任务、CLI、DeepSeek Provider、主线工作流、安全和术语，后续按同一目录扩展完整章节。
+
 AI 调用入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。
 
 ## 先走一条主线

@@ -26,6 +26,7 @@ def main() -> None:
 
     shutil.copytree(ROOT / "content", OUTPUT / "content")
     shutil.copytree(ROOT / "ai", OUTPUT / "ai")
+    shutil.copytree(ROOT / "en", OUTPUT / "en")
 
 
 if __name__ == "__main__":

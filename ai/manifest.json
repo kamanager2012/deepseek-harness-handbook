@@ -2,17 +2,24 @@
   "schema_version": "1.0",
   "package": {
     "id": "deepseek-harness-handbook",
-    "name": "DeepSeek Harness 中文 AI 知识包",
-    "description": "供 AI 按主题检索 DeepSeek Harness 使用、工程、安全和运维说明。",
-    "language": "zh-CN",
-    "source_of_truth": "Markdown under content/",
+    "name": "DeepSeek Harness bilingual AI knowledge package",
+    "description": "AI retrieval records for the Chinese source handbook and its maintained English edition.",
+    "languages": [
+      "zh-CN",
+      "en"
+    ],
+    "source_of_truth": "Chinese Markdown under content/; English Markdown under en/ is a maintained translation.",
     "transformation": "deterministic section extraction; no model-generated claims"
   },
   "source": {
     "repository": "https://github.com/kamanager2012/deepseek-harness-handbook",
     "branch": "main",
-    "root": "content/",
-    "included": "content/**/*.md",
+    "primary_root": "content/",
+    "translation_root": "en/",
+    "included": [
+      "content/**/*.md",
+      "en/**/*.md"
+    ],
     "excluded": [
       "evidence/**",
       "labs/**",
@@ -21,7 +28,10 @@
   },
   "retrieval": {
     "format": "JSON Lines (UTF-8)",
-    "entry_file": "catalog.jsonl",
+    "entry_files": {
+      "zh-CN": "catalog.jsonl",
+      "en": "catalog.en.jsonl"
+    },
     "record_unit": "one Markdown H2 section or a bounded part of one section",
     "recommended_fields": [
       "title",
@@ -34,14 +44,19 @@
   },
   "files": {
     "catalog": "catalog.jsonl",
+    "catalog_en": "catalog.en.jsonl",
     "terms": "terms.json",
+    "terms_en": "terms.en.json",
     "schema": "schema.json",
     "usage": "README.md"
   },
   "stats": {
     "documents": 108,
     "records": 638,
-    "terms": 28
+    "terms": 28,
+    "english_documents": 12,
+    "english_records": 64,
+    "english_terms": 28
   },
   "documents": [
     {
@@ -65,6 +80,7 @@
         "想清楚"
       ],
       "source": "content/00-overview/README.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -89,6 +105,7 @@
         "步骤和事件"
       ],
       "source": "content/00-overview/architecture.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -132,6 +149,7 @@
         "让多步工作有检查点和停止条件"
       ],
       "source": "content/00-overview/harness-five-layers.md",
+      "language": "zh-CN",
       "section_count": 10
     },
     {
@@ -170,6 +188,7 @@
         "发生问题时的定位顺序"
       ],
       "source": "content/00-overview/mental-model.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -200,6 +219,7 @@
         "的现实含义"
       ],
       "source": "content/00-overview/what-is-dsh.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -234,6 +254,7 @@
         "的情况"
       ],
       "source": "content/00-overview/when-to-use.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -255,6 +276,7 @@
         "常见安装失败"
       ],
       "source": "content/01-installation/README.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -279,6 +301,7 @@
         "版本与源码版本不要混用"
       ],
       "source": "content/01-installation/npm-vs-source.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -302,6 +325,7 @@
         "build"
       ],
       "source": "content/01-installation/source-development.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -339,6 +363,7 @@
         "回滚注意事项"
       ],
       "source": "content/01-installation/upgrades.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -363,6 +388,7 @@
         "的路径转换"
       ],
       "source": "content/01-installation/windows-wsl.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -385,6 +411,7 @@
         "的基本边界"
       ],
       "source": "content/02-web-ui/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -409,6 +436,7 @@
         "拒绝与中断"
       ],
       "source": "content/02-web-ui/approvals-and-plans.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -446,6 +474,7 @@
         "检查代理行为"
       ],
       "source": "content/02-web-ui/first-run.md",
+      "language": "zh-CN",
       "section_count": 8
     },
     {
@@ -473,6 +502,7 @@
         "Provider"
       ],
       "source": "content/02-web-ui/remote-and-team.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -495,6 +525,7 @@
         "任务结果复核"
       ],
       "source": "content/02-web-ui/result-review.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -519,6 +550,7 @@
         "故障排查"
       ],
       "source": "content/02-web-ui/troubleshooting.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -547,6 +579,7 @@
         "页面重载和"
       ],
       "source": "content/02-web-ui/workspaces-and-sessions.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -567,6 +600,7 @@
         "的安全原则"
       ],
       "source": "content/03-cli/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -588,6 +622,7 @@
         "命令与参数位置"
       ],
       "source": "content/03-cli/commands.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -608,6 +643,7 @@
         "配置失效时"
       ],
       "source": "content/03-cli/config-layers.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -635,6 +671,7 @@
         "的最低要求"
       ],
       "source": "content/03-cli/profiles-and-config.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -662,6 +699,7 @@
         "不应该做什么"
       ],
       "source": "content/03-cli/scripting.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -686,6 +724,7 @@
         "Headless"
       ],
       "source": "content/03-cli/troubleshooting.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -706,6 +745,7 @@
         "与模型"
       ],
       "source": "content/04-providers/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -732,6 +772,7 @@
         "上下文和超时"
       ],
       "source": "content/04-providers/advanced-settings.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -760,6 +801,7 @@
         "的方法"
       ],
       "source": "content/04-providers/catalog-providers.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -790,6 +832,7 @@
         "session"
       ],
       "source": "content/04-providers/concepts.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -815,6 +858,7 @@
         "Provider"
       ],
       "source": "content/04-providers/custom-endpoints.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -844,6 +888,7 @@
         "DEEPSEEK_BASE_URL"
       ],
       "source": "content/04-providers/deepseek.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -868,6 +913,7 @@
         "双路验证"
       ],
       "source": "content/04-providers/migration.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -890,6 +936,7 @@
         "session"
       ],
       "source": "content/04-providers/model-routing.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -918,6 +965,7 @@
         "session"
       ],
       "source": "content/04-providers/multimodal.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -943,6 +991,7 @@
         "session"
       ],
       "source": "content/04-providers/troubleshooting.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -966,6 +1015,7 @@
         "验证"
       ],
       "source": "content/05-workflows/README.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1001,6 +1051,7 @@
         "批量只读报告"
       ],
       "source": "content/05-workflows/case-studies.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1027,6 +1078,7 @@
         "限定清楚"
       ],
       "source": "content/05-workflows/code-change.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -1049,6 +1101,7 @@
         "重构与大范围变更"
       ],
       "source": "content/05-workflows/docs-and-refactor.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1097,6 +1150,7 @@
         "交付或恢复"
       ],
       "source": "content/05-workflows/from-blank-to-delivery.md",
+      "language": "zh-CN",
       "section_count": 10
     },
     {
@@ -1119,6 +1173,7 @@
         "session"
       ],
       "source": "content/05-workflows/long-tasks.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1139,6 +1194,7 @@
         "只读验收"
       ],
       "source": "content/05-workflows/read-only.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1164,6 +1220,7 @@
         "请确认"
       ],
       "source": "content/05-workflows/review-and-acceptance.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1184,6 +1241,7 @@
         "测试不通过时的交付"
       ],
       "source": "content/05-workflows/testing.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1202,6 +1260,7 @@
         "默认原则"
       ],
       "source": "content/06-security/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -1222,6 +1281,7 @@
         "拒绝后的处理"
       ],
       "source": "content/06-security/approval-playbook.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1242,6 +1302,7 @@
         "发现泄露时"
       ],
       "source": "content/06-security/credentials.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1278,6 +1339,7 @@
         "L1/L2"
       ],
       "source": "content/06-security/data-classification.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1300,6 +1362,7 @@
         "政策与组织政策"
       ],
       "source": "content/06-security/data-flow.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1319,6 +1382,7 @@
         "事故后的改进"
       ],
       "source": "content/06-security/incident-response.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1344,6 +1408,7 @@
         "session"
       ],
       "source": "content/06-security/permissions.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -1363,6 +1428,7 @@
         "风险接受"
       ],
       "source": "content/06-security/threat-model.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1382,6 +1448,7 @@
         "与状态"
       ],
       "source": "content/07-sessions/README.md",
+      "language": "zh-CN",
       "section_count": 3
     },
     {
@@ -1405,6 +1472,7 @@
         "事件"
       ],
       "source": "content/07-sessions/event-reading.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1430,6 +1498,7 @@
         "session_id"
       ],
       "source": "content/07-sessions/model.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -1452,6 +1521,7 @@
         "日志处理"
       ],
       "source": "content/07-sessions/persistence.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1483,6 +1553,7 @@
         "fork"
       ],
       "source": "content/07-sessions/recovery.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1507,6 +1578,7 @@
         "任务"
       ],
       "source": "content/07-sessions/runbook.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1524,6 +1596,7 @@
         "自动化的四个接口"
       ],
       "source": "content/08-automation/README.md",
+      "language": "zh-CN",
       "section_count": 3
     },
     {
@@ -1545,6 +1618,7 @@
         "适合批处理的任务"
       ],
       "source": "content/08-automation/batch-and-isolation.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -1567,6 +1641,7 @@
         "重试与人工介入"
       ],
       "source": "content/08-automation/queues-and-retries.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1597,6 +1672,7 @@
         "和产物"
       ],
       "source": "content/08-automation/results-and-errors.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1618,6 +1694,7 @@
         "工程实践"
       ],
       "source": "content/08-automation/sdk-engineering.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1644,6 +1721,7 @@
         "与新"
       ],
       "source": "content/08-automation/sdk-lifecycle.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -1663,6 +1741,7 @@
         "自动修复策略"
       ],
       "source": "content/08-automation/security.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1684,6 +1763,7 @@
         "行动"
       ],
       "source": "content/09-tools/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -1703,6 +1783,7 @@
         "最小工具报告"
       ],
       "source": "content/09-tools/boundaries.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1725,6 +1806,7 @@
         "与进程"
       ],
       "source": "content/09-tools/catalog.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1745,6 +1827,7 @@
         "取消"
       ],
       "source": "content/09-tools/execution-pipeline.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1765,6 +1848,7 @@
         "生成物和符号链接"
       ],
       "source": "content/09-tools/files-and-search.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1788,6 +1872,7 @@
         "Agent"
       ],
       "source": "content/09-tools/plans-and-subagents.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1813,6 +1898,7 @@
         "不是权限"
       ],
       "source": "content/09-tools/schema-reading.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1839,6 +1925,7 @@
         "Bash"
       ],
       "source": "content/09-tools/shell-and-jobs.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1872,6 +1959,7 @@
         "与后台执行"
       ],
       "source": "content/09-tools/tool-by-tool.md",
+      "language": "zh-CN",
       "section_count": 9
     },
     {
@@ -1893,6 +1981,7 @@
         "Cordis"
       ],
       "source": "content/10-plugins/README.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -1917,6 +2006,7 @@
         "设计"
       ],
       "source": "content/10-plugins/adding-capabilities.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1938,6 +2028,7 @@
         "入门"
       ],
       "source": "content/10-plugins/cordis-primer.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -1962,6 +2053,7 @@
         "schema"
       ],
       "source": "content/10-plugins/cordis-tutorial.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -1981,6 +2073,7 @@
         "发布检查"
       ],
       "source": "content/10-plugins/debugging-and-release.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2011,6 +2104,7 @@
         "节点"
       ],
       "source": "content/10-plugins/extension-cookbook.md",
+      "language": "zh-CN",
       "section_count": 8
     },
     {
@@ -2033,6 +2127,7 @@
         "Event"
       ],
       "source": "content/10-plugins/plugin-model.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2061,6 +2156,7 @@
         "overlay"
       ],
       "source": "content/10-plugins/profiles-bundles-patches.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2078,6 +2174,7 @@
         "运维的最低交付物"
       ],
       "source": "content/11-operations/README.md",
+      "language": "zh-CN",
       "section_count": 3
     },
     {
@@ -2103,6 +2200,7 @@
         "中的网络"
       ],
       "source": "content/11-operations/ci.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2124,6 +2222,7 @@
         "质量与人工介入"
       ],
       "source": "content/11-operations/cost-and-quality.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2146,6 +2245,7 @@
         "ID"
       ],
       "source": "content/11-operations/observability.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2167,6 +2267,7 @@
         "发现错误后"
       ],
       "source": "content/11-operations/release-checklist.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -2189,6 +2290,7 @@
         "评审结论"
       ],
       "source": "content/11-operations/security-review.md",
+      "language": "zh-CN",
       "section_count": 4
     },
     {
@@ -2209,6 +2311,7 @@
         "人工介入标准"
       ],
       "source": "content/11-operations/team.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2238,6 +2341,7 @@
         "Provider"
       ],
       "source": "content/11-operations/troubleshooting.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2255,6 +2359,7 @@
         "复制前先确认"
       ],
       "source": "content/12-reference/README.md",
+      "language": "zh-CN",
       "section_count": 3
     },
     {
@@ -2278,6 +2383,7 @@
         "SDK"
       ],
       "source": "content/12-reference/cheatsheet.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -2313,6 +2419,7 @@
         "插件能力评审"
       ],
       "source": "content/12-reference/examples.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -2366,6 +2473,7 @@
         "和手册是什么关系"
       ],
       "source": "content/12-reference/faq.md",
+      "language": "zh-CN",
       "section_count": 14
     },
     {
@@ -2381,6 +2489,7 @@
         "术语表"
       ],
       "source": "content/12-reference/glossary.md",
+      "language": "zh-CN",
       "section_count": 1
     },
     {
@@ -2402,6 +2511,7 @@
         "失败"
       ],
       "source": "content/12-reference/incident-templates.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2422,6 +2532,7 @@
         "维护手册的人"
       ],
       "source": "content/12-reference/reading-plans.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2441,6 +2552,7 @@
         "更新方法"
       ],
       "source": "content/12-reference/sources.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2464,6 +2576,7 @@
         "配置记录"
       ],
       "source": "content/12-reference/templates.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -2483,6 +2596,7 @@
         "阅读原则"
       ],
       "source": "content/README.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2507,6 +2621,7 @@
         "把一次任务放进脚本"
       ],
       "source": "content/automation/headless-cli.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -2534,6 +2649,7 @@
         "变量"
       ],
       "source": "content/automation/python-sdk.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2561,6 +2677,7 @@
         "是新的事实链"
       ],
       "source": "content/core/session-lifecycle.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2596,6 +2713,7 @@
         "交付"
       ],
       "source": "content/core/task-contract.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2623,6 +2741,7 @@
         "添加自定义"
       ],
       "source": "content/quickstart/providers.md",
+      "language": "zh-CN",
       "section_count": 6
     },
     {
@@ -2655,6 +2774,7 @@
         "需要停止的情况"
       ],
       "source": "content/quickstart/web-ui.md",
+      "language": "zh-CN",
       "section_count": 8
     },
     {
@@ -2680,6 +2800,7 @@
         "不是全部安全边界"
       ],
       "source": "content/safety/permissions-and-data.md",
+      "language": "zh-CN",
       "section_count": 7
     },
     {
@@ -2702,6 +2823,7 @@
         "上做一次只读分析"
       ],
       "source": "content/tasks/aios-readonly.md",
+      "language": "zh-CN",
       "section_count": 5
     },
     {
@@ -2721,6 +2843,486 @@
         "做什么"
       ],
       "source": "content/tasks/index.md",
+      "language": "zh-CN",
+      "section_count": 2
+    }
+  ],
+  "english_documents": [
+    {
+      "id": "dsh.en.00-overview.harness-five-layers",
+      "title": "The five-layer model: making dsh controllable",
+      "kind": "overview",
+      "summary": "People often start by memorizing commands, model names, and tool names. What makes an agent task controllable is whether five layers line up: is the task clear, are the boundaries locked, are the capabilities really loaded, is the state explainable, and can the orchestration recover?",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "overview",
+        "The five-layer model: making dsh controllable",
+        "The five layers",
+        "1. Instruction: turn “make it good” into a task contract",
+        "2. Constraint: keep the action space recoverable",
+        "3. Capability: distinguish declared from usable",
+        "4. Memory: treat a session as state, not a chat window",
+        "5. Orchestration: connect observation, action, verification, and recovery",
+        "Five questions before granting access",
+        "The",
+        "five-layer",
+        "model",
+        "making",
+        "controllable",
+        "five",
+        "layers",
+        "Instruction",
+        "turn",
+        "make",
+        "it",
+        "good",
+        "into",
+        "task",
+        "contract",
+        "Constraint",
+        "keep",
+        "action",
+        "space",
+        "recoverable",
+        "Capability",
+        "distinguish",
+        "declared",
+        "from",
+        "usable",
+        "Memory",
+        "treat",
+        "session",
+        "as",
+        "state",
+        "not",
+        "chat",
+        "window",
+        "Orchestration",
+        "connect",
+        "observation",
+        "verification",
+        "and",
+        "recovery",
+        "questions",
+        "before",
+        "granting",
+        "access"
+      ],
+      "source": "en/00-overview/harness-five-layers.md",
+      "language": "en",
+      "section_count": 8
+    },
+    {
+      "id": "dsh.en.00-overview.what-is-dsh",
+      "title": "What is dsh?",
+      "kind": "overview",
+      "summary": "DeepSeek Harness, commonly invoked as dsh, is an open-source harness for running agent tasks. It assembles model requests, tools, workspaces, sessions, permissions, approvals, and a user interface into a sustained task instead of returning only a single chat response.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "overview",
+        "What is dsh?",
+        "One-sentence definition",
+        "It is not just a one-shot model call",
+        "dsh, models, Providers, and agents",
+        "When is it useful?",
+        "What Developer Preview means",
+        "What",
+        "is",
+        "One-sentence",
+        "definition",
+        "It",
+        "not",
+        "just",
+        "one-shot",
+        "model",
+        "call",
+        "models",
+        "Providers",
+        "and",
+        "agents",
+        "When",
+        "useful",
+        "Developer",
+        "Preview",
+        "means"
+      ],
+      "source": "en/00-overview/what-is-dsh.md",
+      "language": "en",
+      "section_count": 6
+    },
+    {
+      "id": "dsh.en.00-overview.when-to-use",
+      "title": "Choosing Web, CLI, SDK, or plugins",
+      "kind": "overview",
+      "summary": "The Web UI is valuable because it keeps a person at the task boundary:",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "overview",
+        "Choosing Web, CLI, SDK, or plugins",
+        "Web UI: a human-controlled loop",
+        "Headless: a deterministic entrance",
+        "Python SDK: program control",
+        "Plugins: changing system capabilities",
+        "When not to use dsh",
+        "Choosing",
+        "Web",
+        "CLI",
+        "SDK",
+        "or",
+        "plugins",
+        "UI",
+        "human-controlled",
+        "loop",
+        "Headless",
+        "deterministic",
+        "entrance",
+        "Python",
+        "program",
+        "control",
+        "changing",
+        "system",
+        "capabilities",
+        "When",
+        "not",
+        "to",
+        "use"
+      ],
+      "source": "en/00-overview/when-to-use.md",
+      "language": "en",
+      "section_count": 6
+    },
+    {
+      "id": "dsh.en.01-installation.README",
+      "title": "Installation and first launch",
+      "kind": "installation",
+      "summary": "There are two common ways to use dsh:",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "installation",
+        "Installation and first launch",
+        "What are you installing?",
+        "Runtime prerequisites",
+        "Shortest launch path",
+        "Pin versions",
+        "First check after installation",
+        "and",
+        "first",
+        "launch",
+        "What",
+        "are",
+        "you",
+        "installing",
+        "Runtime",
+        "prerequisites",
+        "Shortest",
+        "path",
+        "Pin",
+        "versions",
+        "check",
+        "after"
+      ],
+      "source": "en/01-installation/README.md",
+      "language": "en",
+      "section_count": 6
+    },
+    {
+      "id": "dsh.en.02-web-ui.first-run",
+      "title": "First Web UI task: from zero to a checked result",
+      "kind": "web-ui",
+      "summary": "The first run is not intended to complete complex development. It verifies four links:",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "web ui",
+        "First Web UI task: from zero to a checked result",
+        "Goal",
+        "1. Start the service",
+        "2. Configure a model",
+        "3. Prepare a workspace",
+        "4. Send the first task",
+        "5. Check agent behavior",
+        "What counts as a successful first run?",
+        "First",
+        "Web",
+        "UI",
+        "task",
+        "from",
+        "zero",
+        "to",
+        "checked",
+        "result",
+        "Start",
+        "the",
+        "service",
+        "Configure",
+        "model",
+        "Prepare",
+        "workspace",
+        "Send",
+        "Check",
+        "agent",
+        "behavior",
+        "What",
+        "counts",
+        "as",
+        "successful",
+        "run"
+      ],
+      "source": "en/02-web-ui/first-run.md",
+      "language": "en",
+      "section_count": 8
+    },
+    {
+      "id": "dsh.en.03-cli.commands",
+      "title": "CLI commands and argument positions",
+      "kind": "cli",
+      "summary": "Start with the help output for the installed version:",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "cli",
+        "CLI commands and argument positions",
+        "Read help first",
+        "Three argument layers",
+        "Useful checks",
+        "Special characters in task text",
+        "Exit codes",
+        "commands",
+        "and",
+        "argument",
+        "positions",
+        "Read",
+        "help",
+        "first",
+        "Three",
+        "layers",
+        "Useful",
+        "checks",
+        "Special",
+        "characters",
+        "in",
+        "task",
+        "text",
+        "Exit",
+        "codes"
+      ],
+      "source": "en/03-cli/commands.md",
+      "language": "en",
+      "section_count": 6
+    },
+    {
+      "id": "dsh.en.04-providers.deepseek",
+      "title": "The official DeepSeek Provider",
+      "kind": "provider",
+      "summary": "1. Start the Web UI. 2. Open Settings → Models. 3. Enter the API key in the DeepSeek card. 4. Save it. 5. Select the model for a new session. 6. Run a low-risk read-only task as the smallest check.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "providers",
+        "The official DeepSeek Provider",
+        "Configure it in the Web UI",
+        "Environment variables",
+        "Set this only when using a compatible gateway.",
+        "export DEEPSEEK_BASE_URL",
+        "Smallest verification task",
+        "Endpoint differences",
+        "The",
+        "official",
+        "DeepSeek",
+        "Provider",
+        "Configure",
+        "it",
+        "in",
+        "Web",
+        "UI",
+        "Environment",
+        "variables",
+        "Set",
+        "this",
+        "only",
+        "when",
+        "using",
+        "compatible",
+        "gateway.",
+        "export",
+        "DEEPSEEK_BASE_URL",
+        "Smallest",
+        "verification",
+        "task",
+        "Endpoint",
+        "differences"
+      ],
+      "source": "en/04-providers/deepseek.md",
+      "language": "en",
+      "section_count": 5
+    },
+    {
+      "id": "dsh.en.05-workflows.from-blank-to-delivery",
+      "title": "Main workflow: from an empty workspace to an accepted delivery",
+      "kind": "workflow",
+      "summary": "This is the main English workflow. It divides an agent task into stages that can be paused, reviewed, and recovered: establish a baseline, understand without writing, make the smallest change, and accept the result with external checks.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "workflows",
+        "Main workflow: from an empty workspace to an accepted delivery",
+        "What you will do",
+        "Stage 0: prepare a recoverable scene",
+        "Stage 1: understand without changing",
+        "Stage 2: narrow the request into a minimal plan",
+        "Stage 3: allow only the smallest change",
+        "Stage 4: accept with external checks",
+        "Run the project's relevant tests, type checks, or build.",
+        "Stage 5: deliver or recover",
+        "Completion checklist",
+        "Main",
+        "workflow",
+        "from",
+        "an",
+        "empty",
+        "workspace",
+        "to",
+        "accepted",
+        "delivery",
+        "What",
+        "you",
+        "will",
+        "do",
+        "Stage",
+        "prepare",
+        "recoverable",
+        "scene",
+        "understand",
+        "without",
+        "changing",
+        "narrow",
+        "the",
+        "request",
+        "into",
+        "minimal",
+        "plan",
+        "allow",
+        "only",
+        "smallest",
+        "change",
+        "accept",
+        "with",
+        "external",
+        "checks",
+        "Run",
+        "project",
+        "relevant",
+        "tests",
+        "type",
+        "or",
+        "build.",
+        "deliver",
+        "recover",
+        "Completion",
+        "checklist"
+      ],
+      "source": "en/05-workflows/from-blank-to-delivery.md",
+      "language": "en",
+      "section_count": 9
+    },
+    {
+      "id": "dsh.en.06-security.README",
+      "title": "Security",
+      "kind": "security",
+      "summary": "dsh security is not a single switch. It is the boundary formed by permissions, sandboxing, workspace selection, Providers, tools, logs, and human approval.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "security",
+        "Four questions to keep separate",
+        "Default principles",
+        "Four",
+        "questions",
+        "to",
+        "keep",
+        "separate",
+        "Default",
+        "principles"
+      ],
+      "source": "en/06-security/README.md",
+      "language": "en",
+      "section_count": 3
+    },
+    {
+      "id": "dsh.en.12-reference.glossary",
+      "title": "Glossary",
+      "kind": "reference",
+      "summary": "Exact fields and APIs depend on the installed version. Follow current upstream documentation and command help for implementation details.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "reference",
+        "Glossary"
+      ],
+      "source": "en/12-reference/glossary.md",
+      "language": "en",
+      "section_count": 1
+    },
+    {
+      "id": "dsh.en.index",
+      "title": "DeepSeek Harness Handbook",
+      "kind": "guide",
+      "summary": "See the English edition status and translation rules.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "DeepSeek Harness Handbook",
+        "Choose a route",
+        "Five-minute start",
+        "Operating principles",
+        "DeepSeek",
+        "Harness",
+        "Handbook",
+        "Choose",
+        "route",
+        "Five-minute",
+        "start",
+        "Operating",
+        "principles"
+      ],
+      "source": "en/index.md",
+      "language": "en",
+      "section_count": 4
+    },
+    {
+      "id": "dsh.en.translation-status",
+      "title": "English edition status",
+      "kind": "guide",
+      "summary": "This is the initial English edition of the DeepSeek Harness Chinese Handbook. It currently covers the core concepts, installation, first Web UI task, CLI, DeepSeek Provider, main delivery workflow, security principles, and glossary.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "English edition status",
+        "Translation rules",
+        "English",
+        "edition",
+        "status",
+        "Translation",
+        "rules"
+      ],
+      "source": "en/translation-status.md",
+      "language": "en",
       "section_count": 2
     }
   ]

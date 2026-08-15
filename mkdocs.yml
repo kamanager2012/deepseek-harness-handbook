@@ -55,6 +55,19 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - AI 知识包: ai/README.md
+  - English edition:
+      - English home: en/index.md
+      - Translation status: en/translation-status.md
+      - What is dsh?: en/00-overview/what-is-dsh.md
+      - Five-layer model: en/00-overview/harness-five-layers.md
+      - Choosing Web, CLI, SDK, or plugins: en/00-overview/when-to-use.md
+      - Installation and first launch: en/01-installation/README.md
+      - First Web UI task: en/02-web-ui/first-run.md
+      - CLI commands: en/03-cli/commands.md
+      - DeepSeek Provider: en/04-providers/deepseek.md
+      - Main workflow: en/05-workflows/from-blank-to-delivery.md
+      - Security: en/06-security/README.md
+      - Glossary: en/12-reference/glossary.md
   - 书稿目录: BOOK.md
   - 正文索引: content/README.md
   - 序章：先把 dsh 想清楚:

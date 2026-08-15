@@ -8,6 +8,7 @@
 
 - [连续阅读书稿目录](BOOK.md)
 - [给 AI 调用的知识包](ai/README.md)
+- [English edition：核心使用路径](en/index.md)
 - [五层模型：先理解 Harness 如何工作](content/00-overview/harness-five-layers.md)
 - [主线实战：从空白 workspace 到可验收交付](content/05-workflows/from-blank-to-delivery.md)
 - [按任务查找章节](content/tasks/index.md)

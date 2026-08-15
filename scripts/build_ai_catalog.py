@@ -18,9 +18,12 @@ from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = ROOT / "content"
+EN_SOURCE_ROOT = ROOT / "en"
 AI_ROOT = ROOT / "ai"
 CATALOG_PATH = AI_ROOT / "catalog.jsonl"
+EN_CATALOG_PATH = AI_ROOT / "catalog.en.jsonl"
 MANIFEST_PATH = AI_ROOT / "manifest.json"
+EN_TERMS_PATH = AI_ROOT / "terms.en.json"
 MAX_CHUNK_CHARS = 7200
 REPOSITORY_URL = "https://github.com/kamanager2012/deepseek-harness-handbook"
 
@@ -166,7 +169,7 @@ def split_large_ranges(lines: list[str], start: int, end: int) -> list[tuple[int
     return ranges
 
 
-def source_ranges(lines: list[str]) -> list[tuple[str, int, int]]:
+def source_ranges(lines: list[str], intro_title: str) -> list[tuple[str, int, int]]:
     headings: list[tuple[int, int, str]] = []
     for index, line in enumerate(lines):
         value = heading(line)
@@ -175,12 +178,12 @@ def source_ranges(lines: list[str]) -> list[tuple[str, int, int]]:
 
     h2_positions = [item for item in headings if item[1] == 2]
     if not h2_positions:
-        return [("正文", 0, len(lines))]
+        return [("正文" if intro_title == "导语" else "Body", 0, len(lines))]
 
     ranges: list[tuple[str, int, int]] = []
     first_h2 = h2_positions[0][0]
     if first_h2 > 0 and plain_text("".join(lines[:first_h2])):
-        ranges.append(("导语", 0, first_h2))
+        ranges.append((intro_title, 0, first_h2))
 
     for offset, (start, _level, title) in enumerate(h2_positions):
         end = h2_positions[offset + 1][0] if offset + 1 < len(h2_positions) else len(lines)
@@ -188,22 +191,23 @@ def source_ranges(lines: list[str]) -> list[tuple[str, int, int]]:
     return ranges
 
 
-def build_records() -> tuple[list[dict], list[dict]]:
+def build_records(root: Path, source_root: Path, language: str, id_namespace: str, intro_title: str) -> tuple[list[dict], list[dict]]:
     records: list[dict] = []
     documents: list[dict] = []
-    for source_path in sorted(SOURCE_ROOT.rglob("*.md")):
+    for source_path in sorted(source_root.rglob("*.md")):
         relative_path = source_path.relative_to(ROOT)
+        id_path = source_path.relative_to(source_root)
         lines = source_path.read_text(encoding="utf-8").splitlines(keepends=True)
         title = next((value[1] for value in (heading(line) for line in lines) if value and value[0] == 1), source_path.stem)
         all_headings = [value[1] for value in (heading(line) for line in lines) if value]
         kind = document_kind(relative_path)
-        document_id = "dsh." + ".".join(relative_path.with_suffix("").parts)
+        document_id = "dsh." + id_namespace + "." + ".".join(id_path.with_suffix("").parts)
         doc_summary = first_summary("".join(lines), title)
         doc_keywords = keywords(relative_path, title, all_headings)
         section_count = 0
         seen_slugs: dict[str, int] = {}
 
-        for section_index, (section_title, start, end) in enumerate(source_ranges(lines), start=1):
+        for section_index, (section_title, start, end) in enumerate(source_ranges(lines, intro_title), start=1):
             for part_index, (part_start, part_end) in enumerate(split_large_ranges(lines, start, end), start=1):
                 section_count += 1
                 section_slug = slug(section_title)
@@ -227,7 +231,7 @@ def build_records() -> tuple[list[dict], list[dict]]:
                         "section_index": section_index,
                         "part_index": part_index,
                         "kind": kind,
-                        "language": "zh-CN",
+                        "language": language,
                         "summary": first_summary(content, section_title),
                         "keywords": doc_keywords,
                         "content": content,
@@ -240,6 +244,21 @@ def build_records() -> tuple[list[dict], list[dict]]:
                     }
                 )
 
+                source_info = {
+                    "path": relative_path.as_posix(),
+                    "line_start": part_start + 1,
+                    "line_end": part_end,
+                    "url": source_url,
+                }
+                if language == "en":
+                    translated_path = Path("content") / id_path
+                    if not (root / translated_path).exists() and id_path == Path("index.md"):
+                        translated_path = Path("index.md")
+                    if (root / translated_path).exists():
+                        source_info["translation_of"] = translated_path.as_posix()
+                        source_info["translation_url"] = f"{REPOSITORY_URL}/blob/main/{translated_path.as_posix()}"
+                records[-1]["source"] = source_info
+
         documents.append(
             {
                 "id": document_id,
@@ -248,85 +267,119 @@ def build_records() -> tuple[list[dict], list[dict]]:
                 "summary": doc_summary,
                 "keywords": doc_keywords,
                 "source": relative_path.as_posix(),
+                "language": language,
                 "section_count": section_count,
             }
         )
     return records, documents
 
 
-def build_terms(root: Path) -> list[dict]:
-    path = root / "content/12-reference/glossary.md"
+def build_terms(root: Path, source_relative_path: str, language: str) -> list[dict]:
+    path = root / source_relative_path
     lines = path.read_text(encoding="utf-8").splitlines()
     terms: list[dict] = []
     for line_number, line in enumerate(lines, start=1):
         if not line.startswith("|"):
             continue
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
-        if len(cells) < 2 or cells[0] in {"术语", "---"} or set(cells[0]) <= {"-", ":"}:
+        if len(cells) < 2 or cells[0] in {"术语", "Term", "---"} or set(cells[0]) <= {"-", ":"}:
             continue
         term, definition = cells[0], cells[1]
+        translation_of = "content/12-reference/glossary.md" if language == "en" else None
+        source = {
+            "path": source_relative_path,
+            "line_start": line_number,
+            "line_end": line_number,
+            "url": f"{REPOSITORY_URL}/blob/main/{source_relative_path}#L{line_number}",
+        }
+        if translation_of:
+            source["translation_of"] = translation_of
+            source["translation_url"] = f"{REPOSITORY_URL}/blob/main/{translation_of}"
         terms.append(
             {
                 "term": term,
                 "definition": definition,
-                "source": {
-                    "path": "content/12-reference/glossary.md",
-                    "line_start": line_number,
-                    "line_end": line_number,
-                    "url": (
-                        f"{REPOSITORY_URL}/blob/main/content/12-reference/glossary.md"
-                        f"#L{line_number}"
-                    ),
-                },
+                "language": language,
+                "source": source,
             }
         )
     return terms
 
 
-def render(records: list[dict], documents: list[dict], terms: list[dict]) -> tuple[str, str, str]:
+def render(
+    records: list[dict],
+    documents: list[dict],
+    terms: list[dict],
+    english_records: list[dict],
+    english_documents: list[dict],
+    english_terms: list[dict],
+) -> tuple[str, str, str, str, str]:
     catalog = "".join(json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n" for record in records)
-    terms_json = json.dumps(
-        {
-            "schema_version": "1.0",
-            "name": "DeepSeek Harness 术语索引",
-            "description": "从正文术语表逐行提取的机器可读定义，不替代当前版本官方字段说明。",
-            "language": "zh-CN",
-            "source": {
-                "path": "content/12-reference/glossary.md",
-                "repository": REPOSITORY_URL,
-                "branch": "main",
+    english_catalog = "".join(
+        json.dumps(record, ensure_ascii=False, sort_keys=True) + "\n" for record in english_records
+    )
+
+    def terms_document(name: str, description: str, language: str, source_path: str, values: list[dict]) -> str:
+        return json.dumps(
+            {
+                "schema_version": "1.0",
+                "name": name,
+                "description": description,
+                "language": language,
+                "source": {
+                    "path": source_path,
+                    "repository": REPOSITORY_URL,
+                    "branch": "main",
+                },
+                "terms": values,
             },
-            "terms": terms,
-        },
-        ensure_ascii=False,
-        indent=2,
-    ) + "\n"
+            ensure_ascii=False,
+            indent=2,
+        ) + "\n"
+
+    terms_json = terms_document(
+        "DeepSeek Harness 术语索引",
+        "从中文正文术语表逐行提取的机器可读定义，不替代当前版本官方字段说明。",
+        "zh-CN",
+        "content/12-reference/glossary.md",
+        terms,
+    )
+    english_terms_json = terms_document(
+        "DeepSeek Harness Glossary Index",
+        "Machine-readable definitions extracted line by line from the initial English glossary translation.",
+        "en",
+        "en/12-reference/glossary.md",
+        english_terms,
+    )
     manifest = {
         "schema_version": "1.0",
         "package": {
             "id": "deepseek-harness-handbook",
-            "name": "DeepSeek Harness 中文 AI 知识包",
-            "description": "供 AI 按主题检索 DeepSeek Harness 使用、工程、安全和运维说明。",
-            "language": "zh-CN",
-            "source_of_truth": "Markdown under content/",
+            "name": "DeepSeek Harness bilingual AI knowledge package",
+            "description": "AI retrieval records for the Chinese source handbook and its maintained English edition.",
+            "languages": ["zh-CN", "en"],
+            "source_of_truth": "Chinese Markdown under content/; English Markdown under en/ is a maintained translation.",
             "transformation": "deterministic section extraction; no model-generated claims",
         },
         "source": {
             "repository": REPOSITORY_URL,
             "branch": "main",
-            "root": "content/",
-            "included": "content/**/*.md",
+            "primary_root": "content/",
+            "translation_root": "en/",
+            "included": ["content/**/*.md", "en/**/*.md"],
             "excluded": ["evidence/**", "labs/**", "BOOK.md"],
         },
         "retrieval": {
             "format": "JSON Lines (UTF-8)",
-            "entry_file": "catalog.jsonl",
+            "entry_files": {"zh-CN": "catalog.jsonl", "en": "catalog.en.jsonl"},
             "record_unit": "one Markdown H2 section or a bounded part of one section",
             "recommended_fields": ["title", "section_title", "summary", "content", "source", "keywords"],
         },
         "files": {
             "catalog": "catalog.jsonl",
+            "catalog_en": "catalog.en.jsonl",
             "terms": "terms.json",
+            "terms_en": "terms.en.json",
             "schema": "schema.json",
             "usage": "README.md",
         },
@@ -334,10 +387,20 @@ def render(records: list[dict], documents: list[dict], terms: list[dict]) -> tup
             "documents": len(documents),
             "records": len(records),
             "terms": len(terms),
+            "english_documents": len(english_documents),
+            "english_records": len(english_records),
+            "english_terms": len(english_terms),
         },
         "documents": documents,
+        "english_documents": english_documents,
     }
-    return catalog, json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", terms_json
+    return (
+        catalog,
+        english_catalog,
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        terms_json,
+        english_terms_json,
+    )
 
 
 def main() -> int:
@@ -346,17 +409,30 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="check generated files without writing")
     args = parser.parse_args()
     root = args.root.resolve()
-    global SOURCE_ROOT, AI_ROOT, CATALOG_PATH, MANIFEST_PATH
+    global SOURCE_ROOT, EN_SOURCE_ROOT, AI_ROOT, CATALOG_PATH, EN_CATALOG_PATH, MANIFEST_PATH, EN_TERMS_PATH
     SOURCE_ROOT = root / "content"
+    EN_SOURCE_ROOT = root / "en"
     AI_ROOT = root / "ai"
     CATALOG_PATH = AI_ROOT / "catalog.jsonl"
+    EN_CATALOG_PATH = AI_ROOT / "catalog.en.jsonl"
     MANIFEST_PATH = AI_ROOT / "manifest.json"
+    EN_TERMS_PATH = AI_ROOT / "terms.en.json"
     terms_path = AI_ROOT / "terms.json"
 
-    records, documents = build_records()
-    terms = build_terms(root)
-    catalog, manifest, terms_json = render(records, documents, terms)
-    expected = {CATALOG_PATH: catalog, MANIFEST_PATH: manifest, terms_path: terms_json}
+    records, documents = build_records(root, SOURCE_ROOT, "zh-CN", "content", "导语")
+    english_records, english_documents = build_records(root, EN_SOURCE_ROOT, "en", "en", "Introduction")
+    terms = build_terms(root, "content/12-reference/glossary.md", "zh-CN")
+    english_terms = build_terms(root, "en/12-reference/glossary.md", "en")
+    catalog, english_catalog, manifest, terms_json, english_terms_json = render(
+        records, documents, terms, english_records, english_documents, english_terms
+    )
+    expected = {
+        CATALOG_PATH: catalog,
+        EN_CATALOG_PATH: english_catalog,
+        MANIFEST_PATH: manifest,
+        terms_path: terms_json,
+        EN_TERMS_PATH: english_terms_json,
+    }
     mismatches: list[str] = []
     for path, content in expected.items():
         if not path.exists() or path.read_text(encoding="utf-8") != content:
@@ -367,13 +443,21 @@ def main() -> int:
             print("AI catalog is out of date: " + ", ".join(mismatches))
             print("Run: python3 scripts/build_ai_catalog.py")
             return 1
-        print(f"AI catalog is current: {len(documents)} documents, {len(records)} records, {len(terms)} terms")
+        print(
+            "AI catalog is current: "
+            f"{len(documents)} zh-CN documents/{len(records)} records, "
+            f"{len(english_documents)} en documents/{len(english_records)} records"
+        )
         return 0
 
     AI_ROOT.mkdir(parents=True, exist_ok=True)
     for path, content in expected.items():
         path.write_text(content, encoding="utf-8")
-    print(f"AI catalog built: {len(documents)} documents, {len(records)} records, {len(terms)} terms")
+    print(
+        "AI catalog built: "
+        f"{len(documents)} zh-CN documents/{len(records)} records, "
+        f"{len(english_documents)} en documents/{len(english_records)} records"
+    )
     return 0
 
 

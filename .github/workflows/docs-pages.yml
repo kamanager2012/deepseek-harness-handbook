@@ -50,6 +50,9 @@ jobs:
           --min-source-accuracy-at-1 0.70
           --min-term-coverage 0.90
 
+      - name: Test read-only MCP server
+        run: python -m unittest discover -s tests -p 'test_*.py'
+
       - name: Prepare reader source
         run: python scripts/build_docs_source.py
 

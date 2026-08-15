@@ -55,6 +55,7 @@ markdown_extensions:
 nav:
   - 首页: index.md
   - AI 知识包: ai/README.md
+  - 只读 MCP 服务: ai/mcp.md
   - English edition:
       - English home: en/index.md
       - Translation status: en/translation-status.md

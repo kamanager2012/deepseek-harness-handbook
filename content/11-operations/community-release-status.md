@@ -34,10 +34,10 @@ README 和网页应使用“Stable / Preview / code line”三层表述，不要
 |---|---|---|
 | 普通 `dsh-community` CI | `[REAL]` / GREEN | 代码、类型和常规测试通过 |
 | Linux packaging | `[REAL]` / GREEN | AppImage 和 SHA256 资产生成 |
-| Windows packaging | `[UNVERIFIED]` / RED | NSIS 与 portable zip workflow 仍失败 |
-| macOS packaging | `[UNVERIFIED]` / RED | dmg workflow 仍失败 |
-| Release publish | `SKIPPED` | publish 依赖三平台 jobs，Windows/macOS 失败时不会闭环 |
-| 3-OS Release Gate | `RED` | Phase 3 已建立工程骨架，但尚未完成 |
+| Windows packaging | `[REAL]` / GREEN | 最新 Actions run `31930380661` 的 NSIS job 成功 |
+| macOS packaging | `[REAL]` / GREEN | 最新 Actions run `31930380661` 的 dmg job 成功 |
+| Release publish | `PENDING TAG` | 手动 workflow 的 publish job skipped；需要 tag 才把 artifact 变成 GitHub Release 下载 |
+| 3-OS packaging gate | `[REAL]` / GREEN | Linux、Windows、macOS 构建门禁已通过；用户下载闭环仍待 tagged Release |
 
 目标链路是：
 
@@ -57,7 +57,7 @@ Stable，而不是继续堆叠 `0.1.3` 功能。
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | 约 80–90% | Shell compound/metacharacter fail-closed、typed `SessionEvent.data` adapter、pre-enqueue fallback guard 和测试方向已有明显进展；True SDK runtime E2E 仍未证明，upstream probe CI 仍红 |
 | Phase 2 · Edition → Community | 100% | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，GitHub 仓库已归档，description 已指向 Community |
-| Phase 3 · Cross-platform Release | 约 60% | Linux 绿，Windows/macOS 红，publish 未闭环 |
+| Phase 3 · Cross-platform Release | packaging green | Linux、Windows、macOS 构建已绿；tagged Release publish 尚未闭环 |
 | Phase 4 · Plugin supply chain | 尚未正式展开 | 当前先保持 7 个 rc.6 已验证插件，提升 existence/install/compose/runtime smoke/digest/provenance 深度 |
 | Phase 5 · Handbook drift CI | 尚未展开 | 本页先作为人工版本事实入口 |
 

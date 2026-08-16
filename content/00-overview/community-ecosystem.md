@@ -22,9 +22,9 @@
         └── macOS Desktop
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.4`，Stable 为 `v0.1.4`，最新 Preview 为 `v0.1.3`。三系统资产已经随 `v0.1.4` 发布；详细证据见[当前发行状态](../11-operations/community-release-status.md)，后续仍应以仓库最新 Release、安装包和兼容说明为准。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前 Stable 为 `v0.1.2`（Latest）[待复核]，Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.exe`，每项均有 `.sha256` sidecar [待复核]。代码线、Preview 和 staging 状态不要从本页臆造，统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
 
-三个 Community endpoint 是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop**。官方 Web 是上游兼容入口，不是 Community 的第四个端；Linux AppImage 虽然随 Release 提供，但定位为可选/次要 artifact，Linux 主路径仍是 Terminal。`v0.1.2` 仅作为第一个三系统 Stable 的历史基线保留。最新 exact-artifact smoke 的 macOS job 已通过、Windows job 失败，用户现实门禁仍为 `[UNVERIFIED]`。
+三个 Community endpoint 是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop** [待复核]。官方 Web 是共享 `~/.dsh` 的官方兼容入口，不是我们的端；Linux AppImage 是发布资产形态，不应因此新增第四个 Community endpoint [待复核]。
 
 用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
 
@@ -89,7 +89,9 @@ dsh-marketplace
 
 `dsh-community-plugins` 是兼容性注册表，不是另一个 Plugin Manager；`dsh-marketplace` 是发现和安装体验，不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。
 
-当前证据快照：注册表有 9 个第三方插件在 `0.1.0-rc.6` 上完成官方安装与组合验证；shape、npm existence、`dist.integrity`、仓库可达性和 provenance 已纳入自动检查，runtime smoke 仍按插件保留人工证据。Marketplace 当前实现测试为 11/11，通过 `info` 展示 digest/provenance，`install` 输出 digest 核对命令后调用官方安装链。
+当前证据快照 [待复核]：注册表有 9 个验证插件；CI 检查 shape、npm 存在性/版本、`dist.integrity`、provenance 和仓库可达性，compose workflow 逐个运行官方 `dsh plugin add` 并做合成断言。Marketplace CLI 提供 `list` / `search` / `info` / `install`；`info` 展示 digest/provenance，安装仍走官方链路。
+
+当前发布边界 [待复核]：官方 Runtime staging 为 `NOT_READY`，staging 方案正在重做。因此不能把任何一次构建、Release 资产存在或 smoke 输出写成“安装包已验证”。`v0.1.2` 的 artifact-smoke 已完成一轮 Windows、macOS、WSL/Linux 干净机首启检查，但这只是已记录的子集证据，最终 staging 与用户闭环仍需重新复核。
 
 ## 面向维护者的阅读入口
 

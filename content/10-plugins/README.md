@@ -52,6 +52,22 @@ dsh-marketplace
 
 注册表和市场客户端的具体位置、与 Community Labs 的关系见[社区生态与产品入口](../00-overview/community-ecosystem.md)。
 
+## Marketplace CLI 用法
+
+```sh
+dsh-marketplace list
+dsh-marketplace search <keyword>
+dsh-marketplace info <package-name>
+dsh-marketplace install <package-name>[@version]
+```
+
+- `list`：列出注册表条目；
+- `search`：按关键词筛选；
+- `info`：查看包版本、兼容性、digest 和 provenance `[待复核]`；
+- `install`：把用户选择交给官方 `dsh plugin add` 安装链，不另建安装器。
+
+注册表是兼容性证据，不是安全保证。没有匹配验证线、只有 README 声明或 staging 未复核的条目，都应保留 `[待复核]`，不要写成无条件可用。
+
 ## 插件开发的风险
 
 插件可以增加工具、读取 context、监听事件、启动进程或改变配置。开发时优先使用隔离 profile 和临时 workspace，不要在日常生产 DSH_HOME 里测试未审查插件。

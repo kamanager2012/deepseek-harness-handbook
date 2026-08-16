@@ -63,6 +63,7 @@ nav:
       - Choosing Web, CLI, SDK, or plugins: en/00-overview/when-to-use.md
       - Community ecosystem: en/00-overview/community-ecosystem.md
       - Current release status: en/11-operations/community-release-status.md
+      - Community release runbook: en/11-operations/community-release-runbook.md
       - Third-party documentation patterns: en/12-reference/third-party-doc-patterns.md
       - Installation and first launch: en/01-installation/README.md
       - First Web UI task: en/02-web-ui/first-run.md
@@ -72,6 +73,7 @@ nav:
       - Main workflow: en/05-workflows/from-blank-to-delivery.md
       - Review and acceptance: en/05-workflows/review-and-acceptance.md
       - Security: en/06-security/README.md
+      - Marketplace CLI: en/10-plugins/community-marketplace.md
       - Community Labs handoff: en/11-operations/community-labs-handoff.md
       - Session recovery: en/07-sessions/recovery.md
       - FAQ: en/12-reference/faq.md
@@ -174,6 +176,7 @@ nav:
       - 成本与质量: content/11-operations/cost-and-quality.md
       - 发布检查清单: content/11-operations/release-checklist.md
       - Community 当前发行状态: content/11-operations/community-release-status.md
+      - Community 发布 Runbook: content/11-operations/community-release-runbook.md
       - 安全评审: content/11-operations/security-review.md
       - 运维排错: content/11-operations/troubleshooting.md
       - Community Labs handoff: content/11-operations/community-labs-handoff.md

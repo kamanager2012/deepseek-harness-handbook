@@ -31,16 +31,15 @@ Official DeepSeek Harness Runtime
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Read the current versions as three separate layers: code line `0.1.4`, Stable
-`v0.1.4`, and latest Preview `v0.1.3`. The three-platform assets are published in
-`v0.1.4`; detailed evidence and upstream version-source distinctions are recorded in
-the [current release status](../11-operations/community-release-status.md).
+The current Stable is `v0.1.2` (Latest) `[待复核]`. Its Release assets include the Linux
+AppImage, macOS dmg, and Windows `DSH.Community.Setup.exe`, each with a matching
+`.sha256` sidecar `[待复核]`. Do not invent a code-line or Preview value here; use the
+[current release status](../11-operations/community-release-status.md) and the
+[release runbook](../11-operations/community-release-runbook.md).
 The three Community endpoints are **WSL/Linux Terminal, Windows Desktop, and macOS
-Desktop**. Official Web is an upstream companion, not a fourth Community endpoint.
-The Linux AppImage remains an optional/secondary artifact; the primary Linux path is
-Terminal. `v0.1.2` is retained as the historical first three-platform baseline. The
-latest exact-artifact smoke passed on macOS but failed on Windows, so user reality is
-still `[UNVERIFIED]`.
+Desktop** `[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry,
+not our endpoint. The Linux AppImage is a release artifact shape, not a fourth Community
+endpoint `[待复核]`.
 Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
 those names describe product-support roles, not competing clients.
 
@@ -85,11 +84,17 @@ The registry records compatibility evidence. The marketplace presents it and inv
 official installation path. Neither repository owns the Runtime or replaces the official
 plugin manager.
 
-Current evidence snapshot: 9 third-party plugins have been install/compose-tested on
-`0.1.0-rc.6`. Shape, npm existence, `dist.integrity`, repository reachability, and
-provenance are automated checks; runtime smoke remains per-plugin manual evidence. The
-Marketplace implementation is 11/11 green, displays digest/provenance in `info`, and
-prints a digest verification command in `install` before invoking the official chain.
+Current evidence snapshot `[待复核]`: the registry has 9 verified plugins. CI checks
+shape, npm existence/version, `dist.integrity`, provenance, and repository reachability;
+the compose workflow runs the official `dsh plugin add` chain and a composition assertion
+per plugin. The Marketplace CLI provides `list`, `search`, `info`, and `install`; `info`
+displays digest/provenance and installation remains on the official chain.
+
+Current release boundary `[待复核]`: official Runtime staging is `NOT_READY` while the
+staging design is being redone. Do not call a build, published asset, or smoke output a
+“verified installer”. One round of `v0.1.2` artifact-smoke has completed Windows,
+macOS, and WSL/Linux clean-machine first-launch checks, but that is a recorded subset of
+evidence; staging and the full user loop still require review.
 
 ## Reality language
 

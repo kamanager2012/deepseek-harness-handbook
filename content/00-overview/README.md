@@ -8,6 +8,7 @@
 
 ## 推荐阅读路径
 
+- 想理解社区六仓如何协作：先读[Community 生态与产品入口](community-ecosystem.md)，再读维护者的 [Community Labs handoff](../11-operations/community-labs-handoff.md)。
 - 想建立整体判断：先读[五层模型](harness-five-layers.md)，再走[从空白 workspace 到可验收交付](../05-workflows/from-blank-to-delivery.md)。
 - 只想第一次用起来：先读[安装与首次启动](../01-installation/README.md)，再读[Web UI 首次任务](../02-web-ui/first-run.md)。
 - 想让代理修改代码：读[任务契约](../core/task-contract.md)、[代码修改工作流](../05-workflows/code-change.md)和[权限边界](../06-security/permissions.md)。
@@ -46,6 +47,7 @@ npx @deepseek-ai/dsh --profile headless --help
 | [插件与 Cordis](../10-plugins/README.md) | profile、bundle、patch 和扩展开发 |
 | [运维](../11-operations/README.md) | 团队规则、CI、升级和问题分诊 |
 | [参考](../12-reference/README.md) | 命令速查、模板、术语和来源 |
+| [Community 生态](community-ecosystem.md) | 官方 Runtime、Canonical 产品、Labs、Registry 和 Marketplace 的边界 |
 
 ## 本章新增的总框架
 

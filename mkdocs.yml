@@ -61,6 +61,7 @@ nav:
       - What is dsh?: en/00-overview/what-is-dsh.md
       - Five-layer model: en/00-overview/harness-five-layers.md
       - Choosing Web, CLI, SDK, or plugins: en/00-overview/when-to-use.md
+      - Community ecosystem: en/00-overview/community-ecosystem.md
       - Installation and first launch: en/01-installation/README.md
       - First Web UI task: en/02-web-ui/first-run.md
       - CLI commands: en/03-cli/commands.md
@@ -69,6 +70,7 @@ nav:
       - Main workflow: en/05-workflows/from-blank-to-delivery.md
       - Review and acceptance: en/05-workflows/review-and-acceptance.md
       - Security: en/06-security/README.md
+      - Community Labs handoff: en/11-operations/community-labs-handoff.md
       - Session recovery: en/07-sessions/recovery.md
       - FAQ: en/12-reference/faq.md
       - Glossary: en/12-reference/glossary.md
@@ -81,6 +83,7 @@ nav:
       - 心智模型: content/00-overview/mental-model.md
       - 什么时候使用 dsh: content/00-overview/when-to-use.md
       - 架构概览: content/00-overview/architecture.md
+      - Community 生态与产品入口: content/00-overview/community-ecosystem.md
   - 第一部：第一次启动与第一次结果:
       - 安装与首次启动: content/01-installation/README.md
       - npm 包与源码运行: content/01-installation/npm-vs-source.md
@@ -170,6 +173,7 @@ nav:
       - 发布检查清单: content/11-operations/release-checklist.md
       - 安全评审: content/11-operations/security-review.md
       - 运维排错: content/11-operations/troubleshooting.md
+      - Community Labs handoff: content/11-operations/community-labs-handoff.md
   - 附录：速查、模板与来源:
       - 参考总览: content/12-reference/README.md
       - 命令速查: content/12-reference/cheatsheet.md

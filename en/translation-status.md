@@ -5,6 +5,8 @@ It prioritizes the chapters that contain operating judgment rather than translat
 reference page in filename order. The current path covers core concepts, installation,
 the first Web UI task, CLI, DeepSeek Provider setup and troubleshooting, the main delivery
 workflow, review and acceptance, Session recovery, security principles, FAQ, and glossary.
+It also includes the English community ecosystem map and the Community Labs handoff so
+that repository boundaries and experimental status are documented in both languages.
 
 The Chinese Markdown under `content/` remains the primary factual source. English pages
 are maintained translations and preserve commands, configuration names, identifiers,

@@ -86,6 +86,7 @@ nav:
       - npm 包与源码运行: content/01-installation/npm-vs-source.md
       - 源码开发: content/01-installation/source-development.md
       - Windows 与 WSL: content/01-installation/windows-wsl.md
+      - DSH 社区发行版: content/01-installation/community-distribution.md
       - 升级与回滚: content/01-installation/upgrades.md
       - Web UI 总览: content/02-web-ui/README.md
       - Web UI 首次任务: content/02-web-ui/first-run.md

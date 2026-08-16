@@ -21,7 +21,7 @@
         └── Terminal / TUI
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。本 handoff 记录的当前 Stable 是 `v0.1.1`；发布前仍应以仓库最新 Release、安装包和兼容说明为准。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.2`，最新 Preview 为 `v0.1.2-preview`，Stable 仍为 `v0.1.1`。三平台发布门禁和已知问题见[当前发行状态](../11-operations/community-release-status.md)，发布前仍应以仓库最新 Release、安装包和兼容说明为准。
 
 用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
 
@@ -34,7 +34,7 @@
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence：工程实施、验收、运维和版本事实 | 用户、维护者、Agent | 否 |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry：插件元数据、版本和验证线 | 插件作者、维护者 | 否 |
 | [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Discovery / Distribution UX：浏览、搜索和安装入口 | 用户、插件作者 | 否；不是 Runtime |
-| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：历史发行线，价值合流后归档 | 维护者 | 否；停止双线发展 |
+| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：代码已冻结、价值已合流，等待 GitHub Archive/metadata 清理 | 维护者 | 否；停止双线发展 |
 
 关系可以简化为：
 
@@ -89,6 +89,7 @@ dsh-marketplace
 ## 面向维护者的阅读入口
 
 - 想了解当前边界：阅读本页和 [官方架构概览](architecture.md)。
+- 想判断 Stable、Preview、代码线和三平台门禁：阅读[当前发行状态](../11-operations/community-release-status.md)。
 - 想接手实验舱：阅读 [Community Labs handoff](../11-operations/community-labs-handoff.md)。
 - 想发布正式版本：阅读 [发布检查清单](../11-operations/release-checklist.md)。
 - 想维护插件生态：阅读 [插件与 Cordis](../10-plugins/README.md)。

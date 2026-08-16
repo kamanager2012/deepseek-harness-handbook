@@ -51,11 +51,11 @@
     "usage": "README.md"
   },
   "stats": {
-    "documents": 110,
-    "records": 657,
+    "documents": 111,
+    "records": 663,
     "terms": 34,
-    "english_documents": 18,
-    "english_records": 111,
+    "english_documents": 19,
+    "english_records": 117,
     "english_terms": 28
   },
   "documents": [
@@ -2272,6 +2272,38 @@
       "section_count": 7
     },
     {
+      "id": "dsh.content.11-operations.community-release-status",
+      "title": "Community 当前发行状态",
+      "kind": "operations",
+      "summary": "README 和网页应使用“Stable / Preview / code line”三层表述，不要再写成 DSH Community = 0.1.1。",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "content",
+        "operations",
+        "Community 当前发行状态",
+        "三层版本模型",
+        "用户选择",
+        "Stable 用户",
+        "测试用户",
+        "三平台 Release Gate",
+        "当前项目阶段",
+        "Runtime 版本来源差异",
+        "Community",
+        "当前发行状态",
+        "Stable",
+        "用户",
+        "三平台",
+        "Release",
+        "Gate",
+        "Runtime",
+        "版本来源差异"
+      ],
+      "source": "content/11-operations/community-release-status.md",
+      "language": "zh-CN",
+      "section_count": 6
+    },
+    {
       "id": "dsh.content.11-operations.cost-and-quality",
       "title": "成本、质量与人工介入",
       "kind": "operations",
@@ -3549,6 +3581,43 @@
         "report"
       ],
       "source": "en/11-operations/community-labs-handoff.md",
+      "language": "en",
+      "section_count": 6
+    },
+    {
+      "id": "dsh.en.11-operations.community-release-status",
+      "title": "Current Community release status",
+      "kind": "operations",
+      "summary": "README and product pages should say “Stable / Preview / code line” instead of reducing the product to 0.1.1.",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "operations",
+        "Current Community release status",
+        "Three-layer version model",
+        "User choice",
+        "Three-platform Release Gate",
+        "Current project phases",
+        "Runtime version-source distinction",
+        "Current",
+        "Community",
+        "release",
+        "status",
+        "Three-layer",
+        "version",
+        "model",
+        "User",
+        "choice",
+        "Three-platform",
+        "Gate",
+        "project",
+        "phases",
+        "Runtime",
+        "version-source",
+        "distinction"
+      ],
+      "source": "en/11-operations/community-release-status.md",
       "language": "en",
       "section_count": 6
     },

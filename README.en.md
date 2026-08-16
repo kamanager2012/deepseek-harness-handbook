@@ -17,6 +17,7 @@ upstream Runtime or invent a second command contract.
 - [English translation status](en/translation-status.md)
 - [Machine-readable AI catalog](ai/README.md)
 - [Community ecosystem map](en/00-overview/community-ecosystem.md)
+- [Current community release status](en/11-operations/community-release-status.md)
 - [Community Labs handoff](en/11-operations/community-labs-handoff.md)
 
 The Chinese edition currently contains the broadest reference coverage. The English
@@ -36,6 +37,7 @@ without inventing runtime results.
 | Recover a Session | [Session recovery](en/07-sessions/recovery.md) |
 | Review permissions and data flow | [Security](en/06-security/README.md) |
 | Understand the community products | [Ecosystem map](en/00-overview/community-ecosystem.md) |
+| Check the current release gate | [Community release status](en/11-operations/community-release-status.md) |
 | Maintain Community Labs | [Labs handoff](en/11-operations/community-labs-handoff.md) |
 
 ## The community ecosystem

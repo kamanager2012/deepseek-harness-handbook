@@ -62,6 +62,7 @@ nav:
       - Five-layer model: en/00-overview/harness-five-layers.md
       - Choosing Web, CLI, SDK, or plugins: en/00-overview/when-to-use.md
       - Community ecosystem: en/00-overview/community-ecosystem.md
+      - Current release status: en/11-operations/community-release-status.md
       - Installation and first launch: en/01-installation/README.md
       - First Web UI task: en/02-web-ui/first-run.md
       - CLI commands: en/03-cli/commands.md
@@ -171,6 +172,7 @@ nav:
       - 可观测性与故障分诊: content/11-operations/observability.md
       - 成本与质量: content/11-operations/cost-and-quality.md
       - 发布检查清单: content/11-operations/release-checklist.md
+      - Community 当前发行状态: content/11-operations/community-release-status.md
       - 安全评审: content/11-operations/security-review.md
       - 运维排错: content/11-operations/troubleshooting.md
       - Community Labs handoff: content/11-operations/community-labs-handoff.md

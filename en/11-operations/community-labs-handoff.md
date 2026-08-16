@@ -6,6 +6,9 @@
 to validate official SDK transport, the Bridge, advanced TUI / Desktop UX, security,
 Checkpoint, Undo, audit, and runtime probes.
 
+For this snapshot, code/build/unit-contract tests and Reality Gate adapter/fixture/failure-path
+tests are green; the upstream probe CI is still red; and true SDK runtime E2E remains unproven.
+
 ## Boundaries
 
 - Do not redesign the six-repository strategy.
@@ -22,26 +25,27 @@ Checkpoint, Undo, audit, and runtime probes.
 | Capability | Status | Do not claim |
 |---|---|---|
 | Official Session isolation | `[REAL]` `[READ-SAFE]`: official `~/.dsh/sessions` is read-only; Suite data uses `~/.dsh/suite_sessions` | Full migration compatibility across every scenario |
-| Checkpoint workspace jail | `[WORKSPACE-JAIL]`: canonical paths, existing ancestors, symlink escape, traversal, NUL, and control characters are checked | Durable rollback or crash recovery |
+| Checkpoint workspace jail | `[WORKSPACE-JAIL]`: canonical paths, existing ancestors, symlink escape, traversal, NUL, and control characters are checked; single-file snapshot memory is capped at 5MB | Durable rollback or crash recovery |
 | Checkpoint persistence | `[NOT_IMPLEMENTED]`: records are mainly process-lifetime memory | Undo after restart |
 | Capability Risk Engine | `[FAIL-CLOSED]`: `fs:*`, `process:*`, `net:*`, credential, Git, and system capabilities drive risk | A tool-name prefix is a complete policy |
-| Shell policy | `[PARTIAL]`: prefix allowlists still need parser-level protection | Compound shell syntax is fully safe |
-| Official SDK Bridge | `[LABS]`: official SDK dependency and Bridge direction exist | Dependency presence is proof of SDK success |
+| Shell policy | `[REAL]` (regression): `&&`, `;`, `|`, redirection, `$()`, backticks, and newlines are fail-closed and require approval | These tests are a complete shell parser or all-platform proof |
+| Official SDK Bridge | `[LABS / SDK-ADAPTER]`: official SDK dependency, typed adapter, and pre-enqueue guard exist | Dependency, fixtures, or adapter tests prove SDK success |
 | SDK JSON-RPC E2E | `[UNVERIFIED]`: the correct runtime entrypoint and `executionMode === sdk_jsonrpc` still need a no-fallback test | Fallback success is SDK success |
-| SessionEvent adapter | `[PARTIAL]`: decode `event.type` and `event.data` through typed adapters | Guessed fields or `as any` mappings |
-| Fallback replay safety | `[PARTIAL]`: a prompt accepted by Runtime must never be replayed automatically | Duplicate external side effects are impossible |
+| SessionEvent adapter | `[REAL]` (adapter/fixtures): decode `event.type` and `event.data` for chunk, args, and result mappings | Hand-built fixtures are real Runtime E2E |
+| Fallback replay safety | `[REAL]` (guard): `isPromptEnqueuedOrActive` blocks replay after prompt enqueue; signal termination is not success | A real SDK transport E2E is already proven |
 | Runtime HITL | `[BLOCKED_BY_UPSTREAM]`: the SDK lacks the complete server-to-client approval loop | Client `requiresApproval` equals runtime approval |
-| Dynamic contract probe | `[PROBE]`: observes CLI, profiles, and config invariants | One probe run proves a stable contract or stable CI |
+| Dynamic contract probe | `[PROBE]`: observes CLI, profiles, and config invariants; upstream probe CI is currently RED | One probe run proves stable Contract CI |
 
 ## P0 sequence
 
-1. Replace shell string-prefix allowlists with parsing of executable, argv, redirection,
-   pipelines, substitutions, and side effects; reject unverified compound syntax.
-2. Find the official JSON-RPC runtime entrypoint and add a no-fallback E2E with a hard
+1. Find the official JSON-RPC runtime entrypoint and add a no-fallback E2E with a hard
    `executionMode === sdk_jsonrpc` assertion.
-3. Finish the typed adapter through `notification.params.event.type` and `event.data`.
-4. Track `NOT_STARTED`, `INITIALIZED`, `PROMPT_ENQUEUED`, and `ACTIVE`; after enqueue,
-   fail loudly instead of replaying the prompt through another transport.
+2. Repair the upstream probe CI cold-start/contract workflow and report probe, contract
+   diff, and runtime E2E as separate gates.
+
+Shell fail-closed checks, the typed `SessionEvent.data` adapter, and the pre-enqueue
+fallback guard are now regression surfaces, not unfinished P0 items. They do not replace
+true SDK runtime E2E.
 
 ## Promotion gate
 

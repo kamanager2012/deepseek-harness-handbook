@@ -30,6 +30,9 @@ Official DeepSeek Harness Runtime
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
+Read the current versions as three separate layers: code line `0.1.2`, latest Preview
+`v0.1.2-preview`, and Stable `v0.1.1`. The platform gate, known Stable issue, and
+upstream version-source distinction are recorded in the [current release status](../11-operations/community-release-status.md).
 Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
 those names describe product-support roles, not competing clients.
 
@@ -42,7 +45,7 @@ those names describe product-support roles, not competing clients.
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence: installation, operations, acceptance, and version facts | Users, maintainers, and Agents | No |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry: plugin metadata, versions, and verification lines | Plugin authors and maintainers | No |
 | [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Discovery / Distribution UX: browse, search, and install entry | Users and plugin authors | No; not a Runtime |
-| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: historical distribution line | Maintainers | No; do not grow a second product |
+| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: code frozen and useful UX merged; GitHub Archive/metadata still pending | Maintainers | No; do not grow a second product |
 
 ## Official and community boundaries
 
@@ -95,6 +98,7 @@ Do not use “production-ready”, “fully secure”, or “100% compatible” 
 ## Maintainer links
 
 - [Chinese ecosystem page](../../content/00-overview/community-ecosystem.md)
+- [Current release status](../11-operations/community-release-status.md)
 - [Community Labs handoff](../11-operations/community-labs-handoff.md)
 - [Release checklist](../../content/11-operations/release-checklist.md)
 - [Handbook repository guide](https://github.com/kamanager2012/deepseek-harness-handbook/blob/main/README.en.md)

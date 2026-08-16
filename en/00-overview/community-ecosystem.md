@@ -24,16 +24,23 @@ Official DeepSeek Harness Runtime
             │
             ▼
        dsh-community
-        ├── Desktop
-        └── Terminal / TUI
+        ├── WSL/Linux Terminal
+        ├── Windows Desktop
+        └── macOS Desktop
 ```
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Read the current versions as three separate layers: code line `0.1.2`, Stable
-`v0.1.2`, and `v0.1.2-preview` as an older Preview retained for regression comparison.
-The three-platform assets are published in `v0.1.2`; detailed evidence and upstream
-version-source distinctions are recorded in the [current release status](../11-operations/community-release-status.md).
+Read the current versions as three separate layers: code line `0.1.4`, Stable
+`v0.1.4`, and latest Preview `v0.1.3`. The three-platform assets are published in
+`v0.1.4`; detailed evidence and upstream version-source distinctions are recorded in
+the [current release status](../11-operations/community-release-status.md).
+The three Community endpoints are **WSL/Linux Terminal, Windows Desktop, and macOS
+Desktop**. Official Web is an upstream companion, not a fourth Community endpoint.
+The Linux AppImage remains an optional/secondary artifact; the primary Linux path is
+Terminal. `v0.1.2` is retained as the historical first three-platform baseline. The
+latest exact-artifact smoke passed on macOS but failed on Windows, so user reality is
+still `[UNVERIFIED]`.
 Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
 those names describe product-support roles, not competing clients.
 

@@ -52,10 +52,10 @@
   },
   "stats": {
     "documents": 112,
-    "records": 669,
+    "records": 671,
     "terms": 34,
     "english_documents": 20,
-    "english_records": 123,
+    "english_records": 125,
     "english_terms": 28
   },
   "documents": [
@@ -2285,23 +2285,31 @@
         "三层版本模型",
         "用户选择",
         "Stable 用户",
-        "测试用户",
+        "Preview / 测试用户",
         "三平台 Release Gate",
+        "Stable 发布基线与当前 main",
+        "Distribution Reality Gate",
         "当前项目阶段",
         "Runtime 版本来源差异",
         "Community",
         "当前发行状态",
         "Stable",
         "用户",
+        "Preview",
+        "测试用户",
         "三平台",
         "Release",
         "Gate",
+        "发布基线与当前",
+        "main",
+        "Distribution",
+        "Reality",
         "Runtime",
         "版本来源差异"
       ],
       "source": "content/11-operations/community-release-status.md",
       "language": "zh-CN",
-      "section_count": 6
+      "section_count": 8
     },
     {
       "id": "dsh.content.11-operations.cost-and-quality",
@@ -3622,6 +3630,8 @@
         "Three-layer version model",
         "User choice",
         "Three-platform Release Gate",
+        "Stable release baseline vs current main",
+        "Distribution Reality Gate",
         "Current project phases",
         "Runtime version-source distinction",
         "Current",
@@ -3635,6 +3645,12 @@
         "choice",
         "Three-platform",
         "Gate",
+        "Stable",
+        "baseline",
+        "vs",
+        "main",
+        "Distribution",
+        "Reality",
         "project",
         "phases",
         "Runtime",
@@ -3643,7 +3659,7 @@
       ],
       "source": "en/11-operations/community-release-status.md",
       "language": "en",
-      "section_count": 6
+      "section_count": 8
     },
     {
       "id": "dsh.en.12-reference.faq",

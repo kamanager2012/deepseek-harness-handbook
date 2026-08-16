@@ -17,11 +17,14 @@
             │
             ▼
        dsh-community
-        ├── Desktop
-        └── Terminal / TUI
+        ├── WSL/Linux Terminal
+        ├── Windows Desktop
+        └── macOS Desktop
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.2`，Stable 为 `v0.1.2`，`v0.1.2-preview` 是保留用于回归对比的旧 Preview。三平台资产已经随 `v0.1.2` 发布；详细证据见[当前发行状态](../11-operations/community-release-status.md)，后续仍应以仓库最新 Release、安装包和兼容说明为准。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.4`，Stable 为 `v0.1.4`，最新 Preview 为 `v0.1.3`。三系统资产已经随 `v0.1.4` 发布；详细证据见[当前发行状态](../11-operations/community-release-status.md)，后续仍应以仓库最新 Release、安装包和兼容说明为准。
+
+三个 Community endpoint 是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop**。官方 Web 是上游兼容入口，不是 Community 的第四个端；Linux AppImage 虽然随 Release 提供，但定位为可选/次要 artifact，Linux 主路径仍是 Terminal。`v0.1.2` 仅作为第一个三系统 Stable 的历史基线保留。最新 exact-artifact smoke 的 macOS job 已通过、Windows job 失败，用户现实门禁仍为 `[UNVERIFIED]`。
 
 用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
 

@@ -56,7 +56,7 @@ Stable，而不是继续堆叠 `0.1.3` 功能。
 | 阶段 | 估计状态 | 当前事实 |
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | 约 80–90% | Shell compound/metacharacter fail-closed、typed `SessionEvent.data` adapter、pre-enqueue fallback guard 和测试方向已有明显进展；True SDK runtime E2E 仍未证明，upstream probe CI 仍红 |
-| Phase 2 · Edition → Community | 约 90% | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，但 GitHub archive 和 repository metadata 仍未完成 |
+| Phase 2 · Edition → Community | 100% | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，GitHub 仓库已归档，description 已指向 Community |
 | Phase 3 · Cross-platform Release | 约 60% | Linux 绿，Windows/macOS 红，publish 未闭环 |
 | Phase 4 · Plugin supply chain | 尚未正式展开 | 当前先保持 7 个 rc.6 已验证插件，提升 existence/install/compose/runtime smoke/digest/provenance 深度 |
 | Phase 5 · Handbook drift CI | 尚未展开 | 本页先作为人工版本事实入口 |

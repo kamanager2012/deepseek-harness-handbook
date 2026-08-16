@@ -51,11 +51,11 @@
     "usage": "README.md"
   },
   "stats": {
-    "documents": 111,
-    "records": 663,
+    "documents": 112,
+    "records": 669,
     "terms": 34,
-    "english_documents": 19,
-    "english_records": 117,
+    "english_documents": 20,
+    "english_records": 123,
     "english_terms": 28
   },
   "documents": [
@@ -2686,6 +2686,30 @@
       "section_count": 7
     },
     {
+      "id": "dsh.content.12-reference.third-party-doc-patterns",
+      "title": "第三方 Agent 文档对照",
+      "kind": "reference",
+      "summary": "English · 来源与阅读方法 · 社区生态入口",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "content",
+        "reference",
+        "第三方 Agent 文档对照",
+        "为什么要对照",
+        "值得借鉴的模式",
+        "参考资料",
+        "对本生态的具体要求",
+        "继续阅读",
+        "第三方",
+        "Agent",
+        "文档对照"
+      ],
+      "source": "content/12-reference/third-party-doc-patterns.md",
+      "language": "zh-CN",
+      "section_count": 6
+    },
+    {
       "id": "dsh.content.README",
       "title": "手册正文",
       "kind": "guide",
@@ -3727,6 +3751,43 @@
       "source": "en/12-reference/glossary.md",
       "language": "en",
       "section_count": 1
+    },
+    {
+      "id": "dsh.en.12-reference.third-party-doc-patterns",
+      "title": "Third-Party Agent Documentation Patterns",
+      "kind": "reference",
+      "summary": "简体中文 · Sources and reading method · Community ecosystem",
+      "keywords": [
+        "dsh",
+        "DeepSeek Harness",
+        "en",
+        "reference",
+        "Third-Party Agent Documentation Patterns",
+        "Why compare them",
+        "Patterns worth borrowing",
+        "Reference material",
+        "Requirements for this ecosystem",
+        "Continue reading",
+        "Third-Party",
+        "Agent",
+        "Documentation",
+        "Patterns",
+        "Why",
+        "compare",
+        "them",
+        "worth",
+        "borrowing",
+        "material",
+        "Requirements",
+        "for",
+        "this",
+        "ecosystem",
+        "Continue",
+        "reading"
+      ],
+      "source": "en/12-reference/third-party-doc-patterns.md",
+      "language": "en",
+      "section_count": 6
     },
     {
       "id": "dsh.en.index",

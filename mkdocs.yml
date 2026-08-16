@@ -63,6 +63,7 @@ nav:
       - Choosing Web, CLI, SDK, or plugins: en/00-overview/when-to-use.md
       - Community ecosystem: en/00-overview/community-ecosystem.md
       - Current release status: en/11-operations/community-release-status.md
+      - Third-party documentation patterns: en/12-reference/third-party-doc-patterns.md
       - Installation and first launch: en/01-installation/README.md
       - First Web UI task: en/02-web-ui/first-run.md
       - CLI commands: en/03-cli/commands.md
@@ -186,6 +187,7 @@ nav:
       - 事故模板: content/12-reference/incident-templates.md
       - 阅读计划: content/12-reference/reading-plans.md
       - 官方来源与阅读方法: content/12-reference/sources.md
+      - 第三方 Agent 文档对照: content/12-reference/third-party-doc-patterns.md
   - 兼容入口:
       - Headless CLI（旧路径）: content/automation/headless-cli.md
       - Python SDK（旧路径）: content/automation/python-sdk.md

@@ -49,7 +49,7 @@ three-platform `0.1.2` Stable, not more `0.1.3` features.
 | Phase | Estimate | Current evidence |
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | about 80–90% | Shell compound/metacharacter fail-closed, typed `SessionEvent.data` adapter, pre-enqueue fallback guard, and tests have advanced; true SDK runtime E2E remains unproven and upstream probe CI remains red |
-| Phase 2 · Edition → Community | about 90% | Session selector, `new`, `resume last`, `sessions`, and `doctor` have merged; Edition code is frozen but GitHub archive and repository metadata remain pending |
+| Phase 2 · Edition → Community | 100% | Session selector, `new`, `resume last`, `sessions`, and `doctor` have merged; Edition code is frozen, the GitHub repository is archived, and its description points to Community |
 | Phase 3 · Cross-platform Release | about 60% | Linux green; Windows/macOS red; publish is not closed |
 | Phase 4 · Plugin supply chain | Not formally started | Keep the 7 rc.6-verified plugins and deepen existence/install/compose/runtime smoke/digest/provenance evidence first |
 | Phase 5 · Handbook drift CI | Not started | This page is currently the manual fact entry |

@@ -2275,7 +2275,7 @@
       "id": "dsh.content.11-operations.community-release-status",
       "title": "Community 当前发行状态",
       "kind": "operations",
-      "summary": "README 和网页应使用“Stable / Preview / code line”三层表述，不要再写成 DSH Community = 0.1.1。",
+      "summary": "README 和网页应使用“Stable / Preview / code line”三层表述，不要把旧 Preview、代码线 和 Stable 混成一个版本号。",
       "keywords": [
         "dsh",
         "DeepSeek Harness",
@@ -3612,7 +3612,7 @@
       "id": "dsh.en.11-operations.community-release-status",
       "title": "Current Community release status",
       "kind": "operations",
-      "summary": "README and product pages should say “Stable / Preview / code line” instead of reducing the product to 0.1.1.",
+      "summary": "README and product pages should say “Stable / Preview / code line” instead of collapsing the old Preview, code line, and Stable into one version number.",
       "keywords": [
         "dsh",
         "DeepSeek Harness",

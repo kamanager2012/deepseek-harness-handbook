@@ -30,9 +30,10 @@ Official DeepSeek Harness Runtime
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Read the current versions as three separate layers: code line `0.1.2`, latest Preview
-`v0.1.2-preview`, and Stable `v0.1.1`. The platform gate, known Stable issue, and
-upstream version-source distinction are recorded in the [current release status](../11-operations/community-release-status.md).
+Read the current versions as three separate layers: code line `0.1.2`, Stable
+`v0.1.2`, and `v0.1.2-preview` as an older Preview retained for regression comparison.
+The three-platform assets are published in `v0.1.2`; detailed evidence and upstream
+version-source distinctions are recorded in the [current release status](../11-operations/community-release-status.md).
 Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
 those names describe product-support roles, not competing clients.
 
@@ -76,6 +77,12 @@ official dsh plugin add chain
 The registry records compatibility evidence. The marketplace presents it and invokes the
 official installation path. Neither repository owns the Runtime or replaces the official
 plugin manager.
+
+Current evidence snapshot: 9 third-party plugins have been install/compose-tested on
+`0.1.0-rc.6`. Shape, npm existence, `dist.integrity`, repository reachability, and
+provenance are automated checks; runtime smoke remains per-plugin manual evidence. The
+Marketplace implementation is 11/11 green, displays digest/provenance in `info`, and
+prints a digest verification command in `install` before invoking the official chain.
 
 ## Reality language
 

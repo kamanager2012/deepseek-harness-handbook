@@ -21,7 +21,7 @@
         └── Terminal / TUI
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.2`，最新 Preview 为 `v0.1.2-preview`，Stable 仍为 `v0.1.1`。三平台发布门禁和已知问题见[当前发行状态](../11-operations/community-release-status.md)，发布前仍应以仓库最新 Release、安装包和兼容说明为准。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前版本必须分三层阅读：代码线为 `0.1.2`，Stable 为 `v0.1.2`，`v0.1.2-preview` 是保留用于回归对比的旧 Preview。三平台资产已经随 `v0.1.2` 发布；详细证据见[当前发行状态](../11-operations/community-release-status.md)，后续仍应以仓库最新 Release、安装包和兼容说明为准。
 
 用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
 
@@ -85,6 +85,8 @@ dsh-marketplace
 ```
 
 `dsh-community-plugins` 是兼容性注册表，不是另一个 Plugin Manager；`dsh-marketplace` 是发现和安装体验，不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。
+
+当前证据快照：注册表有 9 个第三方插件在 `0.1.0-rc.6` 上完成官方安装与组合验证；shape、npm existence、`dist.integrity`、仓库可达性和 provenance 已纳入自动检查，runtime smoke 仍按插件保留人工证据。Marketplace 当前实现测试为 11/11，通过 `info` 展示 digest/provenance，`install` 输出 digest 核对命令后调用官方安装链。
 
 ## 面向维护者的阅读入口
 

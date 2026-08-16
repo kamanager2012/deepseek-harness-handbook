@@ -16,7 +16,7 @@
 
 如果你维护的是 DeepSeek Harness Community 生态，请先读[社区生态与产品入口](content/00-overview/community-ecosystem.md)和[当前发行状态](content/11-operations/community-release-status.md)：普通用户只下载 `dsh-community`，Suite 是 Community Labs，Edition 已完成代码合流并已归档。维护者和接手 Agent 再读 [Community Labs handoff](content/11-operations/community-labs-handoff.md)。
 
-英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前有 19 个英文 Markdown 条目（包含首页、翻译状态、生态地图、发行状态和 Labs handoff），优先覆盖 Provider 排错、Session 恢复、复核验收和 FAQ；后续按同一目录继续扩展，不以页数代替质量。
+英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前有 20 个英文 Markdown 条目（包含首页、翻译状态、生态地图、发行状态和 Labs handoff），优先覆盖 Provider 排错、Session 恢复、复核验收和 FAQ；后续按同一目录继续扩展，不以页数代替质量。
 
 机器可读入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。它是静态、可追溯的正文索引，不替代实时搜索和当前版本官方资料。
 

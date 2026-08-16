@@ -7,24 +7,30 @@
 | 层级 | 当前值 | 应如何理解 |
 |---|---|---|
 | Codebase trunk | `0.1.2` | `dsh-community` 当前代码/package 线；不是 Stable Release 标签 |
-| Preview Release | `v0.1.2-preview` | 当前更值得测试的预览版；修复 Web 启动、system Node 优先、`DSH_COMMUNITY_BIN`、readiness polling、502 warm-up、插件子进程 teardown、`doctor` 和官方插件安装/卸载链路 |
-| Stable Release | `v0.1.1` | 当前 Stable；已知 Linux AppImage 中官方 `dsh web` 可能无法正确绑定端口，不能把它写成当前最佳体验 |
+| Stable Release | `v0.1.2` | 当前 Stable；GitHub Release 已发布 Linux AppImage、Windows NSIS 安装包和 macOS dmg，并提供对应 SHA256 文件 |
+| Preview Release | `v0.1.2-preview` | 历史 Preview；保留用于回归对比，不是当前正式下载目标 |
 
-README 和网页应使用“Stable / Preview / code line”三层表述，不要再写成
-`DSH Community = 0.1.1`。
+README 和网页应使用“Stable / Preview / code line”三层表述，不要把旧 Preview、代码线
+和 Stable 混成一个版本号。
 
 ## 用户选择
 
 ### Stable 用户
 
 正式入口仍是 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。
-但在推广 Linux Desktop 前，应明确说明 `v0.1.1` 的已知 Web 启动问题，并优先等待修复后的跨平台 Stable。
+当前 Stable 用户应直接下载 [`v0.1.2`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.2)。
+`v0.1.1` 的 Web 启动问题属于历史版本说明，不应继续作为当前下载建议。
 
 ### 测试用户
 
-当前应测试 [`v0.1.2-preview`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.2-preview)。
-它比 `v0.1.1` 更接近可用版本，但当前可见资产仍主要是 Linux AppImage；Windows/macOS
-不能因为 workflow 已写出就宣称已经可下载、可验证。
+如需复现旧 Preview 行为，再使用 [`v0.1.2-preview`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.2-preview)。
+普通用户不应把它当成比 Stable 更新的下载目标。
+
+`v0.1.2` 当前发布资产为：
+
+- `dsh-community-0.1.2.AppImage` + `.sha256`
+- `DSH.Community.Setup.0.1.2.exe` + `.sha256`
+- `dsh-community-0.1.2.dmg` + `.sha256`
 
 ## 三平台 Release Gate
 
@@ -34,10 +40,10 @@ README 和网页应使用“Stable / Preview / code line”三层表述，不要
 |---|---|---|
 | 普通 `dsh-community` CI | `[REAL]` / GREEN | 代码、类型和常规测试通过 |
 | Linux packaging | `[REAL]` / GREEN | AppImage 和 SHA256 资产生成 |
-| Windows packaging | `[REAL]` / GREEN | 最新 Actions run `31930380661` 的 NSIS job 成功 |
-| macOS packaging | `[REAL]` / GREEN | 最新 Actions run `31930380661` 的 dmg job 成功 |
-| Release publish | `PENDING TAG` | 手动 workflow 的 publish job skipped；需要 tag 才把 artifact 变成 GitHub Release 下载 |
-| 3-OS packaging gate | `[REAL]` / GREEN | Linux、Windows、macOS 构建门禁已通过；用户下载闭环仍待 tagged Release |
+| Windows packaging | `[REAL]` / GREEN | NSIS 安装包和 SHA256 已随 `v0.1.2` 发布 |
+| macOS packaging | `[REAL]` / GREEN | dmg 和 SHA256 已随 `v0.1.2` 发布 |
+| Release publish | `[REAL]` / GREEN | [`v0.1.2` GitHub Release](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.2) 已公开下载 |
+| 3-OS release gate | `[REAL]` / GREEN | `v0.1.2` 已完成 Linux、Windows、macOS 资产和校验文件闭环 |
 
 目标链路是：
 
@@ -48,8 +54,8 @@ tag
   → publish GitHub Release
 ```
 
-目标链路已经存在，不等于当前链路已成功。下一目标是把 `0.1.2` 做成真正的三平台
-Stable，而不是继续堆叠 `0.1.3` 功能。
+`v0.1.2` 已完成这条三平台 Stable 链路。下一目标是维护 Release 资产、安装验证和
+版本漂移检测，而不是在事实未闭合前继续堆叠版本号。
 
 ## 当前项目阶段
 
@@ -57,9 +63,10 @@ Stable，而不是继续堆叠 `0.1.3` 功能。
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | 约 80–90% | Shell compound/metacharacter fail-closed、typed `SessionEvent.data` adapter、pre-enqueue fallback guard 和测试方向已有明显进展；True SDK runtime E2E 仍未证明，upstream probe CI 仍红 |
 | Phase 2 · Edition → Community | 100% | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，GitHub 仓库已归档，description 已指向 Community |
-| Phase 3 · Cross-platform Release | packaging green | Linux、Windows、macOS 构建已绿；tagged Release publish 尚未闭环 |
-| Phase 4 · Plugin supply chain | 尚未正式展开 | 当前先保持 7 个 rc.6 已验证插件，提升 existence/install/compose/runtime smoke/digest/provenance 深度 |
+| Phase 3 · Cross-platform Release | 100% | `v0.1.2` 已发布 Linux、Windows、macOS 安装包和 SHA256 文件 |
+| Phase 4 · Plugin supply chain | 主体完成 | Registry 当前有 9 个第三方插件在 rc.6 上完成官方安装链与组合验证；shape、npm existence、`dist.integrity`、仓库可达性和 provenance 已进入 CI，runtime smoke 仍需逐条人工证据 |
 | Phase 5 · Handbook drift CI | 尚未展开 | 本页先作为人工版本事实入口 |
+| Phase 6 · Marketplace UX | 100% | `info` 展示 digest/provenance，`install` 输出 registry digest 与 `npm view ... dist.integrity` 核对命令；当前测试 11/11 通过 |
 
 ## Runtime 版本来源差异
 

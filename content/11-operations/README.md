@@ -8,6 +8,7 @@
 - [CI 与流水线](ci.md)
 - [日志与可观测性](observability.md)
 - [故障分诊](troubleshooting.md)
+- [Community Labs handoff](community-labs-handoff.md)
 - [升级和回滚](../01-installation/upgrades.md)
 
 ## 运维的最低交付物

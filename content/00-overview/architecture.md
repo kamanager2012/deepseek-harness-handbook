@@ -2,6 +2,8 @@
 
 官方架构文档把 dsh 描述为由 Cordis 驱动的插件系统。改动包、开发插件或排查 profile 之前，先理解这棵树。
 
+本页只描述**官方 Runtime**。如果你要了解社区发行层、插件注册表、Marketplace 和 Labs 的边界，请先读[Community 生态与产品入口](community-ecosystem.md)。社区层应通过公开 seam 接入官方 Runtime，而不是复制 Agent loop、Session 真源或官方 core packages。
+
 ## 插件树
 
 ~~~text

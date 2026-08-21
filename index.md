@@ -16,6 +16,12 @@
 
 如果你只需要查一个最新参数，请先看当前版本的 `--help` 和上游资料；如果你需要判断“应该怎样安全地使用、排错或验收”，再从下面的任务入口开始。
 
+## Community 生态入口
+
+DeepSeek Harness Community 不是另一套 Runtime，而是围绕官方 Runtime 的社区增强层。普通用户的正式产品入口只有 [`dsh-community`](https://github.com/kamanager2012/dsh-community/releases/latest)；六仓职责、下载边界和 Labs 晋升规则见[社区生态与产品入口](content/00-overview/community-ecosystem.md)。
+
+维护者或接手 Agent 需要继续阅读 [Community Labs handoff](content/11-operations/community-labs-handoff.md)，其中记录当前 Reality Gate 状态和 P0 seam。不要把 README、单元测试或 fallback 成功当成真实 Runtime E2E 证据。
+
 ## 从这里开始
 
 - [连续阅读书稿目录](BOOK.md)

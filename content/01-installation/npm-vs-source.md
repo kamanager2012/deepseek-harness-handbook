@@ -18,7 +18,7 @@ npx @deepseek-ai/dsh web
 固定版本：
 
 ~~~bash
-npx --yes @deepseek-ai/dsh@0.1.0-rc.6 web
+npx --yes @deepseek-ai/dsh@0.1.0-rc.8 web
 ~~~
 
 这里的版本号只是格式示例，使用时应替换为当前批准版本。先查看包的帮助，不要把示例版本当成永远有效的最新版本。

@@ -1,5 +1,7 @@
 # DeepSeek Harness 中文使用手册
 
+[English repository guide](README.en.md) | 简体中文
+
 > 工程实施、验收与运维手册
 
 项目总览：[Kama Projects](https://kamanager2012.github.io/)。
@@ -12,7 +14,9 @@
 
 在线阅读站：[DeepSeek Harness 中文手册](https://kamanager2012.github.io/deepseek-harness-handbook/)（由 GitHub Pages 自动构建）。
 
-英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前有 16 个英文 Markdown 条目（包含首页和翻译状态），优先覆盖 Provider 排错、Session 恢复、复核验收和 FAQ；后续按同一目录继续扩展，不以页数代替质量。
+如果你维护的是 DeepSeek Harness Community 生态，请先读[社区生态与产品入口](content/00-overview/community-ecosystem.md)和[当前发行状态](content/11-operations/community-release-status.md)：普通用户只下载 `dsh-community`，Suite 是 Community Labs，Edition 已完成代码合流并已归档。维护者和接手 Agent 再读 [Community Labs handoff](content/11-operations/community-labs-handoff.md)。
+
+英文入口：[DeepSeek Harness Handbook — English Edition](https://kamanager2012.github.io/deepseek-harness-handbook/en/)。目前有 20 个英文 Markdown 条目（包含首页、翻译状态、生态地图、发行状态和 Labs handoff），优先覆盖 Provider 排错、Session 恢复、复核验收和 FAQ；后续按同一目录继续扩展，不以页数代替质量。
 
 机器可读入口：[AI 知识包说明](ai/README.md)；可直接读取 [catalog.jsonl](ai/catalog.jsonl)，每条记录都带原文和 GitHub 来源。它是静态、可追溯的正文索引，不替代实时搜索和当前版本官方资料。
 
@@ -46,7 +50,7 @@
 
 ## 给 AI 工具的入口
 
-如果你希望让 AI 按问题读取本手册，不要把整本正文一次性塞进上下文。使用 [AI 知识包](ai/README.md)：它把 108 篇中文正文和维护中的英文页面拆成带稳定 ID、关键词、原文片段、来源文件和行号的 JSONL 记录。
+如果你希望让 AI 按问题读取本手册，不要把整本正文一次性塞进上下文。使用 [AI 知识包](ai/README.md)：它把 111 篇中文正文和维护中的英文页面拆成带稳定 ID、关键词、原文片段、来源文件和行号的 JSONL 记录。
 
 知识包是从 Markdown 确定性生成的，不是另一套由模型编造的内容。更新正文后运行：
 

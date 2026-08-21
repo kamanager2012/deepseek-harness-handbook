@@ -48,6 +48,17 @@ Open the address printed by the terminal. Do not bind to a public network interf
 for a first run, and do not select a production directory containing secrets as the
 workspace.
 
+## Community distribution entry
+
+The community distribution entry for normal users is
+[`dsh-community`](https://github.com/kamanager2012/dsh-community/releases/latest), not
+Suite, Edition, Marketplace, or Plugins.
+
+- Published downloadable version: `v0.1.2`; see [current Community release status](../11-operations/community-release-status.md) for exact assets, SHA256, and gates.
+- Current source / next release line: `0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`; it is not published as a user Release yet.
+- `v0.1.6` is a draft/pre-release with checksum assets only, not a download entry.
+- Desktop and TUI should show: `DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`.
+
 ## Pin versions
 
 Developer Preview releases may introduce breaking changes. For teams and CI, pin the

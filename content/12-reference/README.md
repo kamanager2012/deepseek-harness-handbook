@@ -9,6 +9,7 @@
 - [故障报告模板](incident-templates.md)
 - [术语表](glossary.md)
 - [官方来源与阅读方法](sources.md)
+- [第三方 Agent 文档对照](third-party-doc-patterns.md)
 
 ## 复制前先确认
 

@@ -36,13 +36,15 @@ AppImage, macOS dmg, and Windows `DSH.Community.Setup.0.1.2.exe`, each with a ma
 `.sha256` sidecar. The current source / next release line is
 `0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`, and
 has not been published as a user Release. `v0.1.6` is a draft/pre-release with checksum
-assets only, not a download entry. Installer and full user-loop evidence remain
-`[UNVERIFIED]`; use the [current release status](../11-operations/community-release-status.md)
+assets only, not a download entry. The exact `v0.1.2` asset smoke passed on real Windows,
+macOS, and Linux runners, but it is still a first-launch/missing-key subset; the full
+user loop remains `[UNVERIFIED]`. Use the [current release status](../11-operations/community-release-status.md)
 and the [release runbook](../11-operations/community-release-runbook.md) for the boundary.
 The three Community endpoints are **WSL/Linux Terminal, Windows Desktop, and macOS
-Desktop** `[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry,
-not our endpoint. The Linux AppImage is a release artifact shape, not a fourth Community
-endpoint `[待复核]`.
+Desktop** `[PARTIAL]`: the `v0.1.2` exact-artifact smoke covers their first-launch and
+missing-key paths, not the full user loop. Official Web is the official `~/.dsh`-sharing
+compatibility entry, not our endpoint. The Linux AppImage is a release artifact shape,
+not a fourth Community endpoint.
 Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
 those names describe product-support roles, not competing clients.
 
@@ -93,10 +95,12 @@ the compose workflow runs the official `dsh plugin add` chain and a composition 
 per plugin. The Marketplace CLI provides `list`, `search`, `info`, and `install`; `info`
 displays digest/provenance and installation remains on the official chain.
 
-Current release boundary `[UNVERIFIED]`: `v0.1.2` is the published Latest, but installer,
-Runtime staging, and full user-loop evidence still require review. Do not call a build,
-published asset, or smoke output a “verified installer”. Recorded artifact-smoke is only
-a Windows, macOS, and WSL/Linux first-launch subset; `v0.1.6` draft is not a user download.
+Current release boundary `[PARTIAL]`: GitHub Actions run
+[32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
+downloaded the exact `v0.1.2` Release assets and passed checksum, Windows/macOS install
+and Runtime first-ready, and Linux TUI missing-key/no-TTY checks. This is still not the
+full user loop; Session sharing, plugin restart, upgrade/reinstall, and network-failure
+paths require separate evidence. `v0.1.6` draft is not a user download.
 
 ## Reality language
 

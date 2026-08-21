@@ -1,6 +1,6 @@
 # Current Community release status
 
-> Evidence snapshot: 2026-08-21. GitHub Release metadata is checked; installer, staging, and full user-loop claims remain `[待复核]`. This page does not replace the GitHub Release, Actions result, or installer smoke test.
+> Evidence snapshot: 2026-08-21. The `v0.1.2` exact-artifact smoke passed on real Windows, macOS, and Linux runners; installer/Runtime first-ready evidence is `[PARTIAL]`, while the full user loop remains `[待复核]`. This page does not replace the GitHub Release, Actions result, or installer smoke test.
 
 ## Three-layer version model
 
@@ -8,7 +8,7 @@
 |---|---|---|
 | Codebase trunk | `0.1.0-rc.8-community.1` | Current `main` community version; not published as a user Release |
 | Official core | `@deepseek-ai/dsh@0.1.0-rc.8` | Official core baseline; the community suffix identifies a community-owned fix |
-| Published Latest | `v0.1.2` | Current published Stable; installer/user-loop evidence still requires review |
+| Published Latest | `v0.1.2` | Current published Stable; exact-artifact smoke is partial and the full user loop still requires review |
 | Draft / pre-release | `v0.1.6` | Draft/pre-release; checksum assets only, not a download entry |
 
 README and product pages should say “Stable / Preview / code line” instead of collapsing
@@ -34,20 +34,21 @@ The published `v0.1.2` assets are:
 - `dsh-community-0.1.2.dmg` + `.sha256`
 
 The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop
-`[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry, not a
-Community endpoint.
+`[PARTIAL]`; first-launch/missing-key smoke passed, but the full user loop still requires
+review. Official Web is the official `~/.dsh`-sharing compatibility entry, not a Community
+endpoint.
 
 ## Three-platform Release Gate
 
-Observed for this snapshot `[待复核]`:
+Observed for this snapshot; the full user loop remains `[待复核]`:
 
 | Gate | Status | Evidence boundary |
 |---|---|---|
 | Normal `dsh-community` CI | `[待复核]` | Passing main CI does not prove installer readiness |
 | Release assets | `[REAL]` | `v0.1.2` has an AppImage, dmg, and Windows Setup, each with SHA256 |
-| artifact-smoke | `[待复核]` | One Windows, macOS, and WSL/Linux clean-machine first-launch round is recorded |
-| Official Runtime staging / installer | `[待复核]` | Exact-artifact installation evidence is not closed; do not write “installer verified” |
-| Three-OS release gate | `[待复核]` | Published assets and a smoke subset exist, but the full user loop is not closed |
+| artifact-smoke | `[PARTIAL]` | [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) passed resolve, Windows, macOS, and Linux jobs |
+| Official Runtime staging / installer | `[PARTIAL]` | Real v0.1.2 Windows/macOS assets installed and reached Runtime readiness; the full lifecycle is not covered |
+| Three-OS release gate | `[PARTIAL]` | Real-asset checksum, desktop first-ready, and Linux TUI failure paths passed; the full user loop remains open |
 
 ```text
 tag
@@ -57,8 +58,8 @@ tag
 ```
 
 `v0.1.2` is the current published Latest. The next goal is not another version number:
-recheck the exact artifact, installation path, Runtime staging, and full user-loop evidence;
-keep `0.1.0-rc.8-community.1` as a source line until then.
+add Session, plugin, upgrade/reinstall, network-failure, and first-conversation evidence
+beyond the exact-artifact smoke; keep `0.1.0-rc.8-community.1` as a source line until then.
 
 ## Stable release baseline vs current main
 
@@ -70,23 +71,24 @@ so this draft must not say that the installer has been verified.
 ## Distribution Reality Gate
 
 The project is now entering the user-reality gate rather than expanding the Build Gate.
-The following exact-release-artifact evidence remains `[待复核]` while staging is not
-ready and the facts are not finalized:
+Completed first-launch smoke is `[PARTIAL]`; uncovered full-loop evidence remains `[待复核]`:
 
 | Scenario | Status | Must prove |
 |---|---|---|
-| Windows clean VM + `DSH.Community.Setup.0.1.2.exe` | `[待复核]` | One artifact-smoke first-launch round is recorded; this is not an installer/staging verification claim |
-| macOS clean host + `dsh-community-0.1.2.dmg` | `[待复核]` | One artifact-smoke first-launch round is recorded; this is not an installer/staging verification claim |
-| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[待复核]` | One artifact-smoke first-launch round is recorded; the full user loop remains open |
+| Windows clean VM + `DSH.Community.Setup.0.1.2.exe` | `[PARTIAL]` | [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) downloaded, checked, silently installed, launched, and reached Runtime HTTP readiness |
+| macOS clean host + `dsh-community-0.1.2.dmg` | `[PARTIAL]` | The same run downloaded, checked, mounted, launched, and reached Runtime HTTP readiness |
+| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | The same run passed TUI help/version, missing-key doctor, sessions, and no-TTY refusal paths |
 | Session loop | `[待复核]` | New, resume, and the same `~/.dsh` Session across Official Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI |
 | Plugin / restart | `[待复核]` | Official `dsh plugin add`, restart persistence, and explicit failure output |
 | Lifecycle recovery | `[待复核]` | Uninstall/reinstall, upgrade, bad network, missing key, and interrupted extraction |
-| Official Runtime staging / installer | `[待复核]` | Do not claim the installer is verified |
+| Official Runtime staging / installer | `[PARTIAL]` | Real Windows/macOS assets reached first-ready; do not claim the full installation lifecycle is verified |
 
 This gate must use the packages downloaded from the Release page and the result of the
 staging redesign. Main-source smoke, ordinary CI, or README claims cannot substitute for
-it. One round of `v0.1.2` artifact-smoke completed Windows, macOS, and WSL/Linux clean-
-machine first-launch checks `[待复核]`, but that subset does not prove the installer is verified.
+it. [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
+passed the real-asset Windows, macOS, and WSL/Linux smoke jobs `[PARTIAL]`; that subset
+does not prove Session sharing, plugin restart, lifecycle recovery, or a successful first
+conversation.
 
 ## Current project phases
 
@@ -94,8 +96,8 @@ machine first-launch checks `[待复核]`, but that subset does not prove the in
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | about 80–90% `[待复核]` | Shell compound/metacharacter fail-closed, typed `SessionEvent.data` adapter, pre-enqueue fallback guard, and tests have advanced; true SDK runtime E2E remains unproven and upstream probe CI remains red |
 | Phase 2 · Edition → Community | 100% `[待复核]` | Session selector, `new`, `resume last`, `sessions`, and `doctor` have merged; Edition code is frozen, the GitHub repository is archived, and its description points to Community |
-| Phase 3 · Cross-platform Release | `[待复核]` | `v0.1.2` assets and SHA256 files are published; this is not an installer-verification claim |
-| Phase 4 · Distribution Reality Gate | `[待复核]` | One Win/mac/Linux first-launch smoke round is recorded, but installer/staging evidence and the full loop remain open |
+| Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.2` assets and SHA256 files are published and exact-artifact smoke passed; the full lifecycle remains open |
+| Phase 4 · Distribution Reality Gate | `[PARTIAL]` | The four-job artifact-smoke run passed, but Session, plugin, lifecycle, and full user-loop evidence remain open |
 | Phase 4 workstream · Plugin supply chain | `[待复核]` | 9 verified plugins; CI covers shape, npm existence/version, `dist.integrity`, provenance, repository reachability, and compose |
 | Phase 4 workstream · Marketplace UX | `[待复核]` | CLI is `list/search/info/install`; `info` displays digest/provenance |
 | Phase 5 · Handbook drift CI | Not started `[待复核]` | This page is currently the manual fact entry |

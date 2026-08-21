@@ -1,6 +1,6 @@
 # Community release runbook
 
-> Draft status: every current-status statement keeps the `[待复核]` marker. This page records reviewable code, Release, and workflow procedures; README prose is not runtime evidence.
+> Evidence status: the `v0.1.2` exact-artifact smoke passed on real runners `[PARTIAL]`; this page does not treat first-launch smoke as the full user loop, and README prose is not runtime evidence.
 
 Links: [Current release status](community-release-status.md) · [Release checklist](../../content/11-operations/release-checklist.md) · [Ecosystem map](../00-overview/community-ecosystem.md) · [dsh-community Release](https://github.com/kamanager2012/dsh-community/releases/latest)
 
@@ -9,9 +9,9 @@ Links: [Current release status](community-release-status.md) · [Release checkli
 - The currently published Latest is `v0.1.2`, with `dsh-community-0.1.2.AppImage`, `dsh-community-0.1.2.dmg`, and `DSH.Community.Setup.0.1.2.exe`; every asset has a `.sha256` sidecar.
 - The current source / next release line is `0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`; `v0.1.6` is a draft/pre-release with checksum assets only, not a user download.
 - Desktop/TUI must show: `DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`.
-- The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop `[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry.
-- Installer, Runtime staging, and the full user loop remain `[待复核]`. Do not write “installer verified” in a Release note, web page, or handbook.
-- One round of `v0.1.2` artifact-smoke completed Windows, macOS, and WSL/Linux clean-machine first-launch checks `[待复核]`. This is an install/first-ready/missing-key subset, not a full user loop.
+- The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop `[PARTIAL]`. Official Web is the official `~/.dsh`-sharing compatibility entry.
+- Real v0.1.2 asset install and Runtime first-ready smoke is `[PARTIAL]`; the full user loop remains `[待复核]`. Do not write “full installer loop verified” in a Release note, web page, or handbook.
+- [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) passed its resolve, Windows, macOS, and Linux jobs. This is an install/first-ready/missing-key subset, not a full user loop.
 - The `v0.1.4` lesson is that missing official Runtime dependencies require an immediate Latest rollback before a corrected Release `[待复核]`. Do not move or overwrite a published tag.
 
 ## 1. Freeze before release
@@ -57,7 +57,7 @@ The workflow builds and publishes; it does not replace user-reality acceptance:
 | macOS | dmg, SHA256 |
 | publish | collect all three jobs and create a GitHub Release; refuse to replace an existing Release |
 
-Only after assets and sidecars are actually uploaded may the publish result be recorded as “Release publish happened” `[待复核]`. This still does not prove Runtime staging or installer readiness.
+Only after assets and sidecars are actually uploaded may the publish result be recorded as “Release publish happened” `[REAL]`. The exact-artifact first-launch smoke is `[PARTIAL]` and still does not prove the full user loop.
 
 ## 4. SHA256 checks
 
@@ -85,13 +85,19 @@ gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field ta
 gh run list --repo kamanager2012/dsh-community --workflow artifact-smoke.yml --limit 1
 ```
 
-The smoke subset covers:
+The smoke subset and latest result cover:
 
 - download of the exact Windows Setup, macOS dmg, and WSL/Linux Terminal entry;
 - SHA256 verification for each downloaded asset;
 - Windows silent install, macOS mount/launch, and Linux Terminal launch;
 - official Runtime first-ready and missing-key/failure checks;
 - process exit and no leftover smoke process.
+
+[Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
+passed all four jobs. It proves real Release-asset checksum, Windows silent install/Runtime
+readiness, macOS mount/launch/Runtime readiness, and Linux TUI help/version/missing-key/no-TTY
+paths `[PARTIAL]`. It does not prove Session sharing, plugin restart, upgrade/reinstall,
+network failures, or a successful first conversation.
 
 It is not full user acceptance. Separately review new/resume, the same `~/.dsh` Session across Official Web and the three Community endpoints, plugin install/restart, upgrade, uninstall/reinstall, proxy/offline behavior, and interrupted extraction.
 
@@ -119,7 +125,7 @@ Stable / Preview:
 Assets and SHA256:
 Three-OS workflow:
 artifact-smoke:
-Official Runtime staging: UNVERIFIED / READY [待复核]
+Official Runtime staging: PARTIAL / READY [待复核]
 User loop:
 Known failure:
 Rollback decision:

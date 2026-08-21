@@ -1,6 +1,9 @@
 # Current Community release status
 
-> Evidence snapshot: 2026-08-21. GitHub Latest is `v0.1.1-rc.1`, 1:1 with official kernel `@deepseek-ai/dsh@0.1.1-rc.1`. [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) passed exact-asset Windows install/first-ready, macOS dmg, and Linux terminal missing-key / no-TTY checks. That remains a first-launch/missing-key subset `[PARTIAL]`; the full user loop stays `[待复核]`. This page does not replace the GitHub Release, Actions result, or installer smoke test.
+> Snapshot date: 2026-08-21. Machine-readable source of truth:
+> [`dsh-community/docs/current-release.json`](https://github.com/kamanager2012/dsh-community/blob/main/docs/current-release.json).
+> This page adds evidence; it does not invent a second Latest / kernel pin.
+> It does not replace the GitHub Release, Actions result, or installer smoke test.
 
 ## Version model
 

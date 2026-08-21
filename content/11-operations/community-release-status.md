@@ -1,6 +1,6 @@
 # Community 当前发行状态
 
-> 事实快照：2026-08-21。GitHub Latest 是 `v0.1.1-rc.1`，与官方内核 `@deepseek-ai/dsh@0.1.1-rc.1` 1:1 同号。[Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 对精确资产做了 Windows 安装首启、macOS dmg、Linux 终端缺密钥/无 TTY 检查，四个 job 通过。这仍是首启/缺 key 子集 `[PARTIAL]`；完整用户闭环保持 `[待复核]`。本文不替代 GitHub Release、Actions 结果或安装包实测。
+> 事实快照日期：2026-08-21。机器可读真源是 [`dsh-community/docs/current-release.json`](https://github.com/kamanager2012/dsh-community/blob/main/docs/current-release.json)。本页只补充证据，不另造 Latest / 内核 pin。本文不替代 GitHub Release、Actions 结果或安装包实测。
 
 ## 版本模型
 

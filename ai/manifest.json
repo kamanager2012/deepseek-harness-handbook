@@ -52,10 +52,10 @@
   },
   "stats": {
     "documents": 113,
-    "records": 681,
+    "records": 682,
     "terms": 34,
     "english_documents": 22,
-    "english_records": 136,
+    "english_records": 137,
     "english_terms": 28
   },
   "documents": [
@@ -301,13 +301,16 @@
         "你要安装的是什么",
         "运行时前置条件",
         "最短启动路径",
+        "Community 发行版入口",
         "固定版本",
         "安装后的第一轮检查",
-        "常见安装失败"
+        "常见安装失败",
+        "Community",
+        "发行版入口"
       ],
       "source": "content/01-installation/README.md",
       "language": "zh-CN",
-      "section_count": 7
+      "section_count": 8
     },
     {
       "id": "dsh.content.01-installation.npm-vs-source",
@@ -3240,6 +3243,7 @@
         "What are you installing?",
         "Runtime prerequisites",
         "Shortest launch path",
+        "Community distribution entry",
         "Pin versions",
         "First check after installation",
         "and",
@@ -3253,6 +3257,9 @@
         "prerequisites",
         "Shortest",
         "path",
+        "Community",
+        "distribution",
+        "entry",
         "Pin",
         "versions",
         "check",
@@ -3260,7 +3267,7 @@
       ],
       "source": "en/01-installation/README.md",
       "language": "en",
-      "section_count": 6
+      "section_count": 7
     },
     {
       "id": "dsh.en.02-web-ui.first-run",

@@ -6,10 +6,12 @@ Links: [Current release status](community-release-status.md) · [Release checkli
 
 ## Current fact boundary
 
-- Latest Stable is `v0.1.2`, with a Linux AppImage, macOS dmg, and Windows `DSH.Community.Setup.exe`; every asset has a `.sha256` sidecar `[待复核]`.
+- The currently published Latest is `v0.1.2`, with `dsh-community-0.1.2.AppImage`, `dsh-community-0.1.2.dmg`, and `DSH.Community.Setup.0.1.2.exe`; every asset has a `.sha256` sidecar.
+- The current source / next release line is `0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`; `v0.1.6` is a draft/pre-release with checksum assets only, not a user download.
+- Desktop/TUI must show: `DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`.
 - The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop `[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry.
-- Official Runtime staging is currently `NOT_READY` while the staging design is being redone `[待复核]`. Do not write “installer verified” in a Release note, web page, or handbook.
-- One round of `v0.1.2` artifact-smoke completed Windows, macOS, and WSL/Linux clean-machine first-launch checks `[待复核]`. This is an install/first-ready/missing-key subset, not a full user loop and not a staging sign-off.
+- Installer, Runtime staging, and the full user loop remain `[待复核]`. Do not write “installer verified” in a Release note, web page, or handbook.
+- One round of `v0.1.2` artifact-smoke completed Windows, macOS, and WSL/Linux clean-machine first-launch checks `[待复核]`. This is an install/first-ready/missing-key subset, not a full user loop.
 - The `v0.1.4` lesson is that missing official Runtime dependencies require an immediate Latest rollback before a corrected Release `[待复核]`. Do not move or overwrite a published tag.
 
 ## 1. Freeze before release
@@ -28,11 +30,12 @@ Before invoking the release script, confirm:
 The script is `dsh-community/scripts/release.mjs`. Its source-fixed tag syntax is:
 
 ```text
-node scripts/release.mjs <vX.Y.Z[-preview]>
+node scripts/release.mjs <vX.Y.Z[-prerelease]>
 ```
 
-`<vX.Y.Z[-preview]>` is a version placeholder, not a request to rerun the published
-`v0.1.2` tag. Never rerun an existing tag.
+For example, a community-owned fix can use `v0.1.0-rc.8-community.1`. When the official
+core changes, the community version first mirrors that core and may then add `-community.N`.
+The placeholder is not a request to rerun the published `v0.1.2` tag. Never rerun an existing tag.
 
 The script then:
 
@@ -50,7 +53,7 @@ The workflow builds and publishes; it does not replace user-reality acceptance:
 | Job | Artifact / check |
 |---|---|
 | Linux | typecheck, test, AppImage, SHA256 |
-| Windows | NSIS `DSH.Community.Setup.<version>.exe`, SHA256 |
+| Windows | NSIS `DSH Community Setup <version>.exe`, SHA256 (historical `v0.1.2` asset: `DSH.Community.Setup.0.1.2.exe`) |
 | macOS | dmg, SHA256 |
 | publish | collect all three jobs and create a GitHub Release; refuse to replace an existing Release |
 
@@ -116,7 +119,7 @@ Stable / Preview:
 Assets and SHA256:
 Three-OS workflow:
 artifact-smoke:
-Official Runtime staging: NOT_READY / READY [待复核]
+Official Runtime staging: UNVERIFIED / READY [待复核]
 User loop:
 Known failure:
 Rollback decision:

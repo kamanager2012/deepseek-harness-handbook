@@ -1,6 +1,6 @@
 # DeepSeek Harness Community 生态与产品入口
 
-> 本页是 DeepSeek Harness Community 生态的项目 handoff。基线日期：2026-08-16。
+> 本页是 DeepSeek Harness Community 生态的项目 handoff。基线日期：2026-08-21。
 
 本项目不是 DeepSeek Harness 的 fork，也不是另一套 Agent Runtime。唯一的执行核心仍然是官方 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)；社区仓库围绕官方 Runtime 提供发行、兼容、插件、知识、诊断和实验能力。
 
@@ -22,7 +22,7 @@
         └── macOS Desktop
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。当前 Stable 为 `v0.1.2`（Latest）[待复核]，Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.exe`，每项均有 `.sha256` sidecar [待复核]。代码线、Preview 和 staging 状态不要从本页臆造，统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。GitHub 当前已发布 Latest 是 `v0.1.2`；其 Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.0.1.2.exe`，每项均有 `.sha256` sidecar。当前源码/下一发行线是 `0.1.0-rc.8-community.1`，对应官方核心 `@deepseek-ai/dsh@0.1.0-rc.8`，尚未作为用户 Release 发布。`v0.1.6` 是 draft/pre-release，当前只有 checksum 资产，不是下载入口。安装包和完整用户闭环仍标为 `[UNVERIFIED]`；代码线、Release 和门禁状态统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
 
 三个 Community endpoint 是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop** [待复核]。官方 Web 是共享 `~/.dsh` 的官方兼容入口，不是我们的端；Linux AppImage 是发布资产形态，不应因此新增第四个 Community endpoint [待复核]。
 
@@ -91,7 +91,7 @@ dsh-marketplace
 
 当前证据快照 [待复核]：注册表有 9 个验证插件；CI 检查 shape、npm 存在性/版本、`dist.integrity`、provenance 和仓库可达性，compose workflow 逐个运行官方 `dsh plugin add` 并做合成断言。Marketplace CLI 提供 `list` / `search` / `info` / `install`；`info` 展示 digest/provenance，安装仍走官方链路。
 
-当前发布边界 [待复核]：官方 Runtime staging 为 `NOT_READY`，staging 方案正在重做。因此不能把任何一次构建、Release 资产存在或 smoke 输出写成“安装包已验证”。`v0.1.2` 的 artifact-smoke 已完成一轮 Windows、macOS、WSL/Linux 干净机首启检查，但这只是已记录的子集证据，最终 staging 与用户闭环仍需重新复核。
+当前发布边界 `[UNVERIFIED]`：`v0.1.2` 是已发布 Latest，但安装包、Runtime staging 和完整用户闭环仍需按 Release 页面真实资产复核。因此不能把任何一次构建、Release 资产存在或 smoke 输出写成“安装包已验证”。已记录的 artifact-smoke 只是 Windows、macOS、WSL/Linux 首启子集证据；`v0.1.6` draft 也不能作为用户下载版本。
 
 ## 面向维护者的阅读入口
 

@@ -1,6 +1,6 @@
 # DeepSeek Harness Community ecosystem
 
-> Project handoff and product-entry map. Baseline date: 2026-08-16.
+> Project handoff and product-entry map. Baseline date: 2026-08-21.
 
 The community project is not a fork of DeepSeek Harness and not another Agent Runtime.
 The official [DeepSeek Harness Runtime](https://github.com/deepseek-ai/deepseek-harness)
@@ -31,11 +31,14 @@ Official DeepSeek Harness Runtime
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-The current Stable is `v0.1.2` (Latest) `[待复核]`. Its Release assets include the Linux
-AppImage, macOS dmg, and Windows `DSH.Community.Setup.exe`, each with a matching
-`.sha256` sidecar `[待复核]`. Do not invent a code-line or Preview value here; use the
-[current release status](../11-operations/community-release-status.md) and the
-[release runbook](../11-operations/community-release-runbook.md).
+The currently published GitHub Latest is `v0.1.2`. Its Release assets include the Linux
+AppImage, macOS dmg, and Windows `DSH.Community.Setup.0.1.2.exe`, each with a matching
+`.sha256` sidecar. The current source / next release line is
+`0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`, and
+has not been published as a user Release. `v0.1.6` is a draft/pre-release with checksum
+assets only, not a download entry. Installer and full user-loop evidence remain
+`[UNVERIFIED]`; use the [current release status](../11-operations/community-release-status.md)
+and the [release runbook](../11-operations/community-release-runbook.md) for the boundary.
 The three Community endpoints are **WSL/Linux Terminal, Windows Desktop, and macOS
 Desktop** `[待复核]`. Official Web is the official `~/.dsh`-sharing compatibility entry,
 not our endpoint. The Linux AppImage is a release artifact shape, not a fourth Community
@@ -90,11 +93,10 @@ the compose workflow runs the official `dsh plugin add` chain and a composition 
 per plugin. The Marketplace CLI provides `list`, `search`, `info`, and `install`; `info`
 displays digest/provenance and installation remains on the official chain.
 
-Current release boundary `[待复核]`: official Runtime staging is `NOT_READY` while the
-staging design is being redone. Do not call a build, published asset, or smoke output a
-“verified installer”. One round of `v0.1.2` artifact-smoke has completed Windows,
-macOS, and WSL/Linux clean-machine first-launch checks, but that is a recorded subset of
-evidence; staging and the full user loop still require review.
+Current release boundary `[UNVERIFIED]`: `v0.1.2` is the published Latest, but installer,
+Runtime staging, and full user-loop evidence still require review. Do not call a build,
+published asset, or smoke output a “verified installer”. Recorded artifact-smoke is only
+a Windows, macOS, and WSL/Linux first-launch subset; `v0.1.6` draft is not a user download.
 
 ## Reality language
 

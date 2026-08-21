@@ -1,6 +1,6 @@
 # 版本与兼容性
 
-DeepSeek Harness 仍处于 Developer Preview，命令、配置字段和插件接口可能随版本变化。本手册提供使用路径和安全边界；实际运行时以已安装版本的 `--help` 和上游文档为准。
+DeepSeek Harness 仍处于 Developer Preview，命令、配置字段和插件接口可能随版本变化。本手册提供使用路径和安全边界；实际运行时以已安装版本的 `--help` 和上游文档为准。当前 Community 版本事实快照为 2026-08-21。
 
 ## 手册定位
 
@@ -21,7 +21,7 @@ npx @deepseek-ai/dsh --help
 npx @deepseek-ai/dsh web --help
 ```
 
-需要可重复部署时，固定 `@deepseek-ai/dsh` 的具体 npm 版本，并在升级后重新检查：
+需要可重复部署时，固定 `@deepseek-ai/dsh` 的具体 npm 版本；当前 Community 源码线对应官方核心 `@deepseek-ai/dsh@0.1.0-rc.8`，并在升级后重新检查：
 
 - Web/CLI 参数和 profile；
 - Provider 字段、凭据引用和模型 ID；
@@ -29,6 +29,8 @@ npx @deepseek-ai/dsh web --help
 - Python SDK 的安装版本和返回字段。
 
 源码仓库的开发环境要求也可能不同于 npm 发布包；不要把源码 `package.json` 的版本号直接当成 npm 包版本。
+
+Community 发行版的版本规则和 Dual-Badge 见 [`dsh-community` version policy](https://github.com/kamanager2012/dsh-community/blob/main/docs/version-policy.md)。当前源码线为 `0.1.0-rc.8-community.1`，已发布 Latest 为 `v0.1.2`；两者不能混写。
 
 ## 官方资料
 

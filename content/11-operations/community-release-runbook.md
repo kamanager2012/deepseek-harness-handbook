@@ -6,10 +6,12 @@
 
 ## 当前事实边界
 
-- Latest Stable 是 `v0.1.2`，资产是 Linux AppImage、macOS dmg、Windows `DSH.Community.Setup.exe`，每个资产都有 `.sha256` `[待复核]`；
+- 当前已发布 Latest 是 `v0.1.2`，实际资产为 `dsh-community-0.1.2.AppImage`、`dsh-community-0.1.2.dmg` 和 `DSH.Community.Setup.0.1.2.exe`，每个资产都有 `.sha256`；
+- 当前源码/下一发行线是 `0.1.0-rc.8-community.1`，官方核心是 `@deepseek-ai/dsh@0.1.0-rc.8`；`v0.1.6` 是 draft/pre-release，只有 checksum 资产，不是用户下载版本；
+- Desktop/TUI Dual-Badge 必须显示：`DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`；
 - 三个 Community endpoint 是 WSL/Linux Terminal、Windows Desktop、macOS Desktop `[待复核]`；官方 Web 只是共享 `~/.dsh` 的官方兼容入口；
-- 官方 Runtime staging 当前为 `NOT_READY`，暂存方案正在重做 `[待复核]`；禁止把“安装包已验证”写进 Release、网页或手册；
-- `v0.1.2` artifact-smoke 已完成一轮 Windows、macOS、WSL/Linux 干净机首启检查 `[待复核]`。它是 install/first-ready/missing-key 子集，不等于完整用户闭环，也不解除 staging 门禁；
+- 安装包、Runtime staging 和完整用户闭环仍为 `[待复核]`；禁止把“安装包已验证”写进 Release、网页或手册；
+- `v0.1.2` artifact-smoke 已完成一轮 Windows、macOS、WSL/Linux 干净机首启检查 `[待复核]`。它是 install/first-ready/missing-key 子集，不等于完整用户闭环；
 - `v0.1.4` 的历史教训是：发现安装包缺官方 Runtime 依赖时，必须立即停止推广并回退 Latest，再用新的版本修复，不能移动或覆盖已经发布的 tag `[待复核]`。
 
 ## 1. 发布前冻结
@@ -28,10 +30,10 @@
 脚本入口是 `dsh-community/scripts/release.mjs`。它接受的 tag 语法由源码固定为：
 
 ```text
-node scripts/release.mjs <vX.Y.Z[-preview]>
+node scripts/release.mjs <vX.Y.Z[-prerelease]>
 ```
 
-`<vX.Y.Z[-preview]>` 是版本占位符，不是要重复执行的当前 `v0.1.2`。已发布 tag 不得重跑。
+例如社区自有修补可以使用 `v0.1.0-rc.8-community.1`；官方核心版本变化时，社区版本先镜像官方版本，再按需增加 `-community.N`。占位符不是要重复执行的当前 `v0.1.2`，已发布 tag 不得重跑。
 
 脚本按以下顺序执行：
 
@@ -49,7 +51,7 @@ workflow 的职责是构建和发布，不是替代用户现实门禁：
 | Job | 产物 / 检查 |
 |---|---|
 | Linux | typecheck、test、AppImage、sha256 |
-| Windows | NSIS `DSH.Community.Setup.<version>.exe`、sha256 |
+| Windows | NSIS `DSH Community Setup <version>.exe`、sha256（历史 `v0.1.2` 资产名为 `DSH.Community.Setup.0.1.2.exe`） |
 | macOS | dmg、sha256 |
 | publish | 收集三个 job 的资产，按 tag 创建 GitHub Release；已有 Release 时拒绝覆盖 |
 
@@ -115,7 +117,7 @@ Stable / Preview:
 Assets and sha256:
 3-OS workflow:
 artifact-smoke:
-Official Runtime staging: NOT_READY / READY [待复核]
+Official Runtime staging: UNVERIFIED / READY [待复核]
 User loop:
 Known failure:
 Rollback decision:

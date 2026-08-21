@@ -1,6 +1,6 @@
 # Community 发布 Runbook
 
-> 初稿事实状态：所有当前状态句保留 `[待复核]`。本文只记录可从代码、Release 和 workflow 复核的流程，不把 README 声明当成运行证据。
+> 事实状态：`v0.1.2` exact-artifact smoke 已在真实 runner 上通过 `[PARTIAL]`；本文仍不把首启 smoke 当成完整用户闭环，也不把 README 声明当成运行证据。
 
 相关入口：[当前发行状态](community-release-status.md) · [发布检查清单](release-checklist.md) · [生态与产品入口](../00-overview/community-ecosystem.md) · [dsh-community Release](https://github.com/kamanager2012/dsh-community/releases/latest)
 
@@ -9,9 +9,9 @@
 - 当前已发布 Latest 是 `v0.1.2`，实际资产为 `dsh-community-0.1.2.AppImage`、`dsh-community-0.1.2.dmg` 和 `DSH.Community.Setup.0.1.2.exe`，每个资产都有 `.sha256`；
 - 当前源码/下一发行线是 `0.1.0-rc.8-community.1`，官方核心是 `@deepseek-ai/dsh@0.1.0-rc.8`；`v0.1.6` 是 draft/pre-release，只有 checksum 资产，不是用户下载版本；
 - Desktop/TUI Dual-Badge 必须显示：`DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`；
-- 三个 Community endpoint 是 WSL/Linux Terminal、Windows Desktop、macOS Desktop `[待复核]`；官方 Web 只是共享 `~/.dsh` 的官方兼容入口；
-- 安装包、Runtime staging 和完整用户闭环仍为 `[待复核]`；禁止把“安装包已验证”写进 Release、网页或手册；
-- `v0.1.2` artifact-smoke 已完成一轮 Windows、macOS、WSL/Linux 干净机首启检查 `[待复核]`。它是 install/first-ready/missing-key 子集，不等于完整用户闭环；
+- 三个 Community endpoint 是 WSL/Linux Terminal、Windows Desktop、macOS Desktop `[PARTIAL]`；官方 Web 只是共享 `~/.dsh` 的官方兼容入口；
+- `v0.1.2` 真实资产的安装与 Runtime 首启 smoke 为 `[PARTIAL]`，完整用户闭环仍为 `[待复核]`；禁止把“完整安装闭环已验证”写进 Release、网页或手册；
+- [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) 的 resolve、Windows、macOS、Linux 四个 job 全部通过。它覆盖 install/first-ready/missing-key 子集，不等于完整用户闭环；
 - `v0.1.4` 的历史教训是：发现安装包缺官方 Runtime 依赖时，必须立即停止推广并回退 Latest，再用新的版本修复，不能移动或覆盖已经发布的 tag `[待复核]`。
 
 ## 1. 发布前冻结
@@ -55,7 +55,7 @@ workflow 的职责是构建和发布，不是替代用户现实门禁：
 | macOS | dmg、sha256 |
 | publish | 收集三个 job 的资产，按 tag 创建 GitHub Release；已有 Release 时拒绝覆盖 |
 
-只有资产真正上传且 sidecar 存在，才可以记录“Release publish 已发生” `[待复核]`。这仍不等于官方 Runtime staging 或安装包已验证。
+只有资产真正上传且 sidecar 存在，才可以记录“Release publish 已发生” `[REAL]`。本次 exact-artifact 首启 smoke 为 `[PARTIAL]`，仍不等于完整用户闭环已验证。
 
 ## 4. SHA256 核对
 
@@ -83,13 +83,18 @@ gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field ta
 gh run list --repo kamanager2012/dsh-community --workflow artifact-smoke.yml --limit 1
 ```
 
-这一轮 smoke 的实际范围是：
+这一轮 smoke 的实际范围和结果是：
 
 - 下载 exact Windows Setup、macOS dmg 和 WSL/Linux Terminal 对应入口；
 - 校验每个下载资产的 sha256；
 - Windows 静默安装、macOS 挂载/启动、Linux Terminal 启动；
 - 等待官方 Runtime first-ready，并检查缺 key / 失败路径；
 - 检查测试进程退出，不把 smoke 进程残留当成功。
+
+`v0.1.2` 的 [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
+四个 job 全部通过：真实 Release 资产 checksum、Windows 静默安装/Runtime readiness、macOS
+挂载启动/Runtime readiness，以及 Linux TUI 的 help/version/缺 key/无 TTY 路径均通过。
+该结果标为 `[PARTIAL]`，因为它没有覆盖 Session 共享、插件重启、升级/卸载重装、网络失败或真实首对话。
 
 artifact-smoke 不是完整用户验收。仍需单独复核：新建、恢复、官方 Web ↔ 三个 Community endpoint 的同一 `~/.dsh` Session、插件安装重启、升级、卸载重装、代理/断网和中断解压。
 
@@ -117,7 +122,7 @@ Stable / Preview:
 Assets and sha256:
 3-OS workflow:
 artifact-smoke:
-Official Runtime staging: UNVERIFIED / READY [待复核]
+Official Runtime staging: PARTIAL / READY [待复核]
 User loop:
 Known failure:
 Rollback decision:

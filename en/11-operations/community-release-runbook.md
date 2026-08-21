@@ -1,17 +1,17 @@
 # Community release runbook
 
-> Evidence status: the `v0.1.2` exact-artifact smoke passed on real runners `[PARTIAL]`; this page does not treat first-launch smoke as the full user loop, and README prose is not runtime evidence.
+> Evidence status: the `v0.1.1-rc.1` exact-artifact smoke passed on real runners `[PARTIAL]`; this page does not treat first-launch smoke as the full user loop, and README prose is not runtime evidence.
 
 Links: [Current release status](community-release-status.md) · [Release checklist](../../content/11-operations/release-checklist.md) · [Ecosystem map](../00-overview/community-ecosystem.md) · [dsh-community Release](https://github.com/kamanager2012/dsh-community/releases/latest)
 
 ## Current fact boundary
 
-- The currently published Latest is `v0.1.2`, with `dsh-community-0.1.2.AppImage`, `dsh-community-0.1.2.dmg`, and `DSH.Community.Setup.0.1.2.exe`; every asset has a `.sha256` sidecar.
-- The current source / next release line is `0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`; `v0.1.6` is a draft/pre-release with checksum assets only, not a user download.
-- Desktop/TUI must show: `DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`.
-- The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop `[PARTIAL]`. Official Web is the official `~/.dsh`-sharing compatibility entry.
-- Real v0.1.2 asset install and Runtime first-ready smoke is `[PARTIAL]`; the full user loop remains `[待复核]`. Do not write “full installer loop verified” in a Release note, web page, or handbook.
-- [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) passed its resolve, Windows, macOS, and Linux jobs. This is an install/first-ready/missing-key subset, not a full user loop.
+- The currently published Latest is `v0.1.1-rc.1`, with `dsh-community-0.1.1-rc.1.AppImage`, `dsh-community-0.1.1-rc.1.dmg`, and `DSH.Community.Setup.0.1.1-rc.1.exe`; every asset has a `.sha256` sidecar.
+- Official kernel is `@deepseek-ai/dsh@0.1.1-rc.1`, 1:1 with the product number. Historical independent numbers `v0.1.2`–`v0.1.6` are not a user download.
+- Desktop/TUI must show: `DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]`.
+- The five Community endpoints are WSL/Linux Terminal, Windows Desktop, macOS Desktop, Linux AppImage, and Android. Android remains Labs `[UNVERIFIED]`. Official Web is the kernel's own UI.
+- Real v0.1.1-rc.1 asset install and Runtime first-ready smoke is `[PARTIAL]`; the full user loop remains `[待复核]`. Do not write “full installer loop verified” in a Release note, web page, or handbook.
+- [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) passed its resolve, Windows, macOS, and Linux jobs. This is an install/first-ready/missing-key subset, not a full user loop.
 - The `v0.1.4` lesson is that missing official Runtime dependencies require an immediate Latest rollback before a corrected Release `[待复核]`. Do not move or overwrite a published tag.
 
 ## 1. Freeze before release
@@ -33,9 +33,8 @@ The script is `dsh-community/scripts/release.mjs`. Its source-fixed tag syntax i
 node scripts/release.mjs <vX.Y.Z[-prerelease]>
 ```
 
-For example, a community-owned fix can use `v0.1.0-rc.8-community.1`. When the official
-core changes, the community version first mirrors that core and may then add `-community.N`.
-The placeholder is not a request to rerun the published `v0.1.2` tag. Never rerun an existing tag.
+Use `vX.Y.Z-community.N` only for a community-owned fix. The current line mirrors the official kernel as `v0.1.1-rc.1`; do not invent an independent number.
+The placeholder is not a request to rerun the published `v0.1.1-rc.1` tag. Never rerun an existing tag.
 
 The script then:
 
@@ -53,7 +52,7 @@ The workflow builds and publishes; it does not replace user-reality acceptance:
 | Job | Artifact / check |
 |---|---|
 | Linux | typecheck, test, AppImage, SHA256 |
-| Windows | NSIS `DSH Community Setup <version>.exe`, SHA256 (historical `v0.1.2` asset: `DSH.Community.Setup.0.1.2.exe`) |
+| Windows | NSIS `DSH Community Setup <version>.exe`, SHA256 (current Latest asset: `DSH.Community.Setup.0.1.1-rc.1.exe`) |
 | macOS | dmg, SHA256 |
 | publish | collect all three jobs and create a GitHub Release; refuse to replace an existing Release |
 
@@ -64,14 +63,14 @@ Only after assets and sidecars are actually uploaded may the publish result be r
 Check the original files downloaded from the Release page, not a main build or a locally repackaged file:
 
 ```sh
-sha256sum -c dsh-community-0.1.2.AppImage.sha256
-shasum -a 256 dsh-community-0.1.2.dmg
+sha256sum -c dsh-community-0.1.1-rc.1.AppImage.sha256
+shasum -a 256 dsh-community-0.1.1-rc.1.dmg
 ```
 
 Windows PowerShell:
 
 ```powershell
-Get-FileHash 'DSH.Community.Setup.0.1.2.exe' -Algorithm SHA256
+Get-FileHash 'DSH.Community.Setup.0.1.1-rc.1.exe' -Algorithm SHA256
 ```
 
 Record the actual filename, sidecar content, environment, and result. A matching hash proves file integrity only; it does not prove Runtime staging or a successful first conversation.
@@ -81,7 +80,7 @@ Record the actual filename, sidecar content, environment, and result. A matching
 The workflow accepts an explicit tag. To review a published version, use the real tag:
 
 ```sh
-gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field tag=v0.1.2
+gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field tag=v0.1.1-rc.1
 gh run list --repo kamanager2012/dsh-community --workflow artifact-smoke.yml --limit 1
 ```
 
@@ -93,13 +92,13 @@ The smoke subset and latest result cover:
 - official Runtime first-ready and missing-key/failure checks;
 - process exit and no leftover smoke process.
 
-[Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
+[Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676)
 passed all four jobs. It proves real Release-asset checksum, Windows silent install/Runtime
 readiness, macOS mount/launch/Runtime readiness, and Linux TUI help/version/missing-key/no-TTY
 paths `[PARTIAL]`. It does not prove Session sharing, plugin restart, upgrade/reinstall,
 network failures, or a successful first conversation.
 
-It is not full user acceptance. Separately review new/resume, the same `~/.dsh` Session across Official Web and the three Community endpoints, plugin install/restart, upgrade, uninstall/reinstall, proxy/offline behavior, and interrupted extraction.
+It is not full user acceptance. Separately review new/resume, the same `~/.dsh` Session across Official Web and the five Community endpoints, plugin install/restart, upgrade, uninstall/reinstall, proxy/offline behavior, and interrupted extraction.
 
 ## 6. Latest promotion and rollback
 

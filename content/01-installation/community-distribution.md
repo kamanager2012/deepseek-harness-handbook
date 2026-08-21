@@ -5,33 +5,30 @@
 
 ## 定位：Community Distribution，不是 Desktop 壳
 
-**One Harness. Three Community Endpoints.**
+**One Harness. Five Community Endpoints.**
 
 ```text
              Official DeepSeek Harness Runtime
                          │
-        ┌────────────────┼────────────────┐
-        ▼                ▼                ▼
-   WSL/Linux Terminal  Windows Desktop  macOS Desktop
-        │                │                │
-        └────────────────┴───────┬────────┘
-                                 ▼
-                          DSH Community
+     ┌──────────┬────────┼────────┬──────────┐
+     ▼          ▼        ▼        ▼          ▼
+ WSL/Linux   Windows   macOS   Linux      Android
+  Terminal   Desktop   Desktop AppImage    (Labs)
 ```
 
 - 社区层**不重写** Agent loop、Session persistence、Tool execution —— 官方 Runtime 是唯一执行核心。
 - 社区层**不 patch** 官方 UI 表面；升级 = 契约重验，不是重写补丁。
-- 官方 Web 是兼容对象：它和社区端共用同一套 `~/.dsh` Session，但它不是社区发行端。
+- 官方 Web 是内核自带界面：它和社区端共用同一套 `~/.dsh` Session，但它不是社区发行端。
 
-三个社区端：
+五个社区端：
 
 | 端 | 面向 | 入口 |
 |---|---|---|
 | WSL / Linux Terminal | 开发者、CLI 用户、WSL2 用户 | `dsh-community` 命令 |
-| Windows Desktop | 不想折腾 Node / CLI 的用户 | `DSH.Community.Setup.<版本>.exe` |
-| macOS Desktop | 同上 | `dsh-community-<版本>.dmg` |
-
-Linux 的 AppImage 桌面端是次要（secondary / optional）产物，不作为主发行面宣传。
+| Windows Desktop | 不想折腾 Node / CLI 的用户 | `DSH.Community.Setup.0.1.1-rc.1.exe`（以 Release 页为准） |
+| macOS Desktop | 同上 | `dsh-community-0.1.1-rc.1.dmg` |
+| Linux AppImage | Linux 图形桌面 | `dsh-community-0.1.1-rc.1.AppImage` |
+| Android | Labs | 不在 Latest 下载页，`[UNVERIFIED]` |
 
 ## 下载与校验
 
@@ -39,9 +36,8 @@ Linux 的 AppImage 桌面端是次要（secondary / optional）产物，不作�
 https://github.com/kamanager2012/dsh-community/releases/latest
 ```
 
-- **Stable** 指向 `releases/latest`；**Preview** 是 Releases 页最新的 pre-release。
+- **Latest** 指向 `releases/latest`；当前是 **v0.1.1-rc.1**（Linux AppImage / Windows Setup / macOS dmg）。历史独立编号 `v0.1.2`–`v0.1.6` 不是当前下载。
 - 每个资产带 `<文件>.sha256` 侧车；安装前用 `sha256sum` / `certutil` / `shasum -a 256` 核对。
-- 当前正式基线是 **v0.1.2 Stable**（Linux AppImage / Windows NSIS / macOS dmg）。比它新的 `-preview` 或补丁版存在时，以 Release 页面的标记为准。
 
 ## 同一套 Session：Web ↔ Terminal ↔ Desktop
 
@@ -106,7 +102,7 @@ dsh-marketplace install <name>
 
 - 自动门禁：`artifact-smoke` 工作流（Windows / macOS runner 上下载 exact release 资产实测）。
 - 状态标注规则：只允许 `[REAL] / [PARTIAL] / [UNVERIFIED] / [NOT_IMPLEMENTED]` 等明确标签，禁止 production-ready 一类说法。
-- 2026-08-16 记录：v0.1.2 三资产通过首轮干净机验证；官方 runtime 打包暂存方案随后仍在收敛（v0.1.4 曾被证实桌面解压缺依赖并回退 Latest）。**桌面安装包的完整用户流状态以 artifact-smoke 最新 run 为准。**
+- 2026-08-21 记录：`v0.1.1-rc.1` 三资产在 [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 通过安装/首启或缺 key smoke；完整用户闭环仍未验证。历史记录：v0.1.4 曾因桌面解压缺依赖回退 Latest。**桌面安装包的完整用户流状态以 artifact-smoke 最新 run 为准。**
 
 ## 相关仓库
 

@@ -48,10 +48,10 @@ http://127.0.0.1:3080
 
 普通用户的社区发行版入口是 [`dsh-community`](https://github.com/kamanager2012/dsh-community/releases/latest)，不是 Suite、Edition、Marketplace 或 Plugins。
 
-- 已发布可下载版本：`v0.1.2`；精确资产、sha256 和门禁见[当前 Community 发行状态](../11-operations/community-release-status.md)。
-- 当前源码/下一发行线：`0.1.0-rc.8-community.1`，对应官方核心 `@deepseek-ai/dsh@0.1.0-rc.8`，尚未作为用户 Release 发布。
-- `v0.1.6` 是 draft/pre-release，只有 checksum 资产，不是下载入口。
-- Desktop 与 TUI 的身份应显示为：`DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]`。
+- 已发布可下载版本：`v0.1.1-rc.1`；精确资产、sha256 和门禁见[当前 Community 发行状态](../11-operations/community-release-status.md)。
+- 官方内核：`@deepseek-ai/dsh@0.1.1-rc.1`，与产品号 1:1 同号。
+- 历史独立编号 `v0.1.2`–`v0.1.6` 不是下载入口。
+- Desktop 与 TUI 的身份应显示为：`DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]`。
 
 ## 固定版本
 

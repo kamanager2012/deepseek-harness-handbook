@@ -1,42 +1,39 @@
 # Current Community release status
 
-> Evidence snapshot: 2026-08-21. The `v0.1.2` exact-artifact smoke passed on real Windows, macOS, and Linux runners; installer/Runtime first-ready evidence is `[PARTIAL]`, while the full user loop remains `[待复核]`. This page does not replace the GitHub Release, Actions result, or installer smoke test.
+> Evidence snapshot: 2026-08-21. GitHub Latest is `v0.1.1-rc.1`, 1:1 with official kernel `@deepseek-ai/dsh@0.1.1-rc.1`. [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) passed exact-asset Windows install/first-ready, macOS dmg, and Linux terminal missing-key / no-TTY checks. That remains a first-launch/missing-key subset `[PARTIAL]`; the full user loop stays `[待复核]`. This page does not replace the GitHub Release, Actions result, or installer smoke test.
 
-## Three-layer version model
+## Version model
+
+The community product number mirrors the official kernel. Do not invent an independent community number, and do not use `-community.N` on the current line.
 
 | Layer | Current value | Meaning |
 |---|---|---|
-| Codebase trunk | `0.1.0-rc.8-community.1` | Current `main` community version; not published as a user Release |
-| Official core | `@deepseek-ai/dsh@0.1.0-rc.8` | Official core baseline; the community suffix identifies a community-owned fix |
-| Published Latest | `v0.1.2` | Current published Stable; exact-artifact smoke is partial and the full user loop still requires review |
-| Draft / pre-release | `v0.1.6` | Draft/pre-release; checksum assets only, not a download entry |
-
-README and product pages should say “Stable / Preview / code line” instead of collapsing
-the old Preview, code line, and Stable into one version number.
+| Official core | `@deepseek-ai/dsh@0.1.1-rc.1` | Official kernel |
+| Community product / `main` | `0.1.1-rc.1` | Same number as the official kernel |
+| Published Latest | `v0.1.1-rc.1` | GitHub Latest; the only normal download |
+| Historical independent numbers | `v0.1.2`–`v0.1.6` | Old independent numbers, now pre-release, not a download |
 
 Desktop and TUI must show the same identity badge:
 
 ```text
-DeepSeek Harness Community v0.1.0-rc.8-community.1 [Official Core: @deepseek-ai/dsh@0.1.0-rc.8]
+DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]
 ```
 
 ## User choice
 
-The formal entry remains [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Stable users should download the published [`v0.1.2`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.2)
-from [`releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Do not download draft `v0.1.6` or promote the `0.1.0-rc.8-community.1` source line or staging output as Stable.
+The formal entry is [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
+Normal users download [`v0.1.1-rc.1`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.1-rc.1).
+Do not treat historical independent numbers `v0.1.2`–`v0.1.6` as the current download.
 
-The published `v0.1.2` assets are:
+Published `v0.1.1-rc.1` assets (use the exact names on the Release page):
 
-- `dsh-community-0.1.2.AppImage` + `.sha256`
-- `DSH.Community.Setup.0.1.2.exe` + `.sha256` (historical published filename)
-- `dsh-community-0.1.2.dmg` + `.sha256`
+- `dsh-community-0.1.1-rc.1.AppImage` + `.sha256`
+- `DSH.Community.Setup.0.1.1-rc.1.exe` + `.sha256`
+- `dsh-community-0.1.1-rc.1.dmg` + `.sha256`
 
-The three Community endpoints are WSL/Linux Terminal, Windows Desktop, and macOS Desktop
-`[PARTIAL]`; first-launch/missing-key smoke passed, but the full user loop still requires
-review. Official Web is the official `~/.dsh`-sharing compatibility entry, not a Community
-endpoint.
+The five Community endpoints are WSL/Linux Terminal, Windows Desktop, macOS Desktop, Linux AppImage, and Android.
+The first four ship with Latest. Android remains Labs `[UNVERIFIED]` and is not on the formal download page.
+Official Web is the kernel's own UI, shares `~/.dsh`, and is not a Community endpoint.
 
 ## Three-platform Release Gate
 
@@ -45,9 +42,9 @@ Observed for this snapshot; the full user loop remains `[待复核]`:
 | Gate | Status | Evidence boundary |
 |---|---|---|
 | Normal `dsh-community` CI | `[待复核]` | Passing main CI does not prove installer readiness |
-| Release assets | `[REAL]` | `v0.1.2` has an AppImage, dmg, and Windows Setup, each with SHA256 |
-| artifact-smoke | `[PARTIAL]` | [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) passed resolve, Windows, macOS, and Linux jobs |
-| Official Runtime staging / installer | `[PARTIAL]` | Real v0.1.2 Windows/macOS assets installed and reached Runtime readiness; the full lifecycle is not covered |
+| Release assets | `[REAL]` | `v0.1.1-rc.1` has an AppImage, dmg, and Windows Setup, each with SHA256 |
+| artifact-smoke | `[PARTIAL]` | [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) passed resolve, Windows, macOS, and Linux jobs |
+| Official Runtime staging / installer | `[PARTIAL]` | Real v0.1.1-rc.1 Windows/macOS assets installed and reached Runtime readiness; the full lifecycle is not covered |
 | Three-OS release gate | `[PARTIAL]` | Real-asset checksum, desktop first-ready, and Linux TUI failure paths passed; the full user loop remains open |
 
 ```text
@@ -57,65 +54,52 @@ tag
   → publish GitHub Release
 ```
 
-`v0.1.2` is the current published Latest. The next goal is not another version number:
-add Session, plugin, upgrade/reinstall, network-failure, and first-conversation evidence
-beyond the exact-artifact smoke; keep `0.1.0-rc.8-community.1` as a source line until then.
+The next goal is not another independent version number: add Session, plugin, upgrade/reinstall, network-failure, and first-conversation evidence beyond exact-artifact smoke.
 
-## Stable release baseline vs current main
+## Latest vs current main
 
-`v0.1.2` is the current Stable baseline. The code/package line is
-`0.1.0-rc.8-community.1`, based on official core `@deepseek-ai/dsh@0.1.0-rc.8`.
-A main-source smoke test or CI result cannot replace Release-asset and installation review,
-so this draft must not say that the installer has been verified.
+`v0.1.1-rc.1` is current Latest. Later `main` commits may contain docs or smoke fixes that are not in the tagged installer. A main-source smoke test or CI result cannot replace Release-asset review, so this page must not say the full user loop is verified.
 
 ## Distribution Reality Gate
 
-The project is now entering the user-reality gate rather than expanding the Build Gate.
-Completed first-launch smoke is `[PARTIAL]`; uncovered full-loop evidence remains `[待复核]`:
+Exact-release-artifact evidence only. First-launch smoke is `[PARTIAL]`; uncovered full-loop items stay `[待复核]`:
 
 | Scenario | Status | Must prove |
 |---|---|---|
-| Windows clean VM + `DSH.Community.Setup.0.1.2.exe` | `[PARTIAL]` | [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) downloaded, checked, silently installed, launched, and reached Runtime HTTP readiness |
-| macOS clean host + `dsh-community-0.1.2.dmg` | `[PARTIAL]` | The same run downloaded, checked, mounted, launched, and reached Runtime HTTP readiness |
-| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | The same run passed TUI help/version, missing-key doctor, sessions, and no-TTY refusal paths |
-| Session loop | `[待复核]` | New, resume, and the same `~/.dsh` Session across Official Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI |
-| Plugin / restart | `[待复核]` | Official `dsh plugin add`, restart persistence, and explicit failure output |
-| Lifecycle recovery | `[待复核]` | Uninstall/reinstall, upgrade, bad network, missing key, and interrupted extraction |
-| Official Runtime staging / installer | `[PARTIAL]` | Real Windows/macOS assets reached first-ready; do not claim the full installation lifecycle is verified |
+| Windows clean VM + `DSH.Community.Setup.0.1.1-rc.1.exe` | `[PARTIAL]` | [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) downloaded, checked, silently installed, launched, and reached Runtime HTTP readiness |
+| macOS clean host + `dsh-community-0.1.1-rc.1.dmg` | `[PARTIAL]` | Same run downloaded, checked, mounted, launched, and reached Runtime HTTP readiness |
+| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | Same run: Linux TUI help, version, missing-key doctor, sessions, no-TTY refusal |
+| Session loop | `[待复核]` | New, resume, Official Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI share the same `~/.dsh` Session |
+| Plugin / restart | `[待复核]` | Official `dsh plugin add`, still usable after restart, clear errors on failure. Registry last verified line remains `0.1.0-rc.6` |
+| Lifecycle recovery | `[待复核]` | Uninstall/reinstall, upgrade, offline, missing key, interrupted Runtime extract |
+| Official Runtime staging / installer | `[PARTIAL]` | Real Windows/macOS first-ready passed; not a full install lifecycle claim |
+| Android | `[UNVERIFIED]` | Labs (`deepseek-harness-suite`); not on the Latest download list |
 
-This gate must use the packages downloaded from the Release page and the result of the
-staging redesign. Main-source smoke, ordinary CI, or README claims cannot substitute for
-it. [Run 32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309)
-passed the real-asset Windows, macOS, and WSL/Linux smoke jobs `[PARTIAL]`; that subset
-does not prove Session sharing, plugin restart, lifecycle recovery, or a successful first
-conversation.
+Conclusions must come from the files on the Release page plus install, Runtime staging, and user-loop results. Main-source smoke, ordinary CI, or README prose cannot replace that.
 
 ## Current project phases
 
-| Phase | Estimate | Current evidence |
+| Phase | Estimated status | Current fact |
 |---|---:|---|
-| Phase 1 · Suite Reality Gate | about 80–90% `[待复核]` | Shell compound/metacharacter fail-closed, typed `SessionEvent.data` adapter, pre-enqueue fallback guard, and tests have advanced; true SDK runtime E2E remains unproven and upstream probe CI remains red |
-| Phase 2 · Edition → Community | 100% `[待复核]` | Session selector, `new`, `resume last`, `sessions`, and `doctor` have merged; Edition code is frozen, the GitHub repository is archived, and its description points to Community |
-| Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.2` assets and SHA256 files are published and exact-artifact smoke passed; the full lifecycle remains open |
-| Phase 4 · Distribution Reality Gate | `[PARTIAL]` | The four-job artifact-smoke run passed, but Session, plugin, lifecycle, and full user-loop evidence remain open |
-| Phase 4 workstream · Plugin supply chain | `[待复核]` | 9 verified plugins; CI covers shape, npm existence/version, `dist.integrity`, provenance, repository reachability, and compose |
-| Phase 4 workstream · Marketplace UX | `[待复核]` | CLI is `list/search/info/install`; `info` displays digest/provenance |
-| Phase 5 · Handbook drift CI | Not started `[待复核]` | This page is currently the manual fact entry |
+| Phase 1 · Suite Reality Gate | about 80–90% `[待复核]` | Shell compound/metacharacter fail-closed, typed `SessionEvent.data` adapter, and pre-enqueue fallback guard have progressed; True SDK runtime E2E is not proven |
+| Phase 2 · Edition → Community | 100% `[待复核]` | Session selector, `new` / `resume last` / `sessions` / `doctor` merged; Edition frozen and archived |
+| Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.1-rc.1` assets and SHA256 published; exact-artifact smoke passed; full lifecycle still open |
+| Phase 4 · Distribution Reality Gate | `[PARTIAL]` | artifact-smoke four jobs passed; Session, plugins, upgrade/reinstall, and full user loop not closed |
+| Phase 4 workflow · Plugin supply chain | `[待复核]` | 9 verified plugins; `testedDsh` still `0.1.0-rc.6`; shape, npm existence/version, `dist.integrity`, provenance, reachability, and compose are in CI |
+| Phase 4 workflow · Marketplace UX | `[待复核]` | CLI is `list/search/info/install`; `info` shows digest/provenance |
+| Phase 5 · Handbook drift CI | not started `[待复核]` | This page is the manual version-fact entry |
 
-## Runtime version-source distinction
+## Runtime version sources
 
 ```text
-Official GitHub / package source: @deepseek-ai/dsh@0.1.0-rc.8
-Community source line: 0.1.0-rc.8-community.1
-Published Latest: v0.1.2
-Draft/pre-release: v0.1.6 (not a user download)
+Official kernel: @deepseek-ai/dsh@0.1.1-rc.1
+Community product / Latest: v0.1.1-rc.1
+Historical independent numbers: v0.1.2–v0.1.6 (not a user download)
 ```
 
-For CLI, Session, Event, SDK, and plugin claims, check the published/installed package,
-current `--help`, exported configuration, contract snapshots, and real runtime output;
-do not infer the current version from an old snapshot.
+For CLI, Session, Event, SDK, or Plugin surface, check the installed/published package, current `--help`, exported config, contract snapshots, and real runs. Do not infer the current version from an old snapshot.
 
-References:
+See:
 
 - [`dsh-community` release workflow](https://github.com/kamanager2012/dsh-community/blob/main/.github/workflows/release.yml)
 - [`dsh-community` changelog](https://github.com/kamanager2012/dsh-community/blob/main/CHANGELOG.md)

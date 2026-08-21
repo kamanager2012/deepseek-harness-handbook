@@ -21,7 +21,7 @@ npx @deepseek-ai/dsh --help
 npx @deepseek-ai/dsh web --help
 ```
 
-需要可重复部署时，固定 `@deepseek-ai/dsh` 的具体 npm 版本；当前 Community 源码线对应官方核心 `@deepseek-ai/dsh@0.1.0-rc.8`，并在升级后重新检查：
+需要可重复部署时，固定 `@deepseek-ai/dsh` 的具体 npm 版本；当前 Community 对应官方内核 `@deepseek-ai/dsh@0.1.1-rc.1`，并在升级后重新检查：
 
 - Web/CLI 参数和 profile；
 - Provider 字段、凭据引用和模型 ID；
@@ -30,7 +30,7 @@ npx @deepseek-ai/dsh web --help
 
 源码仓库的开发环境要求也可能不同于 npm 发布包；不要把源码 `package.json` 的版本号直接当成 npm 包版本。
 
-Community 发行版的版本规则和 Dual-Badge 见 [`dsh-community` version policy](https://github.com/kamanager2012/dsh-community/blob/main/docs/version-policy.md)。当前源码线为 `0.1.0-rc.8-community.1`，已发布 Latest 为 `v0.1.2`；两者不能混写。
+Community 发行版的版本规则和 Dual-Badge 见 [`dsh-community` version policy](https://github.com/kamanager2012/dsh-community/blob/main/docs/version-policy.md)。当前产品号与官方内核同为 `0.1.1-rc.1`；历史独立编号 `v0.1.2`–`v0.1.6` 不是当前下载。
 
 ## 官方资料
 

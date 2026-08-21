@@ -19,12 +19,14 @@
        dsh-community
         ├── WSL/Linux Terminal
         ├── Windows Desktop
-        └── macOS Desktop
+        ├── macOS Desktop
+        ├── Linux AppImage
+        └── Android (Labs)
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。GitHub 当前已发布 Latest 是 `v0.1.2`；其 Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.0.1.2.exe`，每项均有 `.sha256` sidecar。当前源码/下一发行线是 `0.1.0-rc.8-community.1`，对应官方核心 `@deepseek-ai/dsh@0.1.0-rc.8`，尚未作为用户 Release 发布。`v0.1.6` 是 draft/pre-release，当前只有 checksum 资产，不是下载入口。`v0.1.2` 精确资产 smoke 已在真实 Windows、macOS 和 Linux runner 上通过，但它仍是首启/缺 key 子集；完整用户闭环保持 `[UNVERIFIED]`。代码线、Release 和门禁状态统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。GitHub Latest 是 `v0.1.1-rc.1`，与官方内核 `@deepseek-ai/dsh@0.1.1-rc.1` 1:1 同号。Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.0.1.1-rc.1.exe`，每项均有 `.sha256` sidecar。历史独立编号 `v0.1.2`–`v0.1.6` 已降为 Pre-release，不是下载入口。[Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 对 `v0.1.1-rc.1` 精确资产做了 Windows/macOS 首启和 Linux 缺 key/无 TTY 检查，仍是子集；完整用户闭环保持 `[UNVERIFIED]`。代码线、Release 和门禁状态统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
 
-三个 Community endpoint 是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop** `[PARTIAL]`：`v0.1.2` exact-artifact smoke 已覆盖三者的首启/缺 key 路径，但未覆盖完整用户闭环。官方 Web 是共享 `~/.dsh` 的官方兼容入口，不是我们的端；Linux AppImage 是发布资产形态，不应因此新增第四个 Community endpoint。
+五个社区端是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android**。前四个随 Latest 发布；Android 仍在 Labs `[UNVERIFIED]`。官方 Web 是内核自带界面，共享 `~/.dsh`，不是社区端。
 
 用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
 
@@ -91,7 +93,7 @@ dsh-marketplace
 
 当前证据快照 [待复核]：注册表有 9 个验证插件；CI 检查 shape、npm 存在性/版本、`dist.integrity`、provenance 和仓库可达性，compose workflow 逐个运行官方 `dsh plugin add` 并做合成断言。Marketplace CLI 提供 `list` / `search` / `info` / `install`；`info` 展示 digest/provenance，安装仍走官方链路。
 
-当前发布边界 `[PARTIAL]`：GitHub Actions run [32470195309](https://github.com/kamanager2012/dsh-community/actions/runs/32470195309) 已从 `v0.1.2` Release 页面下载真实资产，完成 checksum、Windows/macOS 安装与 Runtime 首启、Linux TUI 缺 key/无 TTY 检查，四个 job 全部通过。它仍不是完整用户闭环；Session 共享、插件重启、升级/卸载重装和网络失败路径仍需复核。`v0.1.6` draft 也不能作为用户下载版本。
+当前发布边界 `[PARTIAL]`：GitHub Actions run [32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 已从 `v0.1.1-rc.1` Release 页面下载真实资产，完成 checksum、Windows/macOS 安装与 Runtime 首启、Linux TUI 缺 key/无 TTY 检查，四个 job 全部通过。它仍不是完整用户闭环；Session 共享、插件重启、升级/卸载重装和网络失败路径仍需复核。历史独立编号 `v0.1.2`–`v0.1.6` 也不是用户下载版本。
 
 ## 面向维护者的阅读入口
 

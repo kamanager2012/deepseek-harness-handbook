@@ -72,7 +72,7 @@ tag
 | macOS clean host + `dsh-community-0.1.1-rc.1.dmg` | `[PARTIAL]` | 同一 run 下载真实资产、校验、挂载、首启和 Runtime HTTP readiness 通过 |
 | WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | 同一 run 的 Linux TUI help、version、缺 key doctor、sessions、无 TTY 拒绝路径通过 |
 | Session 闭环 | `[待复核]` | 新建、恢复、官方 Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI 共享同一 `~/.dsh` Session |
-| Plugin / restart | `[待复核]` | 官方 `dsh plugin add`、重启后仍可用、失败时有明确错误。插件注册表上次验证线仍是 `0.1.0-rc.6` |
+| Plugin / restart | `[待复核]` | 官方 `dsh plugin add` + `--dump-config` 已在 `0.1.1-rc.1` 上对 9 个目录插件通过；重启后仍可用、失败时有明确错误尚未单测 |
 | Lifecycle recovery | `[待复核]` | 卸载重装、升级、断网、缺少密钥、Runtime 解压中断后的行为 |
 | Official Runtime staging / installer | `[PARTIAL]` | 真实 Windows/macOS 资产首启 readiness 通过；不能据此宣称完整安装生命周期已验证 |
 | Android | `[UNVERIFIED]` | Labs（`deepseek-harness-suite`），未过 Reality Gate，不在 Latest 下载清单 |
@@ -88,7 +88,7 @@ tag
 | Phase 2 · Edition → Community | 100% `[待复核]` | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，GitHub 仓库已归档 |
 | Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.1-rc.1` 真实资产和 sha256 已发布，exact-artifact smoke 通过；完整生命周期仍未覆盖 |
 | Phase 4 · Distribution Reality Gate | `[PARTIAL]` | artifact-smoke 四个 job 通过；Session、插件、升级/卸载重装和完整用户闭环未定稿 |
-| Phase 4 工作流 · Plugin supply chain | `[待复核]` | 9 个验证插件，`testedDsh` 仍是 `0.1.0-rc.6`；shape、npm 存在性/版本、`dist.integrity`、provenance、仓库可达与 compose 已纳入验证 |
+| Phase 4 工作流 · Plugin supply chain | `[PARTIAL]` | 9 个插件 `testedDsh` 为 `0.1.1-rc.1`（compose）；shape、npm 存在性/版本、`dist.integrity`、provenance、仓库可达与 compose 已纳入验证；重启后仍可用未单测 |
 | Phase 4 工作流 · Marketplace UX | `[待复核]` | CLI 为 `list/search/info/install`；`info` 展示 digest/provenance |
 | Phase 5 · Handbook drift CI | 尚未展开 `[待复核]` | 本页先作为人工版本事实入口 |
 

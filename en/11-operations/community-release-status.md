@@ -73,7 +73,7 @@ Exact-release-artifact evidence only. First-launch smoke is `[PARTIAL]`; uncover
 | macOS clean host + `dsh-community-0.1.1-rc.1.dmg` | `[PARTIAL]` | Same run downloaded, checked, mounted, launched, and reached Runtime HTTP readiness |
 | WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | Same run: Linux TUI help, version, missing-key doctor, sessions, no-TTY refusal |
 | Session loop | `[待复核]` | New, resume, Official Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI share the same `~/.dsh` Session |
-| Plugin / restart | `[待复核]` | Official `dsh plugin add`, still usable after restart, clear errors on failure. Registry last verified line remains `0.1.0-rc.6` |
+| Plugin / restart | `[待复核]` | Official `dsh plugin add` + `--dump-config` passed for 9 catalog plugins on `0.1.1-rc.1`; still-usable-after-restart and clear failure errors are not separately proven |
 | Lifecycle recovery | `[待复核]` | Uninstall/reinstall, upgrade, offline, missing key, interrupted Runtime extract |
 | Official Runtime staging / installer | `[PARTIAL]` | Real Windows/macOS first-ready passed; not a full install lifecycle claim |
 | Android | `[UNVERIFIED]` | Labs (`deepseek-harness-suite`); not on the Latest download list |
@@ -88,7 +88,7 @@ Conclusions must come from the files on the Release page plus install, Runtime s
 | Phase 2 · Edition → Community | 100% `[待复核]` | Session selector, `new` / `resume last` / `sessions` / `doctor` merged; Edition frozen and archived |
 | Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.1-rc.1` assets and SHA256 published; exact-artifact smoke passed; full lifecycle still open |
 | Phase 4 · Distribution Reality Gate | `[PARTIAL]` | artifact-smoke four jobs passed; Session, plugins, upgrade/reinstall, and full user loop not closed |
-| Phase 4 workflow · Plugin supply chain | `[待复核]` | 9 verified plugins; `testedDsh` still `0.1.0-rc.6`; shape, npm existence/version, `dist.integrity`, provenance, reachability, and compose are in CI |
+| Phase 4 workflow · Plugin supply chain | `[PARTIAL]` | 9 plugins `testedDsh` `0.1.1-rc.1` (compose); shape, npm existence/version, `dist.integrity`, provenance, reachability, and compose are in CI; restart-after-install is not separately proven |
 | Phase 4 workflow · Marketplace UX | `[待复核]` | CLI is `list/search/info/install`; `info` shows digest/provenance |
 | Phase 5 · Handbook drift CI | not started `[待复核]` | This page is the manual version-fact entry |
 

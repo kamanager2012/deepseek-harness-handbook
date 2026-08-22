@@ -63,6 +63,8 @@ def validate_records(
         "section_title",
         "kind",
         "language",
+        "summary",
+        "keywords",
         "content",
         "source",
     )
@@ -70,6 +72,16 @@ def validate_records(
         for field in required:
             if field not in record:
                 errors.append(f"{label}:{line_number}: missing {field}")
+        if record.get("schema_version") != "1.0":
+            errors.append(f"{label}:{line_number}: schema_version must be \"1.0\"")
+        kind_value = record.get("kind")
+        if not isinstance(kind_value, str) or not kind_value:
+            errors.append(f"{label}:{line_number}: kind must be a non-empty string")
+        keywords_value = record.get("keywords")
+        if not isinstance(keywords_value, list) or not all(
+            isinstance(keyword, str) and keyword for keyword in keywords_value
+        ):
+            errors.append(f"{label}:{line_number}: keywords must be a list of non-empty strings")
         record_id = record.get("id")
         if record_id in ids:
             errors.append(f"{label}:{line_number}: duplicate id {record_id}")

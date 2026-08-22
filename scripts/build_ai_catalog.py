@@ -208,13 +208,14 @@ def build_records(root: Path, source_root: Path, language: str, id_namespace: st
         seen_slugs: dict[str, int] = {}
 
         for section_index, (section_title, start, end) in enumerate(source_ranges(lines, intro_title), start=1):
-            for part_index, (part_start, part_end) in enumerate(split_large_ranges(lines, start, end), start=1):
+            parts = split_large_ranges(lines, start, end)
+            for part_index, (part_start, part_end) in enumerate(parts, start=1):
                 section_count += 1
                 section_slug = slug(section_title)
                 seen_slugs[section_slug] = seen_slugs.get(section_slug, 0) + 1
                 if seen_slugs[section_slug] > 1:
                     section_slug += f"-{seen_slugs[section_slug]}"
-                part_suffix = f".part-{part_index}" if len(split_large_ranges(lines, start, end)) > 1 else ""
+                part_suffix = f".part-{part_index}" if len(parts) > 1 else ""
                 record_id = f"{document_id}.{section_slug}{part_suffix}"
                 content = "".join(lines[part_start:part_end])
                 source_url = (

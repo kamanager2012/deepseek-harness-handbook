@@ -1,6 +1,6 @@
 # Community 当前发行状态
 
-> 事实快照日期：2026-08-21。机器可读真源是 [`dsh-community/docs/current-release.json`](https://github.com/kamanager2012/dsh-community/blob/main/docs/current-release.json)。本页只补充证据，不另造 Latest / 内核 pin。本文不替代 GitHub Release、Actions 结果或安装包实测。
+> 事实快照日期：2026-08-22。机器可读真源是 [`dsh-community/docs/current-release.json`](https://github.com/kamanager2012/dsh-community/blob/main/docs/current-release.json)。本页只补充证据，不另造 Latest / 内核 pin。本文不替代 GitHub Release、Actions 结果或安装包实测。
 
 ## 版本模型
 
@@ -8,28 +8,32 @@
 
 | 层级 | 当前值 | 应如何理解 |
 |---|---|---|
-| Official core | `@deepseek-ai/dsh@0.1.1-rc.1` | 官方内核 |
-| Community product / `main` | `0.1.1-rc.1` | 与官方内核同号 |
-| Published Latest | `v0.1.1-rc.1` | GitHub Latest；普通用户只从这里下 |
+| Official core | `@deepseek-ai/dsh@0.1.1-rc.2` | 官方内核（npm `latest`） |
+| Community product / `main` | `0.1.1-rc.2` | 与官方内核同号 |
+| Published Latest | `v0.1.1-rc.2` | GitHub Latest；普通用户只从这里下 |
 | Historical independent numbers | `v0.1.2`–`v0.1.6` | 旧独立编号，已降为 Pre-release，不是下载入口 |
 
 Desktop 与 TUI 的版本身份必须同时显示：
 
 ```text
-DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]
+DeepSeek Harness Community v0.1.1-rc.2 [Official Core: @deepseek-ai/dsh@0.1.1-rc.2]
 ```
 
 ## 用户选择
 
 正式入口是 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。
-普通用户下载 [`v0.1.1-rc.1`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.1-rc.1)。
+普通用户下载 [`v0.1.1-rc.2`](https://github.com/kamanager2012/dsh-community/releases/tag/v0.1.1-rc.2)。
 不要把历史独立编号 `v0.1.2`–`v0.1.6` 当当前下载。
 
-`v0.1.1-rc.1` 已发布资产为（文件名以 Release 页为准）：
+`v0.1.1-rc.2` 已发布资产为（文件名以 Release 页为准），共 12 个：三个安装包各带
+`.sha256` 校验和与两份 cosign 签名文件（`.sha256.sigstore.json` 与 `.sigstore.json`），
+是首个带 keyless 签名的发行：
 
-- `dsh-community-0.1.1-rc.1.AppImage` + `.sha256`
-- `DSH.Community.Setup.0.1.1-rc.1.exe` + `.sha256`
-- `dsh-community-0.1.1-rc.1.dmg` + `.sha256`
+- `dsh-community-0.1.1-rc.2.AppImage` + `.sha256` + `.sha256.sigstore.json` + `.sigstore.json`
+- `DSH.Community.Setup.0.1.1-rc.2.exe` + `.sha256` + `.sha256.sigstore.json` + `.sigstore.json`
+- `dsh-community-0.1.1-rc.2.dmg` + `.sha256` + `.sha256.sigstore.json` + `.sigstore.json`
+
+签名验证方法见 [`dsh-community` release 文档](https://github.com/kamanager2012/dsh-community/blob/main/docs/release.md)。
 
 五个社区端是 WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android。
 前四个随 Latest 发布；Android 仍在 Labs `[UNVERIFIED]`，不进正式下载页。
@@ -42,10 +46,10 @@ DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc
 | Gate | 状态 | 事实 |
 |---|---|---|
 | 普通 `dsh-community` CI | `[待复核]` | 当前 main 的 CI 通过不等于安装包验证 |
-| Release assets | `[REAL]` | `v0.1.1-rc.1` 包含 AppImage、dmg、Windows Setup，均有 sha256 |
-| artifact-smoke | `[PARTIAL]` | [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 的 resolve、Windows、macOS、Linux 四个 job 全部通过 |
-| Official Runtime staging / installer | `[PARTIAL]` | v0.1.1-rc.1 真实资产的 Windows/macOS 安装与 Runtime 首启通过；未覆盖完整生命周期 |
-| 3-OS release gate | `[PARTIAL]` | 真实资产 checksum、Windows/macOS 首启和 Linux TUI 缺 key/无 TTY 通过；完整用户闭环尚未定稿 |
+| Release assets | `[REAL]` | `v0.1.1-rc.2` 包含 AppImage、dmg、Windows Setup，均有 sha256 与 cosign 签名 bundle（首个签名发行） |
+| artifact-smoke（含签名验签） | `[PARTIAL]` | [Run 32579569995](https://github.com/kamanager2012/dsh-community/actions/runs/32579569995) 的 resolve、verify-signatures、Windows、macOS、Linux 五个 job 全部通过；verify-signatures 以严格模式逐资产验证 cosign bundle |
+| Official Runtime staging / installer | `[PARTIAL]` | v0.1.1-rc.2 真实资产的 Windows/macOS 安装与 Runtime 首启通过；未覆盖完整生命周期 |
+| 3-OS release gate | `[PARTIAL]` | 真实资产 checksum、签名验签、Windows/macOS 首启和 Linux TUI 缺 key/无 TTY 通过；完整用户闭环尚未定稿 |
 
 目标链路是：
 
@@ -60,7 +64,7 @@ tag
 
 ## Stable 发布基线与当前 main
 
-`v0.1.1-rc.1` 是当前 Latest。`main` 上可以有发布后的文档和 smoke 修复，那些提交不自动等于安装包内容。main 源码或 CI 结果不能替代 Release asset 与安装闭环复核，因此本页仍禁止写“完整用户闭环已验证”。
+`v0.1.1-rc.2` 是当前 Latest。`main` 上可以有发布后的文档和 smoke 修复，那些提交不自动等于安装包内容。main 源码或 CI 结果不能替代 Release asset 与安装闭环复核，因此本页仍禁止写“完整用户闭环已验证”。
 
 ## Distribution Reality Gate
 
@@ -68,11 +72,11 @@ tag
 
 | 场景 | 状态 | 必须证明 |
 |---|---|---|
-| Windows clean VM + `DSH.Community.Setup.0.1.1-rc.1.exe` | `[PARTIAL]` | [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 下载真实资产、校验、静默安装、首启和 Runtime HTTP readiness 通过 |
-| macOS clean host + `dsh-community-0.1.1-rc.1.dmg` | `[PARTIAL]` | 同一 run 下载真实资产、校验、挂载、首启和 Runtime HTTP readiness 通过 |
-| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | 同一 run 的 Linux TUI help、version、缺 key doctor、sessions、无 TTY 拒绝路径通过 |
+| Windows clean VM + `DSH.Community.Setup.0.1.1-rc.2.exe` | `[PARTIAL]` | [Run 32579569995](https://github.com/kamanager2012/dsh-community/actions/runs/32579569995) 下载真实资产、验签、校验、静默安装、首启和 Runtime HTTP readiness 通过 |
+| macOS clean host + `dsh-community-0.1.1-rc.2.dmg` | `[PARTIAL]` | 同一 run 下载真实资产、验签、校验、挂载、首启和 Runtime HTTP readiness 通过 |
+| WSL/Linux clean host + `dsh-community` / `pnpm tui` | `[PARTIAL]` | 同一 run 的 Linux TUI help、version、缺 key doctor、sessions、无 TTY 拒绝路径通过；签名验签 job 覆盖全部 12 个资产 |
 | Session 闭环 | `[待复核]` | 新建、恢复、官方 Web ↔ Windows/macOS Desktop ↔ WSL/Linux TUI 共享同一 `~/.dsh` Session |
-| Plugin / restart | `[待复核]` | 官方 `dsh plugin add` + `--dump-config` 已在 `0.1.1-rc.1` 上对 9 个目录插件通过；重启后仍可用、失败时有明确错误尚未单测 |
+| Plugin / restart | `[待复核]` | 官方 `dsh plugin add` + `--dump-config` 已在 `0.1.1-rc.2` 上对 9 个目录插件通过（2026-08-22 compose）；重启后仍可用、失败时有明确错误尚未单测 |
 | Lifecycle recovery | `[待复核]` | 卸载重装、升级、断网、缺少密钥、Runtime 解压中断后的行为 |
 | Official Runtime staging / installer | `[PARTIAL]` | 真实 Windows/macOS 资产首启 readiness 通过；不能据此宣称完整安装生命周期已验证 |
 | Android | `[UNVERIFIED]` | Labs（`deepseek-harness-suite`），未过 Reality Gate，不在 Latest 下载清单 |
@@ -86,9 +90,9 @@ tag
 |---|---:|---|
 | Phase 1 · Suite Reality Gate | 约 80–90% `[待复核]` | Shell compound/metacharacter fail-closed、typed `SessionEvent.data` adapter、pre-enqueue fallback guard 和测试方向已有明显进展；True SDK runtime E2E 仍未证明 |
 | Phase 2 · Edition → Community | 100% `[待复核]` | Session selector、`new` / `resume last` / `sessions` / `doctor` 等功能已合流；Edition 代码已冻结，GitHub 仓库已归档 |
-| Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.1-rc.1` 真实资产和 sha256 已发布，exact-artifact smoke 通过；完整生命周期仍未覆盖 |
-| Phase 4 · Distribution Reality Gate | `[PARTIAL]` | artifact-smoke 四个 job 通过；Session、插件、升级/卸载重装和完整用户闭环未定稿 |
-| Phase 4 工作流 · Plugin supply chain | `[PARTIAL]` | 9 个插件 `testedDsh` 为 `0.1.1-rc.1`（compose）；shape、npm 存在性/版本、`dist.integrity`、provenance、仓库可达与 compose 已纳入验证；重启后仍可用未单测 |
+| Phase 3 · Cross-platform Release | `[PARTIAL]` | `v0.1.1-rc.2` 真实资产、sha256 与 cosign 签名已发布，exact-artifact smoke + 验签通过；完整生命周期仍未覆盖 |
+| Phase 4 · Distribution Reality Gate | `[PARTIAL]` | artifact-smoke 五个 job（含 verify-signatures）通过；Session、插件、升级/卸载重装和完整用户闭环未定稿 |
+| Phase 4 工作流 · Plugin supply chain | `[PARTIAL]` | 9 个插件 `testedDsh` 为 `0.1.1-rc.2`（compose）；shape、npm 存在性/版本、`dist.integrity`、provenance、仓库可达与 compose 已纳入验证；重启后仍可用未单测 |
 | Phase 4 工作流 · Marketplace UX | `[待复核]` | CLI 为 `list/search/info/install`；`info` 展示 digest/provenance |
 | Phase 5 · Handbook drift CI | 尚未展开 `[待复核]` | 本页先作为人工版本事实入口 |
 
@@ -97,8 +101,8 @@ tag
 当前需要同时记录这些事实来源：
 
 ```text
-Official kernel: @deepseek-ai/dsh@0.1.1-rc.1
-Community product / Latest: v0.1.1-rc.1
+Official kernel: @deepseek-ai/dsh@0.1.1-rc.2
+Community product / Latest: v0.1.1-rc.2
 Historical independent numbers: v0.1.2–v0.1.6 (not a user download)
 ```
 

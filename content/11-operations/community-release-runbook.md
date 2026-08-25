@@ -1,17 +1,17 @@
 # Community 发布 Runbook
 
-> 事实状态：`v0.1.1-rc.1` exact-artifact smoke 已在真实 runner 上通过 `[PARTIAL]`；本文仍不把首启 smoke 当成完整用户闭环，也不把 README 声明当成运行证据。
+> 事实状态：`v0.1.1-rc.2` exact-artifact smoke（含 cosign 签名验签）已在真实 runner 上通过 `[PARTIAL]`；本文仍不把首启 smoke 当成完整用户闭环，也不把 README 声明当成运行证据。
 
 相关入口：[当前发行状态](community-release-status.md) · [发布检查清单](release-checklist.md) · [生态与产品入口](../00-overview/community-ecosystem.md) · [dsh-community Release](https://github.com/kamanager2012/dsh-community/releases/latest)
 
 ## 当前事实边界
 
-- 当前已发布 Latest 是 `v0.1.1-rc.1`，实际资产为 `dsh-community-0.1.1-rc.1.AppImage`、`dsh-community-0.1.1-rc.1.dmg` 和 `DSH.Community.Setup.0.1.1-rc.1.exe`，每个资产都有 `.sha256`；
-- 官方内核是 `@deepseek-ai/dsh@0.1.1-rc.1`，产品号与内核 1:1 同号；历史独立编号 `v0.1.2`–`v0.1.6` 不是用户下载版本；
-- Desktop/TUI Dual-Badge 必须显示：`DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]`；
+- 当前已发布 Latest 是 `v0.1.1-rc.2`，实际资产为 `dsh-community-0.1.1-rc.2.AppImage`、`dsh-community-0.1.1-rc.2.dmg` 和 `DSH.Community.Setup.0.1.1-rc.2.exe`，每个资产都有 `.sha256` 与两份 cosign 签名文件（`.sha256.sigstore.json`、`.sigstore.json`），是首个 keyless 签名发行；
+- 官方内核是 `@deepseek-ai/dsh@0.1.1-rc.2`，产品号与内核 1:1 同号；历史独立编号 `v0.1.2`–`v0.1.6` 不是用户下载版本；
+- Desktop/TUI Dual-Badge 必须显示：`DeepSeek Harness Community v0.1.1-rc.2 [Official Core: @deepseek-ai/dsh@0.1.1-rc.2]`；
 - 五个 Community endpoint 是 WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android；Android 仍在 Labs `[UNVERIFIED]`。官方 Web 是内核自带界面；
-- `v0.1.1-rc.1` 真实资产的安装与 Runtime 首启 smoke 为 `[PARTIAL]`，完整用户闭环仍为 `[待复核]`；禁止把“完整安装闭环已验证”写进 Release、网页或手册；
-- [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 的 resolve、Windows、macOS、Linux 四个 job 全部通过。它覆盖 install/first-ready/missing-key 子集，不等于完整用户闭环；
+- `v0.1.1-rc.2` 真实资产的安装与 Runtime 首启 smoke 为 `[PARTIAL]`，完整用户闭环仍为 `[待复核]`；禁止把“完整安装闭环已验证”写进 Release、网页或手册；
+- [Run 32579569995](https://github.com/kamanager2012/dsh-community/actions/runs/32579569995) 的 resolve、verify-signatures、Windows、macOS、Linux 五个 job 全部通过。它覆盖验签/install/first-ready/missing-key 子集，不等于完整用户闭环；
 - `v0.1.4` 的历史教训是：发现安装包缺官方 Runtime 依赖时，必须立即停止推广并回退 Latest，再用新的版本修复，不能移动或覆盖已经发布的 tag `[待复核]`。
 
 ## 1. 发布前冻结
@@ -33,7 +33,7 @@
 node scripts/release.mjs <vX.Y.Z[-prerelease]>
 ```
 
-例如社区自有修补才使用 `vX.Y.Z-community.N`；当前线是镜像官方内核 `v0.1.1-rc.1`，不要另造独立号。占位符不是要重复执行的当前 `v0.1.1-rc.1`，已发布 tag 不得重跑。
+例如社区自有修补才使用 `vX.Y.Z-community.N`；当前线是镜像官方内核 `v0.1.1-rc.2`，不要另造独立号。占位符不是要重复执行的当前 `v0.1.1-rc.2`，已发布 tag 不得重跑。
 
 脚本按以下顺序执行：
 
@@ -51,26 +51,30 @@ workflow 的职责是构建和发布，不是替代用户现实门禁：
 | Job | 产物 / 检查 |
 |---|---|
 | Linux | typecheck、test、AppImage、sha256 |
-| Windows | NSIS `DSH Community Setup <version>.exe`、sha256（当前 Latest 资产名为 `DSH.Community.Setup.0.1.1-rc.1.exe`） |
+| Windows | NSIS `DSH Community Setup <version>.exe`、sha256（当前 Latest 资产名为 `DSH.Community.Setup.0.1.1-rc.2.exe`） |
 | macOS | dmg、sha256 |
-| publish | 收集三个 job 的资产，按 tag 创建 GitHub Release；已有 Release 时拒绝覆盖 |
+| sign | 逐资产 cosign sign-blob（keyless bundle），未签名的发布资产会被 publish 守卫拒绝 |
+| publish | 收集三个 job 的资产与签名 bundle，按 tag 创建 GitHub Release；已有 Release 时拒绝覆盖 |
 
 只有资产真正上传且 sidecar 存在，才可以记录“Release publish 已发生” `[REAL]`。本次 exact-artifact 首启 smoke 为 `[PARTIAL]`，仍不等于完整用户闭环已验证。
 
-## 4. SHA256 核对
+## 4. SHA256 与签名核对
 
 核对必须针对 Release 页面下载的原始文件，不要核对 main 构建或任意重新打包文件：
 
 ```sh
-sha256sum -c dsh-community-0.1.1-rc.1.AppImage.sha256
-shasum -a 256 dsh-community-0.1.1-rc.1.dmg
+sha256sum -c dsh-community-0.1.1-rc.2.AppImage.sha256
+shasum -a 256 dsh-community-0.1.1-rc.2.dmg
 ```
 
 Windows PowerShell：
 
 ```powershell
-Get-FileHash 'DSH.Community.Setup.0.1.1-rc.1.exe' -Algorithm SHA256
+Get-FileHash 'DSH.Community.Setup.0.1.1-rc.2.exe' -Algorithm SHA256
 ```
+
+自 v0.1.1-rc.2 起每个资产还带 keyless cosign 签名，验证命令见
+[`dsh-community` release 文档](https://github.com/kamanager2012/dsh-community/blob/main/docs/release.md)。
 
 把实际文件名、sidecar 内容、核对环境和结果写入证据记录。hash 通过只能证明文件完整性，不能证明 Runtime staging 或首对话可用。
 
@@ -79,22 +83,24 @@ Get-FileHash 'DSH.Community.Setup.0.1.1-rc.1.exe' -Algorithm SHA256
 workflow 输入支持指定 tag；复核一个已发布版本时使用真实 tag：
 
 ```sh
-gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field tag=v0.1.1-rc.1
+gh workflow run artifact-smoke.yml --repo kamanager2012/dsh-community --field tag=v0.1.1-rc.2
 gh run list --repo kamanager2012/dsh-community --workflow artifact-smoke.yml --limit 1
 ```
 
 这一轮 smoke 的实际范围和结果是：
 
 - 下载 exact Windows Setup、macOS dmg 和 WSL/Linux Terminal 对应入口；
+- 逐资产验证 cosign 签名 bundle（严格模式，缺 bundle 或验签失败即红）；
 - 校验每个下载资产的 sha256；
 - Windows 静默安装、macOS 挂载/启动、Linux Terminal 启动；
 - 等待官方 Runtime first-ready，并检查缺 key / 失败路径；
 - 检查测试进程退出，不把 smoke 进程残留当成功。
 
-`v0.1.1-rc.1` 的 [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676)
-四个 job 全部通过：真实 Release 资产 checksum、Windows 静默安装/Runtime readiness、macOS
-挂载启动/Runtime readiness，以及 Linux TUI 的 help/version/缺 key/无 TTY 路径均通过。
+`v0.1.1-rc.2` 的 [Run 32579569995](https://github.com/kamanager2012/dsh-community/actions/runs/32579569995)
+五个 job 全部通过：签名验签（12 资产）、真实 Release 资产 checksum、Windows 静默安装/Runtime
+readiness、macOS 挂载启动/Runtime readiness，以及 Linux TUI 的 help/version/缺 key/无 TTY 路径均通过。
 该结果标为 `[PARTIAL]`，因为它没有覆盖 Session 共享、插件重启、升级/卸载重装、网络失败或真实首对话。
+（历史：`v0.1.1-rc.1` 的 [Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 为首个 exact-artifact smoke。）
 
 artifact-smoke 不是完整用户验收。仍需单独复核：新建、恢复、官方 Web ↔ 五个 Community endpoint 的同一 `~/.dsh` Session、插件安装重启、升级、卸载重装、代理/断网和中断解压。
 
@@ -102,7 +108,7 @@ artifact-smoke 不是完整用户验收。仍需单独复核：新建、恢复�
 
 ### 晋升
 
-Latest 晋升前必须同时有：Release 资产、sha256、3-OS workflow 结果、artifact-smoke 结果、staging 结论和人工用户闭环记录 `[待复核]`。任一项为 `NOT_READY` 或 `[待复核]`，就保持当前通道并明确标记，不得写 Stable 已验证。
+Latest 晋升前必须同时有：Release 资产、sha256、cosign 签名 bundle 及验签结果、3-OS workflow 结果、artifact-smoke 结果、staging 结论和人工用户闭环记录 `[待复核]`。任一项为 `NOT_READY` 或 `[待复核]`，就保持当前通道并明确标记，不得写 Stable 已验证。
 
 ### 回退
 

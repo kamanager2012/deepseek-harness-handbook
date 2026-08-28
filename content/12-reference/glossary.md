@@ -33,7 +33,7 @@
 | Canonical Product | 对用户公开的唯一正式产品；当前是 `dsh-community` |
 | Community Labs | 实验能力的研发区；当前是 `deepseek-harness-suite`，不是发行渠道 |
 | Compatibility Registry | 记录插件版本、验证线和兼容状态的注册表；当前是 `dsh-community-plugins` |
-| Discovery / Distribution UX | 浏览、搜索和进入官方安装链的用户体验；当前是 `dsh-marketplace` |
+| Discovery / Distribution UX | 浏览、搜索和进入官方安装链的用户体验；当前是 `dsh-community/packages/marketplace` |
 | Reality Gate | 让 Labs 能力进入正式产品前必须通过的真实运行、契约、安全、E2E 和失败路径门禁 |
 | SessionEvent | 官方 Runtime 用于表达 Session 生命周期和事件数据的结构；社区适配器应读取 `event.type` 与 `event.data` |
 

@@ -20,7 +20,7 @@
 - [`dsh-community`](https://github.com/kamanager2012/dsh-community)：唯一正式用户产品的代码、Release 和兼容说明；
 - [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite)：Community Labs 的实验代码和 Reality Gate 证据；
 - [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins)：插件兼容性注册表；
-- [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace)：插件发现与安装体验；
+- [`dsh-community/packages/marketplace`](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace)：插件发现与安装体验；
 - [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition)：合流归档的历史发行线。
 
 社区仓库的 README、计划和测试结果不能证明官方 Runtime 的行为。涉及官方 CLI、SDK、Session、事件或协议时，仍必须回到官方源码、当前 `--help`、导出配置和真实运行结果。

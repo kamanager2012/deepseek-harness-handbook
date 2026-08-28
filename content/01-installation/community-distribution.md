@@ -110,6 +110,6 @@ dsh-marketplace install <name>
 |---|---|
 | [dsh-community](https://github.com/kamanager2012/dsh-community) | Canonical Product，唯一正式下载入口 |
 | [dsh-community-plugins](https://github.com/kamanager2012/dsh-community-plugins) | 插件兼容性注册表 |
-| [dsh-marketplace](https://github.com/kamanager2012/dsh-marketplace) | 插件发现与安装 UX |
+| [dsh-community marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | 插件发现与安装 UX |
 | [deepseek-harness-suite](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs（实验舱，非发行渠道） |
 | [deepseek-harness-handbook](https://github.com/kamanager2012/deepseek-harness-handbook) | 本手册 |

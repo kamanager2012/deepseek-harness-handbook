@@ -38,7 +38,7 @@
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs：SDK transport、安全、Checkpoint、Bridge 和实验 UX | 维护者、实验开发者 | 否 |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence：工程实施、验收、运维和版本事实 | 用户、维护者、Agent | 否 |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry：插件元数据、版本和验证线 | 插件作者、维护者 | 否 |
-| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Discovery / Distribution UX：浏览、搜索和安装入口 | 用户、插件作者 | 否；不是 Runtime |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX：浏览、搜索和安装入口 | 用户、插件作者 | 否；不是 Runtime |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：代码已冻结、价值已合流，GitHub 仓库已归档并指向 Community | 维护者 | 否；只保留历史参考 |
 
 关系可以简化为：
@@ -49,17 +49,13 @@
                                   ▼
                     ┌────────────────────────────┐
                     │       dsh-community        │
-                    │      Canonical Product     │
+                    │  Canonical Product         │
+                    │  + packages/marketplace    │
                     └────────────────────────────┘
                                   │
                     ┌─────────────┴─────────────┐
                     ▼                           ▼
              Handbook / Evidence        Plugins / Registry
-                    │                           │
-                    └─────────────┬─────────────┘
-                                  ▼
-                         dsh-marketplace
-                      Discovery / Install UX
 
              deepseek-harness-suite → Community Labs
              dsh-community-edition  → Merge & Archive
@@ -83,13 +79,13 @@
 dsh-community-plugins
         │  catalog / testedDsh / verification
         ▼
-dsh-marketplace
+dsh-community/packages/marketplace
         │  browse / search / install UX
         ▼
 官方 dsh plugin add / 官方安装链
 ```
 
-`dsh-community-plugins` 是兼容性注册表，不是另一个 Plugin Manager；`dsh-marketplace` 是发现和安装体验，不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。
+`dsh-community-plugins` 是兼容性注册表，不是另一个 Plugin Manager；Marketplace CLI 在 `dsh-community/packages/marketplace`（命令仍叫 `dsh-marketplace` / `pnpm marketplace`），不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。
 
 当前证据快照 [待复核]：注册表有 9 个验证插件；CI 检查 shape、npm 存在性/版本、`dist.integrity`、provenance 和仓库可达性，compose workflow 逐个运行官方 `dsh plugin add` 并做合成断言。Marketplace CLI 提供 `list` / `search` / `info` / `install`；`info` 展示 digest/provenance，安装仍走官方链路。
 

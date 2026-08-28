@@ -9,6 +9,7 @@
 - [Profile、Bundle 与 Patch](profiles-bundles-patches.md)
 - [添加工具和 Provider](adding-capabilities.md)
 - [插件调试与发布](debugging-and-release.md)
+- [MCP 集成指南](mcp-integration-guide.md)
 
 ## 什么时候需要插件
 
@@ -37,7 +38,7 @@ dsh-community-plugins
   catalog / testedDsh / verification
                 │
                 ▼
-dsh-marketplace
+dsh-community/packages/marketplace
   browse / search / install UX
                 │
                 ▼
@@ -47,12 +48,14 @@ dsh-marketplace
 | 组件 | 负责什么 | 不负责什么 |
 | --- | --- | --- |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | 插件元数据、版本、分类、验证线和兼容性注册 | 不替代 Plugin Manager，不直接成为 Runtime |
-| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | 浏览、搜索、信息展示和安装入口 | 不重新实现 Agent loop，不替代官方安装协议 |
+| [`dsh-community` marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | 浏览、搜索、信息展示和安装入口 | 不重新实现 Agent loop，不替代官方安装协议 |
 | `dsh-community` Desktop / TUI | 把目录和安装入口接入用户产品 | 不维护第二套插件安装真源 |
 
 注册表和市场客户端的具体位置、与 Community Labs 的关系见[社区生态与产品入口](../00-overview/community-ecosystem.md)。
 
 ## Marketplace CLI 用法
+
+真源在 [`dsh-community/packages/marketplace`](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace)。从产品仓运行 `pnpm marketplace -- list`，二进制名仍是 `dsh-marketplace`。
 
 ```sh
 dsh-marketplace list

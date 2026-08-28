@@ -51,7 +51,7 @@ have separate responsibilities:
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs for experimental Bridge, SDK, security, and UX work | Not a release channel |
 | `deepseek-harness-handbook` | Knowledge, evidence, and operations | This repository |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Plugin compatibility registry | Supporting repository |
-| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Discovery and install UX | Supporting repository |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery and install CLI | In the product repo; old `dsh-marketplace` GitHub repo is a redirect |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive | Historical reference |
 
 Users should download only from

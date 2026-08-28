@@ -8,7 +8,7 @@
 - [ ] `deepseek-harness-suite` 明确标为 Community Labs，不作为第二发行渠道；
 - [ ] `dsh-community-edition` 明确标为 Merge & Archive，不再作为并行产品；
 - [ ] `dsh-community-plugins` 被描述为 Compatibility Registry，而不是 Plugin Manager；
-- [ ] `dsh-marketplace` 被描述为 Discovery / Distribution UX，而不是 Runtime 或 Package Manager replacement；
+- [ ] Marketplace CLI（`dsh-community/packages/marketplace`）被描述为 Discovery / Distribution UX，而不是 Runtime 或 Package Manager replacement；
 - [ ] 官方 Runtime 的 Agent loop、工具执行和 Session persistence 没有被社区仓库的 README 重新认领；
 - [ ] 任何 Labs 能力都标注 `[LABS]`、`[PARTIAL]` 或 `[UNVERIFIED]`，直到 Reality Gate 完成。
 - [ ] README 和网页写明：官方内核与产品号都是 `0.1.1-rc.1`，GitHub Latest 是 `v0.1.1-rc.1`；

@@ -1,6 +1,8 @@
 # Model Context Protocol (MCP) 与 DSH 插件集成实战指南
 
 > ⚡ **开放协议无缝对接**：如何将开源社区的标准 MCP (Model Context Protocol) 工具快速接入官方 DeepSeek Harness 运行时。
+>
+> Marketplace CLI 真源在 [`dsh-community/packages/marketplace`](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace)。下面命令里的 `dsh-marketplace` 也可以写成产品仓里的 `pnpm marketplace -- …`。
 
 ---
 

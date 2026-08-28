@@ -57,7 +57,7 @@ those names describe product-support roles, not competing clients.
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs: SDK transport, security, checkpoints, Bridge, and experimental UX | Maintainers and experimenters | No |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence: installation, operations, acceptance, and version facts | Users, maintainers, and Agents | No |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry: plugin metadata, versions, and verification lines | Plugin authors and maintainers | No |
-| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Discovery / Distribution UX: browse, search, and install entry | Users and plugin authors | No; not a Runtime |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX: browse, search, and install entry | Users and plugin authors | No; not a Runtime |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: code frozen, useful UX merged, and the GitHub repository archived with a Community pointer | Maintainers | No; historical reference only |
 
 ## Official and community boundaries
@@ -80,14 +80,14 @@ a verified gap.
 dsh-community-plugins
         │ catalog / testedDsh / verification
         ▼
-dsh-marketplace
+dsh-community/packages/marketplace
         │ browse / search / install UX
         ▼
 official dsh plugin add chain
 ```
 
-The registry records compatibility evidence. The marketplace presents it and invokes the
-official installation path. Neither repository owns the Runtime or replaces the official
+The registry records compatibility evidence. The marketplace CLI in `dsh-community` presents it and invokes the
+official installation path. Neither the registry nor the CLI owns the Runtime or replaces the official
 plugin manager.
 
 Current evidence snapshot `[待复核]`: the registry has 9 verified plugins. CI checks

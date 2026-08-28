@@ -170,6 +170,7 @@ nav:
       - 添加能力: content/10-plugins/adding-capabilities.md
       - 扩展 Cookbook: content/10-plugins/extension-cookbook.md
       - 插件调试与发布: content/10-plugins/debugging-and-release.md
+      - MCP 集成指南: content/10-plugins/mcp-integration-guide.md
       - 运维总览: content/11-operations/README.md
       - 团队使用规范: content/11-operations/team.md
       - CI 与发布: content/11-operations/ci.md

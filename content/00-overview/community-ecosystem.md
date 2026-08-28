@@ -8,7 +8,7 @@
 
 1. **官方 Runtime 是发动机**：Agent loop、模型调用、工具执行、官方 session 持久化和核心生命周期由官方 Runtime 负责。
 2. **`dsh-community` 是唯一正式产品**：普通用户只需要下载、安装和使用它。
-3. **Suite 已归档**：`deepseek-harness-suite` 是冻结的 Labs，不是下载渠道。独立 Marketplace 仓同样已归档。新工作只发生在 `dsh-community`、本手册和 `dsh-community-plugins`。
+3. **Suite 已归档**：`deepseek-harness-suite` 是冻结的 Labs，不是下载渠道。独立 Marketplace 仓和独立 Plugins 仓同样已归档。新工作只发生在 `dsh-community` 和本手册。
 
 ## 普通用户从哪里开始
 
@@ -28,7 +28,7 @@
 
 五个社区端是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android**。前四个随 Latest 发布；Android 原型留在已归档 Labs，保持 `[UNVERIFIED]`，不进 Latest。官方 Web 是内核自带界面，共享 `~/.dsh`，不是社区端。
 
-用户不要从 `Suite`、独立 `Marketplace` 或 `Edition` 下载客户端：前两者已归档，Plugins 是注册表不是商店。
+用户不要从 `Suite`、独立 `Marketplace`、独立 `Plugins` 或 `Edition` 下载客户端：它们已归档。插件目录在产品仓 `packages/marketplace/catalog.json`。
 
 ## 公开仓库的职责
 
@@ -36,8 +36,8 @@
 | --- | --- | --- | --- |
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product：官方 Runtime 上的 Desktop、TUI、诊断、兼容和发行层 | 所有用户、维护者 | **是，唯一入口** |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence：工程实施、验收、运维和版本事实 | 用户、维护者、Agent | 否 |
-| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry：插件元数据、版本和验证线 | 插件作者、维护者 | 否 |
-| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX：浏览、搜索和安装入口 | 用户、插件作者 | 否；不是 Runtime |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX + 兼容性目录 `catalog.json` | 用户、插件作者 | 否；不是 Runtime |
+| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | 已归档；跳转到产品仓 marketplace 包 | 历史书签 | 否 |
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | 已归档 Labs；最后 Labs pin 是 `0.1.0-rc.6`，不是当前 Latest | 历史参考 | 否；不要安装 |
 | [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | 已归档；跳转到产品仓 marketplace 包 | 历史书签 | 否 |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：代码已冻结、价值已合流 | 维护者 | 否；只保留历史参考 |
@@ -75,10 +75,10 @@
 
 社区层不得重新实现 Agent loop、维护第二套等价 Session 真源、fork 官方 event vocabulary，或 vendor 官方 core packages。官方能力已经存在时，优先调用官方能力；只有确认存在缺口时才增加社区扩展。
 
-## Marketplace 和 Plugins 不是一回事
+## 目录和安装不是两套产品
 
 ```text
-dsh-community-plugins
+dsh-community/packages/marketplace/catalog.json
         │  catalog / testedDsh / verification
         ▼
 dsh-community/packages/marketplace
@@ -87,7 +87,7 @@ dsh-community/packages/marketplace
 官方 dsh plugin add / 官方安装链
 ```
 
-`dsh-community-plugins` 是兼容性注册表，不是另一个 Plugin Manager；Marketplace CLI 在 `dsh-community/packages/marketplace`（命令仍叫 `dsh-marketplace` / `pnpm marketplace`），不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。
+兼容性目录和 Marketplace CLI 都在 `dsh-community/packages/marketplace`（命令仍叫 `dsh-marketplace` / `pnpm marketplace`）。目录不是另一个 Plugin Manager，CLI 不是 Package Manager replacement，也不拥有 Runtime。安装应尽量回到官方 `dsh plugin add` 链路。独立仓 `dsh-community-plugins` 已归档。
 
 当前证据快照 [待复核]：注册表有 9 个验证插件；CI 检查 shape、npm 存在性/版本、`dist.integrity`、provenance 和仓库可达性，compose workflow 逐个运行官方 `dsh plugin add` 并做合成断言。Marketplace CLI 提供 `list` / `search` / `info` / `install`；`info` 展示 digest/provenance，安装仍走官方链路。
 

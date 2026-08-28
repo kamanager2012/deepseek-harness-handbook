@@ -19,7 +19,7 @@
 
 - [`dsh-community`](https://github.com/kamanager2012/dsh-community)：唯一正式用户产品的代码、Release 和兼容说明；
 - [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite)：Community Labs 的实验代码和 Reality Gate 证据；
-- [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins)：插件兼容性注册表；
+- [`dsh-community` packages/marketplace/catalog.json](https://github.com/kamanager2012/dsh-community/blob/main/packages/marketplace/catalog.json)：插件兼容性目录；独立仓 `dsh-community-plugins` 已归档；
 - [`dsh-community/packages/marketplace`](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace)：插件发现与安装体验；
 - [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition)：合流归档的历史发行线。
 

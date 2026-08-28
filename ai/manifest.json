@@ -123,16 +123,13 @@
         "普通用户从哪里开始",
         "公开仓库的职责",
         "官方层和社区层的边界",
-        "Marketplace 和 Plugins 不是一回事",
+        "目录和安装不是两套产品",
         "面向维护者的阅读入口",
         "文档中的状态标签",
         "DeepSeek",
         "Harness",
         "Community",
-        "生态与产品入口",
-        "Marketplace",
-        "Plugins",
-        "不是一回事"
+        "生态与产品入口"
       ],
       "source": "content/00-overview/community-ecosystem.md",
       "language": "zh-CN",

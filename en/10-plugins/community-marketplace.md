@@ -6,7 +6,7 @@ official plugin protocol and does not own Runtime or Session persistence.
 Source of truth: [`dsh-community/packages/marketplace`](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace). Run `pnpm marketplace -- list` from that repo. The binary name is still `dsh-marketplace`.
 
 ```text
-dsh-community-plugins registry
+dsh-community/packages/marketplace/catalog.json
         ↓ compatibility evidence
 dsh-marketplace
         ↓ official install chain

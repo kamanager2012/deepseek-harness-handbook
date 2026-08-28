@@ -14,8 +14,8 @@ plugins, knowledge, diagnostics, and experiments around it.
 2. **`dsh-community` is the only canonical product.** Normal users download, install,
    and use it.
 3. **Suite is archived.** `deepseek-harness-suite` is frozen Labs, not a download
-   channel. The standalone Marketplace repo is archived too. New work lives in
-   `dsh-community`, this handbook, and `dsh-community-plugins`.
+   channel. The standalone Marketplace and Plugins repos are archived too. New
+   work lives in `dsh-community` and this handbook.
 
 ## Where users start
 
@@ -41,8 +41,9 @@ The five Community endpoints are **WSL/Linux Terminal, Windows Desktop, macOS De
 Linux AppImage, and Android**. The first four ship with Latest; the Android prototype
 stays in archived Labs as `[UNVERIFIED]` and is not on Latest. Official Web is the
 kernel's own UI, shares `~/.dsh`, and is not a Community endpoint.
-Do not download a client from Suite, the standalone Marketplace, or Edition: the first
-two are archived. Plugins is a registry, not a store.
+Do not download a client from Suite, the standalone Marketplace, the standalone
+Plugins repo, or Edition: they are archived. The plugin catalog lives in the
+product repo at `packages/marketplace/catalog.json`.
 
 ## Public repositories
 
@@ -50,8 +51,8 @@ two are archived. Plugins is a registry, not a store.
 |---|---|---|---|
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product: Desktop, TUI, diagnostics, compatibility, and releases | All users and maintainers | **Yes; the only one** |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence: installation, operations, acceptance, and version facts | Users, maintainers, and Agents | No |
-| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry: plugin metadata, versions, and verification lines | Plugin authors and maintainers | No |
-| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX: browse, search, and install entry | Users and plugin authors | No; not a Runtime |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX + compatibility catalog `catalog.json` | Users and plugin authors | No; not a Runtime |
+| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Archived; redirect to the product repo marketplace package | Old bookmarks | No |
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Archived Labs; last Labs pin `0.1.0-rc.6`, not current Latest | Historical reference | No; do not install |
 | [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Archived redirect to the product repo marketplace package | Old bookmarks | No |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: code frozen, useful UX merged | Maintainers | No; historical reference only |
@@ -73,7 +74,7 @@ a verified gap.
 ## Registry and Marketplace
 
 ```text
-dsh-community-plugins
+dsh-community/packages/marketplace/catalog.json
         │ catalog / testedDsh / verification
         ▼
 dsh-community/packages/marketplace
@@ -82,9 +83,9 @@ dsh-community/packages/marketplace
 official dsh plugin add chain
 ```
 
-The registry records compatibility evidence. The marketplace CLI in `dsh-community` presents it and invokes the
-official installation path. Neither the registry nor the CLI owns the Runtime or replaces the official
-plugin manager.
+The catalog and the marketplace CLI both live in `dsh-community/packages/marketplace`.
+Neither owns the Runtime or replaces the official plugin manager. The standalone
+`dsh-community-plugins` repo is archived.
 
 Current evidence snapshot `[待复核]`: the registry has 9 verified plugins. CI checks
 shape, npm existence/version, `dist.integrity`, provenance, and repository reachability;

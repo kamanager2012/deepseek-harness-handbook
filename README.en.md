@@ -50,15 +50,14 @@ have separate responsibilities:
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product: Desktop, TUI, diagnostics, compatibility, and releases | **Only normal download entry** |
 | [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Archived Labs | Frozen; do not install |
 | `deepseek-harness-handbook` | Knowledge, evidence, and operations | This repository |
-| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Plugin compatibility registry | Supporting repository |
-| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery and install CLI | In the product repo |
+| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Archived | Redirect to the product repo marketplace package |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery, install CLI, and `catalog.json` | In the product repo |
 | [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Archived | Redirect only |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive | Historical reference |
 
 Users should download only from
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Suite and the standalone Marketplace are archived. Edition is an archive. Plugins is a
-registry. None is a second Runtime or client.
+Suite, the standalone Marketplace, and the standalone Plugins registry are archived. Edition is an archive. None is a second Runtime or client.
 
 ## Evidence rules
 

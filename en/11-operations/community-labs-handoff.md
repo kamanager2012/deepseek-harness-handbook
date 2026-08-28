@@ -12,7 +12,7 @@ tests are green; the upstream probe CI is still red; and true SDK runtime E2E re
 
 ## Boundaries
 
-- Do not reopen a six-repository product strategy. Live repos are community, handbook, and plugins.
+- Do not reopen a six-repository product strategy. Live repos are community and handbook.
 - Do not make Suite a download channel.
 - Do not continue `dsh-community-edition` as a parallel product.
 - Do not reimplement the official Agent loop or Session persistence.

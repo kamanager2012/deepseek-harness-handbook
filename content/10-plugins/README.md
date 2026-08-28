@@ -34,7 +34,7 @@
 社区市场不是第二套 Harness。它由注册表、发现体验和官方安装链组成：
 
 ```text
-dsh-community-plugins
+dsh-community/packages/marketplace/catalog.json
   catalog / testedDsh / verification
                 │
                 ▼
@@ -47,7 +47,7 @@ dsh-community/packages/marketplace
 
 | 组件 | 负责什么 | 不负责什么 |
 | --- | --- | --- |
-| [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | 插件元数据、版本、分类、验证线和兼容性注册 | 不替代 Plugin Manager，不直接成为 Runtime |
+| [`catalog.json`](https://github.com/kamanager2012/dsh-community/blob/main/packages/marketplace/catalog.json) | 插件元数据、版本、分类、验证线和兼容性注册 | 不替代 Plugin Manager，不直接成为 Runtime |
 | [`dsh-community` marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | 浏览、搜索、信息展示和安装入口 | 不重新实现 Agent loop，不替代官方安装协议 |
 | `dsh-community` Desktop / TUI | 把目录和安装入口接入用户产品 | 不维护第二套插件安装真源 |
 

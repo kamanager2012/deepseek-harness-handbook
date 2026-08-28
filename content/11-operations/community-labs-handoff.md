@@ -8,7 +8,7 @@
 
 接手 Agent 必须遵守：
 
-- 不把三个仍在维护的仓（community / handbook / plugins）重新拆回「六仓战略」；
+- 不把仍在维护的仓（community / handbook）重新拆回「六仓战略」；
 - 不把 Suite 变成正式下载入口；
 - 不继续发展 `dsh-community-edition`；
 - 不重新实现官方 Agent loop 或官方 Session persistence；

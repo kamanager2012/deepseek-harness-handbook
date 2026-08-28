@@ -69,7 +69,7 @@ dsh-community desktop          # 打开桌面壳
 
 ## 插件：验证层，不是最大目录
 
-[dsh-community-plugins](https://github.com/kamanager2012/dsh-community-plugins) 是**兼容性注册表**，
+[`dsh-community/packages/marketplace/catalog.json`](https://github.com/kamanager2012/dsh-community/blob/main/packages/marketplace/catalog.json) 是**兼容性目录**，
 不跟 awesome 目录比收录数量。每个条目携带验证证据：
 
 | 层级 | 检查 | 方式 |
@@ -109,7 +109,7 @@ dsh-marketplace install <name>
 | 仓库 | 角色 |
 |---|---|
 | [dsh-community](https://github.com/kamanager2012/dsh-community) | Canonical Product，唯一正式下载入口 |
-| [dsh-community-plugins](https://github.com/kamanager2012/dsh-community-plugins) | 插件兼容性注册表 |
-| [dsh-community marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | 插件发现与安装 UX |
-| [deepseek-harness-suite](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs（实验舱，非发行渠道） |
+| [dsh-community marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | 插件发现、安装 UX 与 `catalog.json` |
+| [dsh-community-plugins](https://github.com/kamanager2012/dsh-community-plugins) | 已归档；跳转到产品仓 marketplace 包 |
+| [deepseek-harness-suite](https://github.com/kamanager2012/deepseek-harness-suite) | 已归档 Labs（不要从那里安装） |
 | [deepseek-harness-handbook](https://github.com/kamanager2012/deepseek-harness-handbook) | 本手册 |

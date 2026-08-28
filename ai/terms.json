@@ -341,7 +341,7 @@
     },
     {
       "term": "Compatibility Registry",
-      "definition": "记录插件版本、验证线和兼容状态的注册表；当前是 `dsh-community-plugins`",
+      "definition": "记录插件版本、验证线和兼容状态的注册表；当前是 `dsh-community/packages/marketplace/catalog.json`",
       "language": "zh-CN",
       "source": {
         "path": "content/12-reference/glossary.md",

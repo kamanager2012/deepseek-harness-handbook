@@ -84,5 +84,8 @@ review of a Runtime change.
 
 ## License and scope
 
-This is documentation and evidence organization around the official project. Check the
-repository files and upstream notices for the applicable license and attribution.
+This is documentation and evidence organization around the official project. The original
+Markdown content, validation scripts, and generated AI catalog files in this repository are
+available under the [MIT License](LICENSE). This does not extend to the upstream DeepSeek
+Harness project, its official documentation, or any third-party material quoted or linked from
+this handbook; those remain the property of their respective owners under their own terms.

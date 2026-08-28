@@ -167,3 +167,7 @@ python3 scripts/validate_handbook.py
 这个脚本只检查手册链接、YAML 结构和敏感信息模式，不会替你完成模型调用或任务验收。
 
 版本变化见 [VERSION.md](VERSION.md)。
+
+## 许可
+
+本仓库原创的 Markdown 正文、校验脚本和生成的 AI 检索文件按 [MIT 许可证](LICENSE) 提供。这不覆盖上游 DeepSeek Harness 项目、其官方文档，以及手册中引用或链接的第三方资料；它们仍归各自所有者所有，适用各自的许可条款。

@@ -8,7 +8,7 @@
 
 1. **官方 Runtime 是发动机**：Agent loop、模型调用、工具执行、官方 session 持久化和核心生命周期由官方 Runtime 负责。
 2. **`dsh-community` 是唯一正式产品**：普通用户只需要下载、安装和使用它。
-3. **Suite 是实验室**：`deepseek-harness-suite` 的能力只有通过 Reality Gate、真实 E2E、安全验证和跨平台烟测后，才可以进入 `dsh-community` 的 Canary、Preview 或 Stable。
+3. **Suite 已归档**：`deepseek-harness-suite` 是冻结的 Labs，不是下载渠道。独立 Marketplace 仓同样已归档。新工作只发生在 `dsh-community`、本手册和 `dsh-community-plugins`。
 
 ## 普通用户从哪里开始
 
@@ -21,25 +21,26 @@
         ├── Windows Desktop
         ├── macOS Desktop
         ├── Linux AppImage
-        └── Android (Labs)
+        └── Android (archived Labs / UNVERIFIED)
 ```
 
-正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。GitHub Latest 是 `v0.1.1-rc.1`，与官方内核 `@deepseek-ai/dsh@0.1.1-rc.1` 1:1 同号。Release 资产包含 Linux AppImage、macOS dmg 和 Windows `DSH.Community.Setup.0.1.1-rc.1.exe`，每项均有 `.sha256` sidecar。历史独立编号 `v0.1.2`–`v0.1.6` 已降为 Pre-release，不是下载入口。[Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676) 对 `v0.1.1-rc.1` 精确资产做了 Windows/macOS 首启和 Linux 缺 key/无 TTY 检查，仍是子集；完整用户闭环保持 `[UNVERIFIED]`。代码线、Release 和门禁状态统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。
+正式软件入口统一指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)。GitHub Latest 是 `v0.1.1-rc.2`，与官方内核 `@deepseek-ai/dsh@0.1.1-rc.2` 1:1 同号。代码线、Release 和门禁状态统一查看[当前发行状态](../11-operations/community-release-status.md)与[发布 Runbook](../11-operations/community-release-runbook.md)。历史独立编号 `v0.1.2`–`v0.1.6` 已降为 Pre-release，不是下载入口。
 
-五个社区端是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android**。前四个随 Latest 发布；Android 仍在 Labs `[UNVERIFIED]`。官方 Web 是内核自带界面，共享 `~/.dsh`，不是社区端。
+五个社区端是 **WSL/Linux Terminal、Windows Desktop、macOS Desktop、Linux AppImage、Android**。前四个随 Latest 发布；Android 原型留在已归档 Labs，保持 `[UNVERIFIED]`，不进 Latest。官方 Web 是内核自带界面，共享 `~/.dsh`，不是社区端。
 
-用户不应该在 `Suite`、`Edition`、`Marketplace` 和 `Plugins` 之间做产品选择：它们分别是研发、归档、分发体验和数据注册表，不是第二、第三或第四个客户端。
+用户不要从 `Suite`、独立 `Marketplace` 或 `Edition` 下载客户端：前两者已归档，Plugins 是注册表不是商店。
 
-## 六个仓库的职责
+## 公开仓库的职责
 
 | 仓库 | 定位 | 面向谁 | 是否是正式下载入口 |
 | --- | --- | --- | --- |
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product：官方 Runtime 上的 Desktop、TUI、诊断、兼容和发行层 | 所有用户、维护者 | **是，唯一入口** |
-| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs：SDK transport、安全、Checkpoint、Bridge 和实验 UX | 维护者、实验开发者 | 否 |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence：工程实施、验收、运维和版本事实 | 用户、维护者、Agent | 否 |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry：插件元数据、版本和验证线 | 插件作者、维护者 | 否 |
 | [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX：浏览、搜索和安装入口 | 用户、插件作者 | 否；不是 Runtime |
-| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：代码已冻结、价值已合流，GitHub 仓库已归档并指向 Community | 维护者 | 否；只保留历史参考 |
+| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | 已归档 Labs；最后 Labs pin 是 `0.1.0-rc.6`，不是当前 Latest | 历史参考 | 否；不要安装 |
+| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | 已归档；跳转到产品仓 marketplace 包 | 历史书签 | 否 |
+| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive：代码已冻结、价值已合流 | 维护者 | 否；只保留历史参考 |
 
 关系可以简化为：
 
@@ -57,7 +58,8 @@
                     ▼                           ▼
              Handbook / Evidence        Plugins / Registry
 
-             deepseek-harness-suite → Community Labs
+             deepseek-harness-suite → Archived Labs（不要安装）
+             dsh-marketplace        → Archived redirect
              dsh-community-edition  → Merge & Archive
 ```
 
@@ -95,7 +97,7 @@ dsh-community/packages/marketplace
 
 - 想了解当前边界：阅读本页和 [官方架构概览](architecture.md)。
 - 想判断 Stable、Preview、代码线和三平台门禁：阅读[当前发行状态](../11-operations/community-release-status.md)。
-- 想接手实验舱：阅读 [Community Labs handoff](../11-operations/community-labs-handoff.md)。
+- 想看冻结 Labs 的历史门禁：阅读 [Community Labs handoff](../11-operations/community-labs-handoff.md)（仓库已归档，不再作为研发入口）。
 - 想发布正式版本：阅读 [发布检查清单](../11-operations/release-checklist.md)。
 - 想维护插件生态：阅读 [插件与 Cordis](../10-plugins/README.md)。
 
@@ -107,7 +109,7 @@ dsh-community/packages/marketplace
 | --- | --- |
 | `[REAL]` | 有对应代码、测试和可复现运行证据 |
 | `[PARTIAL]` | 已实现一部分，但仍有已知缺口 |
-| `[LABS]` | 只属于 Community Labs，尚未进入正式产品 |
+| `[LABS]` | 只属于已归档 Community Labs，尚未进入正式产品 |
 | `[PROBE]` | 探针可以观察到行为，但不等于稳定契约 |
 | `[FAIL-CLOSED]` | 未知或高风险能力默认拒绝或要求审批 |
 | `[WORKSPACE-JAIL]` | 已纳入 workspace 边界和越界测试 |

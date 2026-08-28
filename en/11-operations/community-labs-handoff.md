@@ -1,17 +1,18 @@
 # Community Labs handoff
 
-> Maintainer execution baseline for `deepseek-harness-suite`. Date: 2026-08-16.
+> Maintainer snapshot for **archived** `deepseek-harness-suite`. Date: 2026-08-16.
+> The GitHub repository is frozen. Do not install from it. Do not open new work there.
 
-`deepseek-harness-suite` is Community Labs, not a second user distribution. It is used
-to validate official SDK transport, the Bridge, advanced TUI / Desktop UX, security,
-Checkpoint, Undo, audit, and runtime probes.
+`deepseek-harness-suite` **was** Community Labs, not a second user distribution. Before
+the freeze it was used to validate official SDK transport, the Bridge, advanced TUI /
+Desktop UX, security, Checkpoint, Undo, audit, and runtime probes.
 
 For this snapshot, code/build/unit-contract tests and Reality Gate adapter/fixture/failure-path
 tests are green; the upstream probe CI is still red; and true SDK runtime E2E remains unproven.
 
 ## Boundaries
 
-- Do not redesign the six-repository strategy.
+- Do not reopen a six-repository product strategy. Live repos are community, handbook, and plugins.
 - Do not make Suite a download channel.
 - Do not continue `dsh-community-edition` as a parallel product.
 - Do not reimplement the official Agent loop or Session persistence.

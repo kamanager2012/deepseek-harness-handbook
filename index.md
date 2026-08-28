@@ -18,9 +18,9 @@
 
 ## Community 生态入口
 
-DeepSeek Harness Community 不是另一套 Runtime，而是围绕官方 Runtime 的社区增强层。普通用户的正式产品入口只有 [`dsh-community`](https://github.com/kamanager2012/dsh-community/releases/latest)；六仓职责、下载边界和 Labs 晋升规则见[社区生态与产品入口](content/00-overview/community-ecosystem.md)。
+DeepSeek Harness Community 不是另一套 Runtime，而是围绕官方 Runtime 的社区增强层。普通用户的正式产品入口只有 [`dsh-community`](https://github.com/kamanager2012/dsh-community/releases/latest)；公开仓库职责、下载边界和已归档 Labs 见[社区生态与产品入口](content/00-overview/community-ecosystem.md)。
 
-维护者或接手 Agent 需要继续阅读 [Community Labs handoff](content/11-operations/community-labs-handoff.md)，其中记录当前 Reality Gate 状态和 P0 seam。不要把 README、单元测试或 fallback 成功当成真实 Runtime E2E 证据。
+维护者如需查阅冻结 Labs 的历史门禁，可读 [Community Labs handoff](content/11-operations/community-labs-handoff.md)。不要把 README、单元测试或 fallback 成功当成真实 Runtime E2E 证据。不要从归档仓安装。
 
 ## 从这里开始
 

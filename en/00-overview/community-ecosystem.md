@@ -13,9 +13,9 @@ plugins, knowledge, diagnostics, and experiments around it.
    tool execution, official Session persistence, and core lifecycle.
 2. **`dsh-community` is the only canonical product.** Normal users download, install,
    and use it.
-3. **Suite is a laboratory.** `deepseek-harness-suite` capabilities must pass Reality
-   Gate, real E2E, security checks, and cross-platform smoke before promotion to
-   `dsh-community` Canary, Preview, or Stable.
+3. **Suite is archived.** `deepseek-harness-suite` is frozen Labs, not a download
+   channel. The standalone Marketplace repo is archived too. New work lives in
+   `dsh-community`, this handbook, and `dsh-community-plugins`.
 
 ## Where users start
 
@@ -28,37 +28,33 @@ Official DeepSeek Harness Runtime
         ├── Windows Desktop
         ├── macOS Desktop
         ├── Linux AppImage
-        └── Android (Labs)
+        └── Android (archived Labs / UNVERIFIED)
 ```
 
 The formal download entry is
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-GitHub Latest is `v0.1.1-rc.1`, 1:1 with official kernel `@deepseek-ai/dsh@0.1.1-rc.1`.
-Release assets include the Linux AppImage, macOS dmg, and Windows
-`DSH.Community.Setup.0.1.1-rc.1.exe`, each with a matching `.sha256` sidecar.
-Historical independent numbers `v0.1.2`–`v0.1.6` are pre-release, not a download.
-[Run 32489762676](https://github.com/kamanager2012/dsh-community/actions/runs/32489762676)
-checked exact `v0.1.1-rc.1` assets for Windows/macOS first-ready and Linux missing-key/no-TTY;
-that remains a subset. The full user loop stays `[UNVERIFIED]`. Use the
-[current release status](../11-operations/community-release-status.md) and the
+GitHub Latest is `v0.1.1-rc.2`, 1:1 with official kernel `@deepseek-ai/dsh@0.1.1-rc.2`.
+Use the [current release status](../11-operations/community-release-status.md) and the
 [release runbook](../11-operations/community-release-runbook.md) for the boundary.
+Historical independent numbers `v0.1.2`–`v0.1.6` are pre-release, not a download.
 The five Community endpoints are **WSL/Linux Terminal, Windows Desktop, macOS Desktop,
-Linux AppImage, and Android**. The first four ship with Latest; Android remains Labs
-`[UNVERIFIED]`. Official Web is the kernel's own UI, shares `~/.dsh`, and is not a
-Community endpoint.
-Do not ask users to choose between Community, Suite, Edition, Marketplace, and Plugins:
-those names describe product-support roles, not competing clients.
+Linux AppImage, and Android**. The first four ship with Latest; the Android prototype
+stays in archived Labs as `[UNVERIFIED]` and is not on Latest. Official Web is the
+kernel's own UI, shares `~/.dsh`, and is not a Community endpoint.
+Do not download a client from Suite, the standalone Marketplace, or Edition: the first
+two are archived. Plugins is a registry, not a store.
 
-## Six repositories, six responsibilities
+## Public repositories
 
 | Repository | Role | Audience | Formal download entry? |
 |---|---|---|---|
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product: Desktop, TUI, diagnostics, compatibility, and releases | All users and maintainers | **Yes; the only one** |
-| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs: SDK transport, security, checkpoints, Bridge, and experimental UX | Maintainers and experimenters | No |
 | [`deepseek-harness-handbook`](https://github.com/kamanager2012/deepseek-harness-handbook) | Knowledge / Evidence: installation, operations, acceptance, and version facts | Users, maintainers, and Agents | No |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Compatibility Registry: plugin metadata, versions, and verification lines | Plugin authors and maintainers | No |
 | [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery / Distribution UX: browse, search, and install entry | Users and plugin authors | No; not a Runtime |
-| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: code frozen, useful UX merged, and the GitHub repository archived with a Community pointer | Maintainers | No; historical reference only |
+| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Archived Labs; last Labs pin `0.1.0-rc.6`, not current Latest | Historical reference | No; do not install |
+| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Archived redirect to the product repo marketplace package | Old bookmarks | No |
+| [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive: code frozen, useful UX merged | Maintainers | No; historical reference only |
 
 ## Official and community boundaries
 
@@ -112,7 +108,7 @@ Use explicit labels:
 |---|---|
 | `[REAL]` | Code, tests, and reproducible runtime evidence exist |
 | `[PARTIAL]` | Some implementation exists but a known gap remains |
-| `[LABS]` | Community Labs only; not promoted to the product |
+| `[LABS]` | Archived Community Labs only; not promoted to the product |
 | `[PROBE]` | A probe observed behavior; stability is not established |
 | `[FAIL-CLOSED]` | Unknown or high-risk behavior is rejected or requires approval |
 | `[WORKSPACE-JAIL]` | Workspace containment and escape tests are present |

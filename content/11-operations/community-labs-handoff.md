@@ -1,14 +1,14 @@
 # Community Labs handoff：给接手 Agent 的执行基线
 
-> 内部维护说明。基线日期：2026-08-16。本文约束研发方向，不替代官方 Runtime 文档。
+> 内部维护说明。基线日期：2026-08-16。本文记录**已归档** Labs 仓的历史门禁，不替代官方 Runtime 文档。GitHub 仓库 `deepseek-harness-suite` 已冻结；不要从那里安装，也不要把新功能开回这个仓。
 
 ## 目标和禁止事项
 
-`deepseek-harness-suite` 是 Community Labs，不是第二个用户发行版。它用于验证官方 SDK transport、Bridge、先进 TUI、安全能力、Checkpoint、Undo、审计和实验性 Desktop UX。
+`deepseek-harness-suite` **曾经是** Community Labs，不是第二个用户发行版。冻结前用于验证官方 SDK transport、Bridge、先进 TUI、安全能力、Checkpoint、Undo、审计和实验性 Desktop UX。
 
 接手 Agent 必须遵守：
 
-- 不重新设计六仓战略；
+- 不把三个仍在维护的仓（community / handbook / plugins）重新拆回「六仓战略」；
 - 不把 Suite 变成正式下载入口；
 - 不继续发展 `dsh-community-edition`；
 - 不重新实现官方 Agent loop 或官方 Session persistence；

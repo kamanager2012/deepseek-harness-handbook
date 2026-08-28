@@ -34,7 +34,7 @@ than the installed version.
 | Review permissions and data flow | [Security](06-security/README.md) → the Chinese [security chapters](https://kamanager2012.github.io/deepseek-harness-handbook/content/06-security/) |
 | Look up a term | [Glossary](12-reference/glossary.md) |
 | Understand the community ecosystem | [Community ecosystem](00-overview/community-ecosystem.md) |
-| Maintain Community Labs | [Labs handoff](11-operations/community-labs-handoff.md) |
+| Historical Labs freeze notes | [Labs handoff](11-operations/community-labs-handoff.md) |
 
 ## Five-minute start
 

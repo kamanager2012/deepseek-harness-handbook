@@ -38,7 +38,7 @@ without inventing runtime results.
 | Review permissions and data flow | [Security](en/06-security/README.md) |
 | Understand the community products | [Ecosystem map](en/00-overview/community-ecosystem.md) |
 | Check the current release gate | [Community release status](en/11-operations/community-release-status.md) |
-| Maintain Community Labs | [Labs handoff](en/11-operations/community-labs-handoff.md) |
+| Historical Labs freeze notes | [Labs handoff](en/11-operations/community-labs-handoff.md) |
 
 ## The community ecosystem
 
@@ -48,16 +48,17 @@ have separate responsibilities:
 | Repository | Role | User-facing status |
 |---|---|---|
 | [`dsh-community`](https://github.com/kamanager2012/dsh-community) | Canonical Product: Desktop, TUI, diagnostics, compatibility, and releases | **Only normal download entry** |
-| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Community Labs for experimental Bridge, SDK, security, and UX work | Not a release channel |
+| [`deepseek-harness-suite`](https://github.com/kamanager2012/deepseek-harness-suite) | Archived Labs | Frozen; do not install |
 | `deepseek-harness-handbook` | Knowledge, evidence, and operations | This repository |
 | [`dsh-community-plugins`](https://github.com/kamanager2012/dsh-community-plugins) | Plugin compatibility registry | Supporting repository |
-| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery and install CLI | In the product repo; old `dsh-marketplace` GitHub repo is a redirect |
+| [`dsh-community` packages/marketplace](https://github.com/kamanager2012/dsh-community/tree/main/packages/marketplace) | Discovery and install CLI | In the product repo |
+| [`dsh-marketplace`](https://github.com/kamanager2012/dsh-marketplace) | Archived | Redirect only |
 | [`dsh-community-edition`](https://github.com/kamanager2012/dsh-community-edition) | Merge & Archive | Historical reference |
 
 Users should download only from
 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest).
-Suite is a research source, Edition is an archive, Marketplace is an interface, and
-Plugins is a registry; none is a second Runtime or client.
+Suite and the standalone Marketplace are archived. Edition is an archive. Plugins is a
+registry. None is a second Runtime or client.
 
 ## Evidence rules
 

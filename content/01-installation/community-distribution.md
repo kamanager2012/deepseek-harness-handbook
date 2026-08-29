@@ -13,7 +13,7 @@
      ┌──────────┬────────┼────────┬──────────┐
      ▼          ▼        ▼        ▼          ▼
  WSL/Linux   Windows   macOS   Linux      Android
-  Terminal   Desktop   Desktop AppImage    (Labs)
+  Terminal   Desktop   Desktop AppImage    (archived Labs)
 ```
 
 - 社区层**不重写** Agent loop、Session persistence、Tool execution —— 官方 Runtime 是唯一执行核心。
@@ -25,10 +25,10 @@
 | 端 | 面向 | 入口 |
 |---|---|---|
 | WSL / Linux Terminal | 开发者、CLI 用户、WSL2 用户 | `dsh-community` 命令 |
-| Windows Desktop | 不想折腾 Node / CLI 的用户 | `DSH.Community.Setup.0.1.1-rc.1.exe`（以 Release 页为准） |
-| macOS Desktop | 同上 | `dsh-community-0.1.1-rc.1.dmg` |
-| Linux AppImage | Linux 图形桌面 | `dsh-community-0.1.1-rc.1.AppImage` |
-| Android | Labs | 不在 Latest 下载页，`[UNVERIFIED]` |
+| Windows Desktop | 不想折腾 Node / CLI 的用户 | `DSH.Community.Setup.0.1.1-rc.2.exe`（以 Release 页为准） |
+| macOS Desktop | 同上 | `dsh-community-0.1.1-rc.2.dmg` |
+| Linux AppImage | Linux 图形桌面 | `dsh-community-0.1.1-rc.2.AppImage` |
+| Android | 已归档 Labs | 不在 Latest 下载页，`[UNVERIFIED]` |
 
 ## 下载与校验
 
@@ -36,7 +36,7 @@
 https://github.com/kamanager2012/dsh-community/releases/latest
 ```
 
-- **Latest** 指向 `releases/latest`；当前是 **v0.1.1-rc.1**（Linux AppImage / Windows Setup / macOS dmg）。历史独立编号 `v0.1.2`–`v0.1.6` 不是当前下载。
+- **Latest** 指向 `releases/latest`；当前是 **v0.1.1-rc.2**（Linux AppImage / Windows Setup / macOS dmg）。历史独立编号 `v0.1.2`–`v0.1.6` 不是当前下载。
 - 每个资产带 `<文件>.sha256` 侧车；安装前用 `sha256sum` / `certutil` / `shasum -a 256` 核对。
 
 ## 同一套 Session：Web ↔ Terminal ↔ Desktop

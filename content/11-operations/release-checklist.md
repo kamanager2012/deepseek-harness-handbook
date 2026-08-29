@@ -5,15 +5,15 @@
 发布 DeepSeek Harness Community 生态的文档或软件时，先检查产品入口没有漂移：
 
 - [ ] 普通用户的下载、安装和 Release 链接只指向 [`dsh-community/releases/latest`](https://github.com/kamanager2012/dsh-community/releases/latest)；
-- [ ] `deepseek-harness-suite` 明确标为 Community Labs，不作为第二发行渠道；
+- [ ] `deepseek-harness-suite` 明确标为已归档 Labs，不作为发行渠道；
 - [ ] `dsh-community-edition` 明确标为 Merge & Archive，不再作为并行产品；
 - [ ] 插件目录被描述为 `dsh-community/packages/marketplace/catalog.json`，而不是独立 Plugin Manager；
 - [ ] Marketplace CLI（`dsh-community/packages/marketplace`）被描述为 Discovery / Distribution UX，而不是 Runtime 或 Package Manager replacement；
 - [ ] 官方 Runtime 的 Agent loop、工具执行和 Session persistence 没有被社区仓库的 README 重新认领；
 - [ ] 任何 Labs 能力都标注 `[LABS]`、`[PARTIAL]` 或 `[UNVERIFIED]`，直到 Reality Gate 完成。
-- [ ] README 和网页写明：官方内核与产品号都是 `0.1.1-rc.1`，GitHub Latest 是 `v0.1.1-rc.1`；
+- [ ] README 和网页写明：官方内核与产品号都是 `0.1.1-rc.2`，GitHub Latest 是 `v0.1.1-rc.2`；
 - [ ] 明确说明历史独立编号 `v0.1.2`–`v0.1.6` 不是用户下载入口；
-- [ ] Desktop 与 TUI 都显示完整 Dual-Badge：`DeepSeek Harness Community v0.1.1-rc.1 [Official Core: @deepseek-ai/dsh@0.1.1-rc.1]`；
+- [ ] Desktop 与 TUI 都显示完整 Dual-Badge：`DeepSeek Harness Community v0.1.1-rc.2 [Official Core: @deepseek-ai/dsh@0.1.1-rc.2]`；
 - [ ] 当前 Stable 的已知问题和 Preview 的修复范围都有链接，不把 Preview 写成无条件生产推荐；
 - [ ] 三平台发布逐项记录：普通 CI、Linux packaging、Windows packaging、macOS packaging、publish 和 artifact-smoke；任一项未复核时不得写成“安装包已验证”；
 - [ ] Official Runtime staging、安装包和完整用户闭环明确记录为 `[待复核]` 或经事实确认的状态；不得把 smoke 子集写成完整安装验收；

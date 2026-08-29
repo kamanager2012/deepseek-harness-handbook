@@ -4,7 +4,7 @@
 
 > 工程实施、验收与运维手册
 
-项目总览：[Kama Projects](https://kamanager2012.github.io/)。
+项目总览：[DeepSeek Harness Community](https://github.com/kamanager2012/dsh-community)。
 
 这是一份面向实际使用者的中文说明，重点是：启动 Harness、配置模型、选择工作区、写出可控的任务，以及检查代理交付的结果。
 
